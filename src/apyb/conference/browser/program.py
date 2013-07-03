@@ -49,14 +49,14 @@ class View(grok.View):
 
     @memoize
     def tracks(self, **kw):
-        kw['portal_type'] = 'apyb.papers.track'
+        kw['portal_type'] = 'track'
         kw['path'] = self._path
         brains = self._ct.searchResults(**kw)
         return brains
 
     @memoize
     def talks(self, **kw):
-        kw['portal_type'] = 'apyb.papers.talk'
+        kw['portal_type'] = 'talk'
         if not 'path' in kw:
             kw['path'] = self._path
         brains = self._ct.searchResults(**kw)
@@ -64,7 +64,7 @@ class View(grok.View):
 
     @memoize
     def trainings(self, **kw):
-        kw['portal_type'] = 'apyb.papers.training'
+        kw['portal_type'] = 'training'
         if not 'path' in kw:
             kw['path'] = self._path
         brains = self._ct.searchResults(**kw)
@@ -72,7 +72,7 @@ class View(grok.View):
 
     @memoize
     def speakers(self, **kw):
-        kw['portal_type'] = 'apyb.papers.speaker'
+        kw['portal_type'] = 'speaker'
         kw['path'] = self._path
         brains = self._ct.searchResults(**kw)
         return brains

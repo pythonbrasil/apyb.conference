@@ -52,7 +52,7 @@ class ITraining(form.Schema):
         title=_(u"Track"),
         required=True,
         description=_(u"Which track this training is"),
-        vocabulary='apyb.conference.talk.track',
+        vocabulary='apyb.conference.talk.tracks',
     )
 
     level = schema.Choice(
@@ -81,7 +81,7 @@ class ITraining(form.Schema):
         title=_(u"Location"),
         required=False,
         description=_(u"Room where this training will be presented"),
-        vocabulary='apyb.conference.talk.rooms',
+        vocabulary='apyb.conference.rooms',
     )
 
     dexterity.read_permission(seats='zope2.View')

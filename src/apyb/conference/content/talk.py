@@ -204,7 +204,7 @@ class ITalk(form.Schema):
         title=_(u"Track"),
         required=True,
         description=_(u"Which track this talk is"),
-        vocabulary='apyb.conference.talk.track',
+        vocabulary='apyb.conference.talk.tracks',
     )
 
     level = schema.Choice(
@@ -243,7 +243,7 @@ class ITalk(form.Schema):
         title=_(u"Location"),
         required=False,
         description=_(u"Room where this talk will be presented"),
-        vocabulary='apyb.conference.talk.rooms',
+        vocabulary='apyb.conference.rooms',
     )
     dexterity.read_permission(startDate='zope2.View')
     dexterity.write_permission(startDate='apyb.conference.AllocateTalk')
@@ -347,7 +347,7 @@ class View(dexterity.DisplayForm):
         self._wt = self.tools.workflow()
         self.member = self.portal.member()
         voc_factory = queryUtility(IVocabularyFactory,
-                                   'apyb.conference.talk.rooms')
+                                   'apyb.conference.rooms')
         self.rooms = voc_factory(self.context)
         self.roles_context = self.member.getRolesInContext(context)
         if not self.show_border:
