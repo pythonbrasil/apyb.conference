@@ -7,7 +7,6 @@ version = '1.0'
 
 long_description = (open("README.txt").read() + "\n" +
                     open(os.path.join("docs", "INSTALL.txt")).read() + "\n" +
-                    open(os.path.join("docs", "CREDITS.txt")).read() + "\n" +
                     open(os.path.join("docs", "HISTORY.txt")).read())
 
 
@@ -40,6 +39,7 @@ setup(name='apyb.conference',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
+          'setuptools',
           'collective.z3cform.datagridfield',
           'plone.app.users',
           'plone.app.dexterity [grok, relations]',
