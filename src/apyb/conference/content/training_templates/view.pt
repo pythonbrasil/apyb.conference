@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="apyb.conference">
+<body>
+<metal:main fill-slot="content-title">
+  <metal:title define-macro="content-title">
+      <div class="talk-track" tal:define="widget view/widgets/track;
+                         token context/track" 
+             tal:content="python:widget.terms.getTermByToken(str(token)).title" />
+      <h1 metal:use-macro="context/kss_generic_macros/macros/generic_title_view">
+          Generic KSS Title. Is rendered with class="documentFirstHeading".
+      </h1>
+  </metal:title>
+</metal:main>
+<metal:main fill-slot="content-core">
+  <metal:content-core define-macro="content-core">
+    <div class="talk_details">
+        <h2 i18n:translate="">Training details</h2>
+        <div>
+            <strong i18n:translate="">Language:</strong>
+            <span tal:define="widget view/widgets/language;
+                              token context/language;" 
+                  tal:content="python:widget.terms.getTermByToken(token).title" />
+        </div> 
+        <div>
+            <strong i18n:translate="">Level:</strong> 
+            <span tal:define="widget view/widgets/level;
+                              token context/level" 
+                  tal:content="python:widget.terms.getTermByToken(token).title" />
+        </div> 
+        <div>
+            <strong i18n:translate="">Summary:</strong>
+            <div tal:replace="structure context/text" />
+        </div> 
+    </div>
+    <div class="speaker_details">
+        <h2 i18n:translate="">Speaker details</h2>
+        <div class="speaker_profile" tal:repeat="speaker view/speaker_info">
+            <tal:image   tal:define="speaker_obj speaker/getObject;
+                               scale speaker_obj/@@images;
+                               img python:scale.scale('image', width=200, height=200, direction='keep');">
+            <img tal:condition="img"
+                 tal:replace="structure python:img.tag()" />
+             </tal:image>
+            <span class="speaker_name" tal:content="speaker/Title">Dorneles Tremea</span><br />
+            <span class="speaker_bio" tal:content="speaker/Description">Been there, done that</span><br />
+            <div class="clear"> </div>
+        </div>
+    </div>
+    <div class="attendee_details">
+        <h2 i18n:translate="">Attendees details</h2>
+        <div id="attendees">
+            <table  class="listing">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th i18n:translate="">Name</th>
+                        <th i18n:translate="">Organization</th>
+                        <th i18n:translate="" tal:condition="view/show_border">E-mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr tal:repeat="attendee view/attendees">
+                        <td tal:content="repeat/attendee/number">12</td>
+                        <td tal:condition="view/show_border"><a href="" tal:attributes="href attendee/getURL" tal:content="attendee/Title">Name</a></td>
+                        <td tal:condition="not:view/show_border" tal:content="attendee/Title">Name</td>
+                        <td tal:content="attendee/organization">Organization</td>
+                        <td  tal:condition="view/show_border" tal:content="attendee/email">Organization</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

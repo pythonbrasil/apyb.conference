@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="apyb.conference">
+<head>
+    <metal:styleslot fill-slot="style_slot">
+        <link rel="stylesheet" type="text/css" media="screen" 
+              tal:attributes="href string:${view/portal/portal_url}/portal_css/Sunburst%20Theme/++resource++apyb.conference/talk.css"
+              href="http://localhost:8045/pythonbrasil/portal_css/Sunburst%20Theme/base.css">
+    </metal:styleslot>
+</head>
+<body>
+<metal:main fill-slot="content-title">
+  <metal:title define-macro="content-title">
+      <h1 metal:use-macro="context/kss_generic_macros/macros/generic_title_view">
+          Generic KSS Title. Is rendered with class="documentFirstHeading".
+      </h1>
+  </metal:title>
+</metal:main>
+<metal:main fill-slot="content-core">
+  <metal:content-core define-macro="content-core">
+  <div tal:condition="view/show_calendar" class="talk_schedule">
+      <div class="talk_room" tal:content="view/location">Room</div>
+      <div class="talk_date" tal:content="view/date">29/09</div>
+      <div class="talk_hour">
+          <span tal:content="view/start">20:12</span><br/>
+      </div>
+  </div>
+    <div class="talk_details">
+        <h2 i18n:translate="">Activity details</h2>
+        <div>
+            <strong i18n:translate="">Summary:</strong>
+            <div tal:replace="structure context/text" />
+        </div> 
+    </div>
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+
