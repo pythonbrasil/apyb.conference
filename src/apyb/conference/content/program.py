@@ -31,7 +31,7 @@ class View(grok.View):
         self.state = self._multi_adapter(u'plone_context_state')
         self.tools = self._multi_adapter(u'plone_tools')
         self.portal = self._multi_adapter(u'plone_portal_state')
-        self.helper = self._multi_adapter(u'program_helper')
+        self.helper = self._multi_adapter(u'helper')
         voc_factory = queryUtility(IVocabularyFactory,
                                    'apyb.conference.rooms')
         self.rooms = voc_factory(self.context)
@@ -278,7 +278,7 @@ class Speakers(grok.View):
         self.state = self._multi_adapter(u'plone_context_state')
         self.tools = self._multi_adapter(u'plone_tools')
         self.portal = self._multi_adapter(u'plone_portal_state')
-        self.helper = self._multi_adapter(u'program_helper')
+        self.helper = self._multi_adapter(u'helper')
         self._ct = self.tools.catalog()
         self._wt = self.tools.workflow()
         self.member = self.portal.member()

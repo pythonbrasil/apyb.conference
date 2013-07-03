@@ -22,7 +22,6 @@
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core"
          tal:define="cfp view/can_submit;
-                     cot view/can_organize;
                      talks view/talks;
                      confirmed view/confirmed_talks;">
 
@@ -30,11 +29,6 @@
         <h2 i18n:translate="">Your talk here!</h2>
         <div class="talk_submission" i18n:translate="">Know about this tracks's subject and is willing to share with others? </div>        
         <div class="talk_submission"><a href="" tal:attributes="href string:${context/absolute_url}/@@new-talk" i18n:translate="">Submit your talk proposal!</a></div>        
-    </div>
-    <div tal:condition="cot">
-        <h2 i18n:translate="">Vote on the talks!!</h2>
-        <div class="talk_submission" i18n:translate="">Select the talks you want to see at our conference!</div>        
-        <div class="talk_submission"><a href="" tal:attributes="href string:${context/absolute_url}/@@order-talks" i18n:translate="">Vote now!</a></div>        
     </div>
     <div class="clear"> </div>
     <h2 i18n:translate="">Selected talks</h2>

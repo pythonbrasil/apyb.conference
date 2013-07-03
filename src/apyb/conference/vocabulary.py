@@ -386,7 +386,7 @@ class RoomsVocabulary(object):
 
 
 grok.global_utility(TalksTypeVocabulary,
-                    name=u"apyb.conference.talk.rooms")
+                    name=u"apyb.conference.rooms")
 
 
 class SpeakersVocabulary(object):

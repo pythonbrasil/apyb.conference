@@ -81,7 +81,7 @@ class View(grok.View):
         self.helper = getMultiAdapter((program, self.request),
                                       name=u'helper')
         voc_factory = queryUtility(IVocabularyFactory,
-                                   'apyb.conference.talk.rooms')
+                                   'apyb.conference.rooms')
         self.rooms = voc_factory(self.context)
         self._ct = self.tools.catalog()
         self._mt = self.tools.membership()

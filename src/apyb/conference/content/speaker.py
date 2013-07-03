@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 from Acquisition import aq_inner
+from Acquisition import aq_parent
 from apyb.conference import MessageFactory as _
 from apyb.conference.content.attendee import IAttendee
 from five import grok
@@ -122,7 +123,8 @@ class View(grok.View):
         self.state = self._multi_adapter(u'plone_context_state')
         self.tools = self._multi_adapter(u'plone_tools')
         self.portal = self._multi_adapter(u'plone_portal_state')
-        self.helper = self._multi_adapter(u'program_helper')
+        program = aq_parent(context)
+        self.helper = self._multi_adapter(u'helper', program)
         voc_factory = queryUtility(IVocabularyFactory,
                                    'apyb.conference.talk.rooms')
         self.rooms = voc_factory(self.context)
@@ -134,8 +136,10 @@ class View(grok.View):
         if not self.show_border:
             self.request['disable_border'] = True
 
-    def _multi_adapter(self, name):
-        return getMultiAdapter((self.context, self.request), name=name)
+    def _multi_adapter(self, name, context=None):
+        if not context:
+            context = self.context
+        return getMultiAdapter((context, self.request), name=name)
 
     @property
     def show_border(self):
@@ -146,7 +150,7 @@ class View(grok.View):
         ''' Given a list os uids, we return a list of
             dicts with speakers data '''
         ct = self._ct
-        brains = ct.searchResults(portal_type='apyb.conference.speaker',
+        brains = ct.searchResults(portal_type='speaker',
                                   UID=speaker_uids)
         speakers = [{'name':b.Title,
                      'organization':b.organization,
