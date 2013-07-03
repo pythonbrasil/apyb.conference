@@ -1,8 +1,11 @@
 <?xml version="1.0"?>
 <object name="portal_workflow" meta_type="Plone Workflow Tool">
  <object name="attendee_workflow" meta_type="Workflow"/>
+ <object name="program_workflow" meta_type="Workflow"/>
  <object name="registration_workflow" meta_type="Workflow"/>
  <object name="registrations_workflow" meta_type="Workflow"/>
+ <object name="talk_workflow" meta_type="Workflow"/>
+ <object name="track_workflow" meta_type="Workflow"/>
  <bindings>
   <type type_id="attendee">
    <bound-workflow workflow_id="attendee_workflow"/>
@@ -22,5 +25,14 @@
   <type type_id="track">
    <bound-workflow workflow_id="track_workflow"/>
   </type>
- </bindings>
+  <type type_id="talk">
+   <bound-workflow workflow_id="talk_workflow"/>
+  </type>
+  <type type_id="training">
+   <bound-workflow workflow_id="talk_workflow"/>
+  </type>
+  <type type_id="activities">
+   <bound-workflow workflow_id="talk_workflow"/>
+  </type>
+</bindings>
 </object>

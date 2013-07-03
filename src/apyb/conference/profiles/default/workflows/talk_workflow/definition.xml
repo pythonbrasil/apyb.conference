@@ -1,0 +1,213 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="talk_workflow"
+             xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+             i18n:domain="sc.apyb.papers"
+             title="Conference talk workflow"
+             description="A simple workflow to manage talks in a conference"
+             state_variable="review_state"
+             initial_state="created"
+             i18n:attributes="title; description">
+ <permission>Access contents information</permission>
+ <permission>Modify portal content</permission>
+ <permission>View</permission>
+ <permission>apyb.papers: Allocate Talk</permission>
+ <state state_id="created" title="Created" i18n:attributes="title">
+  <description i18n:translate="">Talk was created and is available for selection.</description>
+  <exit-transition transition_id="accept"/>
+  <exit-transition transition_id="reject"/>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+  <permission-map name="apyb.papers: Allocate Talk" acquired="False" />
+ </state>
+ <state state_id="accepted" title="Accepted" i18n:attributes="title">
+  <description i18n:translate="">Talk is accepted, waiting for speaker confirmation</description>
+  <exit-transition transition_id="confirm"/>
+  <exit-transition transition_id="cancel"/>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+  <permission-map name="apyb.papers: Allocate Talk" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>Reviewer</permission-role>
+      <permission-role>Editor</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="rejected" title="Rejected" i18n:attributes="title">
+  <description i18n:translate="">Talk is rejected</description>
+  <exit-transition transition_id="accept"/>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+  <permission-map name="apyb.papers: Allocate Talk" acquired="False" />
+ </state>
+ <state state_id="confirmed" title="Confirmed" i18n:attributes="title">
+  <description i18n:translate="">Talk is confirmed by its speaker</description>
+  <exit-transition transition_id="cancel"/>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+  <permission-map name="apyb.papers: Allocate Talk" acquired="False">
+      <permission-role>Manager</permission-role>
+      <permission-role>Reviewer</permission-role>
+      <permission-role>Editor</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="cancelled" title="Cancelled" i18n:attributes="title">
+  <description i18n:translate="">Talk was cancelled</description>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+  <permission-map name="apyb.papers: Allocate Talk" acquired="False" />
+ </state>
+ <transition transition_id="accept"
+             title="Reviewer accept talk"
+             new_state="accepted" trigger="USER"
+             i18n:attributes="title"
+             before_script="" after_script="">
+  <description i18n:translate="">Accept talk proposal</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=accept"
+          i18n:translate=""
+          category="workflow">Accept</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="reject"
+             title="Reviewer reject this talk"
+             new_state="rejected" trigger="USER"
+             i18n:attributes="title"
+             before_script="" after_script="">
+  <description i18n:translate="">Reject a talk proposal</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=reject"
+          i18n:translate=""
+          category="workflow">Reject</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="confirm"
+             title="Speaker confirms the talk"
+             new_state="confirmed" trigger="USER"
+             i18n:attributes="title"
+             before_script="" after_script="">
+  <description i18n:translate="">Talk is confirmed to the conference</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=confirm"
+          i18n:translate=""
+          category="workflow">Confirm</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="cancel"
+             title="Speaker cancels talk"
+             new_state="cancelled" trigger="USER"
+             i18n:attributes="title"
+             before_script="" after_script="">
+  <description i18n:translate="">Talk is cancelled by the speaker</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=cancel"
+          i18n:translate=""
+          category="workflow">Cancel</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+  </guard>
+ </transition>
+ <variable variable_id="action" for_catalog="False"
+           for_status="True" update_always="True">
+  <description i18n:translate="">Previous transition</description>
+  <default>
+   
+   <expression>transition/getId|nothing</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="actor" for_catalog="False"
+           for_status="True" update_always="True">
+  <description i18n:translate="">The ID of the user who performed the previous transition</description>
+  <default>
+   
+   <expression>user/getUserName</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="comments" for_catalog="False"
+           for_status="True" update_always="True">
+  <description i18n:translate="">Comment about the last transition</description>
+  <default>
+   
+   <expression>python:state_change.kwargs.get('comment', '')</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="review_history" for_catalog="False"
+           for_status="False" update_always="False">
+  <description i18n:translate="">Provides access to workflow history</description>
+  <default>
+   
+   <expression>state_change/getHistory</expression>
+  </default>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </variable>
+ <variable variable_id="time" for_catalog="False"
+           for_status="True" update_always="True">
+  <description i18n:translate="">When the previous transition was performed</description>
+  <default>
+   
+   <expression>state_change/getDateTime</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+</dc-workflow>
