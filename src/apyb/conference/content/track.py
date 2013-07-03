@@ -209,7 +209,6 @@ class JSONView(View):
                 talk['talk_location'] = self.location(brain.location)
                 talk['talk_start'] = brain.start.asdatetime().isoformat()
                 talk['talk_end'] = brain.end.asdatetime().isoformat()
-            talk['points'] = brain.points or 0.0
             talk['url'] = '%s' % brain.getURL()
             talk['json_url'] = '%s/json' % brain.getURL()
             talks.append(talk)
@@ -222,7 +221,6 @@ class JSONView(View):
         data['title'] = self.context.title
         data['description'] = self.context.description
         data['total_talks'] = len(talks)
-        data['total_votes'] = len(self.voters())
         self.request.response.setHeader('Content-Type',
                                         'application/json;charset=utf-8')
         return json.dumps(data,

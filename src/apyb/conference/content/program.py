@@ -230,7 +230,6 @@ class JSONView(View):
             talk['track'] = self.context.title
             talk['speakers'] = self.speakers_info(brain.speakers)
             talk['language'] = brain.language
-            talk['points'] = brain.points or 0.0
             talk['state'] = brain.review_state
             if talk['state'] == 'confirmed':
                 talk['talk_location'] = self.location(brain.location)
