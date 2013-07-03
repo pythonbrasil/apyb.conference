@@ -19,6 +19,7 @@ class ISpeakerForm(ISpeaker, IAddress):
     )
     form.omitted('address')
     form.omitted('postcode')
+    form.omitted('registration')
 
 
 class SpeakerForm(form.SchemaAddForm):
@@ -35,8 +36,9 @@ class SpeakerForm(form.SchemaAddForm):
 
     def update(self):
         super(SpeakerForm, self).update()
-        # We have only one fieldset
-        self.groups[0].widgets['description'].rows = 10
+        for group in self.groups:
+            if 'description' in group.fields:
+                group.widgets['description'].rows = 10
 
     def create(self, data):
         ''' Create objects '''
