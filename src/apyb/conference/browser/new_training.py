@@ -50,7 +50,7 @@ class ITrackTrainingForm(ITrainingForm):
 class TrainingForm(form.SchemaAddForm):
     ''' Training submission form '''
     grok.context(IProgram)
-    grok.require('apyb.papers.AddTraining')
+    grok.require('apyb.conference.AddTraining')
     grok.name('new-training')
 
     template = ViewPageTemplateFile('templates/new_training.pt')

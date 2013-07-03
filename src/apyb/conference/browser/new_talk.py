@@ -57,7 +57,7 @@ class ITrackTalkForm(ITalkForm):
 class TalkForm(form.SchemaAddForm):
     ''' Talk submission form '''
     grok.context(IProgram)
-    grok.require('apyb.papers.AddTalk')
+    grok.require('apyb.conference.AddTalk')
     grok.name('new-talk')
 
     template = ViewPageTemplateFile('templates/new_talk.pt')
