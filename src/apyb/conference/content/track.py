@@ -108,7 +108,7 @@ class View(grok.View):
         '''
         speaker_image = self.helper.speaker_image_from_brain
         ct = self._ct
-        brains = ct.searchResults(portal_type='apyb.conference.speaker',
+        brains = ct.searchResults(portal_type='speaker',
                                   UID=speaker_uids)
         speakers = [{'name': b.Title,
                      'organization': b.organization,
