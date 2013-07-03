@@ -38,6 +38,11 @@
       />
 
   <permission
+      id="apyb.conference.AddActivity"
+      title="apyb.conference: Add Activity"
+      />
+
+  <permission
       id="apyb.conference.AddTalk"
       title="apyb.conference: Add Talk"
       />

@@ -3,6 +3,7 @@
  <property name="title">Controls the available content types in your portal</property>
  <object meta_type="Dexterity FTI" name="talk" />
  <object meta_type="Dexterity FTI" name="training" />
+ <object meta_type="Dexterity FTI" name="activity" />
  <object meta_type="Dexterity FTI" name="registrations" />
  <object meta_type="Dexterity FTI" name="registration" />
  <object meta_type="Dexterity FTI" name="attendee" />
