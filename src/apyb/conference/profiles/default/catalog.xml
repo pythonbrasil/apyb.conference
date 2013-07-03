@@ -33,7 +33,22 @@
  <index name="trainings" meta_type="KeywordIndex">
   <indexed_attr value="trainings"/>
  </index>
+ <index name="speakers" meta_type="KeywordIndex">
+  <indexed_attr value="speakers"/>
+ </index>
+ <index name="track" meta_type="FieldIndex">
+  <indexed_attr value="track"/>
+ </index>
+ <index name="level" meta_type="FieldIndex">
+  <indexed_attr value="level"/>
+ </index>
+ <index name="talk_type" meta_type="FieldIndex">
+  <indexed_attr value="talk_type"/>
+ </index> 
+ <column value="speakers"/>
+ <column value="track"/>
  <column value="level"/>
+ <column value="talk_type"/>
  <column value="organization"/>
  <column value="caipirinha"/>
  <column value="wall"/>
