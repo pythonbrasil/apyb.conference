@@ -1,0 +1,46 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:grok="http://namespaces.zope.org/grok"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="apyb.conference">
+    
+    <plone:behavior
+        title="Payment Information"
+        description="Payment information"
+        provides=".paymentinformation.IPaymentInformation"
+        for="plone.dexterity.interfaces.IDexterityContent"
+        />
+    
+    <plone:behavior
+        title="OptIn Information"
+        description="OptIn information"
+        provides=".optininformation.IOptInInformation"
+        for="plone.dexterity.interfaces.IDexterityContent"
+        />
+
+    <plone:behavior
+        title="Internet contact info"
+        description="Contact information behavior providing a set of internet related fields"
+        provides=".contactinfo.INetContactInfo"
+        factory=".contactinfo.NetContactInfo"
+        for="plone.dexterity.interfaces.IDexterityContent"
+        />
+
+    <plone:behavior
+        title="Phone contact Info"
+        description="Contact information behavior providing telephone fields"
+        provides=".contactinfo.IPhoneContactInfo"
+        factory=".contactinfo.PhoneContactInfo"
+        for="plone.dexterity.interfaces.IDexterityContent"
+        />
+
+    <plone:behavior
+        title="Address contact info"
+        description="Contact information behavior providing address fields"
+        provides=".address.IAddress"
+        factory=".address.Address"
+        for="plone.dexterity.interfaces.IDexterityContent"
+        />
+
+</configure>
+

@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="apyb.papers">
+<body>
+
+<metal:main fill-slot="content-core">
+  <metal:content-core define-macro="content-core">
+    <div class="talks" tal:condition="view/ordered_talks">
+        <h2 i18n:translate="">Talks ordering</h2>
+        <table class="grid" id="talks_ordering">
+            <thead>
+                <tr>
+                    <th i18n:translate=""></th>
+                    <th i18n:translate="">Track</th>
+                    <th i18n:translate="">Talk</th>
+                    <th i18n:translate="">Points</th>
+                    <th i18n:translate="">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tal:talks tal:repeat="talk view/ordered_talks">
+                <tr tal:attributes="class string:${talk/review_state}">
+                    <td><span tal:content="repeat/talk/number">1</span></td>
+                    <td><span tal:content="python:view.helper.track_info(talk.track).get('title')">Django</span></td>
+                    <td>
+                        <span class="talk_title"><a href="" tal:attributes="href talk/getURL" tal:content="talk/Title">Plone is cool</a></span><br />
+                        <span class="discreet" tal:content="python:view.speaker_name(talk.speakers)">Joe Doe</span>
+                    </td>
+                    <td><span tal:condition='talk/points' tal:content="python:'%.2f' % talk.points">0.32</span></td>
+                    <td><span tal:content="talk/review_state">Created</span></td>
+                </tr>
+                </tal:talks>
+            </tbody>
+        </table>
+    </div>
+    <div class="clear"> </div>
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

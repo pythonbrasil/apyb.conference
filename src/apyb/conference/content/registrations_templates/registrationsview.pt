@@ -1,0 +1,92 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="apyb.conference">
+<body>
+<metal:main fill-slot="content-core">
+  <metal:content-core define-macro="content-core">
+    
+    <div tal:condition="view/listing_enabled">
+        <h2 i18n:translate="">Registrations Management</h2>        
+        <h3 i18n:translate="">PayPal</h3>
+        <a href="" 
+           tal:attributes="href string:${context/absolute_url}/@@registrations_paypal"
+           i18n:translate="">Import PayPal file</a>
+        <br />
+        <h3 i18n:translate="">PagSeguro</h3>
+        <a href="" 
+           tal:attributes="href string:${context/absolute_url}/@@registrations_pagseguro"
+           i18n:translate="">Import PagSeguro file</a>
+        <br />        
+        
+        <h2 i18n:translate="">Registrations Stats</h2>
+        <h3 i18n:translate="">Confirmed Registrations Stats</h3>
+        <div class="stats_list" tal:define="registrations_by_type view/registrations_by_type">
+            <div class="stats_box" tal:repeat="type registrations_by_type">
+                <span class="stats_title" tal:content="type">Tracks</span><br />
+                <span class="stats_number">
+                      <span tal:content="python:len(registrations_by_type[type].get('Confirmado',[]))">12</span>
+                      <br />
+            </div>
+            <div class="stats_box">
+                <span class="stats_title" i18n:translate="">Total</span><br />
+                <span class="stats_number">
+                      <span tal:content="python:sum([len(registrations_by_type[type].get('Confirmado',[])) for type in registrations_by_type])">12</span>
+                      <br />
+            </div>
+        </div>
+        <div class="clear"> </div>
+        <h3 i18n:translate="">Pending Registrations Stats</h3>
+        <div class="stats_list" tal:define="registrations_by_type view/registrations_by_type">
+            <div class="stats_box" tal:repeat="type registrations_by_type">
+                <span class="stats_title" tal:content="type">Tracks</span><br />
+                <span class="stats_number">
+                      <span tal:content="python:len(registrations_by_type[type].get('Pendente',[]))">12</span>
+                      <br />
+            </div>
+            <div class="stats_box">
+                <span class="stats_title" i18n:translate="">Total</span><br />
+                <span class="stats_number">
+                      <span tal:content="python:sum([len(registrations_by_type[type].get('Pendente',[])) for type in registrations_by_type])">12</span>
+                      <br />
+            </div>
+        </div>
+        <div class="clear"> </div>
+        <h3 i18n:translate="">Registrations</h3>
+        <table class="listing">
+            <thead>
+                <tr>
+                    <th i18n:translate="">Code</th>
+                    <th i18n:translate="">Date</th>
+                    <th i18n:translate="">Title</th>
+                    <th i18n:translate="">Category</th>
+                    <th i18n:translate=""># Attendees</th>
+                    <th i18n:translate="">Price (est.)</th>
+                    <th i18n:translate="">Price</th>
+                    <th i18n:translate="">State</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr tal:repeat="reg view/registrations">
+                    <td><a href="" tal:attributes="href reg/url" tal:content="reg/id">23dsvfr2</a></td>
+                    <td tal:content="reg/date">2011-07-13</td>
+                    <td tal:content="reg/title">Foo</td>
+                    <td tal:content="reg/type">APyB</td>
+                    <td tal:content="reg/num_attendees">1</td>
+                    <td tal:content="reg/price_est">R$120,00</td>
+                    <td tal:content="reg/amount">--</td>
+                    <td tal:content="reg/state">Pending</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

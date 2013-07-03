@@ -1,0 +1,73 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="apyb.conference"
+      metal:use-macro="context/main_template/macros/master">
+    
+    <metal:block fill-slot="main">
+    <h1 class="documentFirstHeading" tal:content="view/label | nothing" />
+        <div class="price_container">
+            <span i18n:translate="">Price</span>
+            <div id="price"></div>
+        </div>
+        <div id="content-core">
+            <metal:block use-macro="context/@@ploneform-macros/titlelessform" />
+        </div>
+        <script tal:content="string:registration_type='${view/registration_type}';;" />
+        <script>
+            qtyAttendess = 1;
+            function updatePrice(){
+                var caipirinha = '';
+                var wall = '';
+                if (!(jQuery('#form-widgets-caipirinha'))){
+                  for (var i=0;i<qtyAttendess.length;i++){
+                    caipirinha = caipirinha + '|' + jQuery('#form-widgets-attendees-' + i + '-widgets-caipirinha').val();
+                    wall = wall + '|' + jQuery('#form-widgets-attendees-' + i + '-widgets-wall').val();
+                  }
+                }else{
+                  caipirinha = jQuery('#form-widgets-caipirinha').val();
+                  wall = jQuery('#form-widgets-wall').val();
+                }
+                jQuery.getJSON('@@reg-price.json?type=' + registration_type + '&qty='+qtyAttendess + '&caipirinha=' + caipirinha + '&wall=' + wall, function(data) {
+                  jQuery('div#price').html(data['fmtPrice']);
+                });                
+            }
+            jQuery(function(){              
+                  updatePrice();
+                  //We patch datagrid in order to count 
+                  dataGridField2Functions.createNewRow = function(node) { 
+                      /* Creates a new row 
+                         @param node A row in a table where we'll be adding the new row
+                      */
+                      var tbody = this.getParentByClass(node, "datagridwidget-body");   
+                      // hidden template row 
+                      var emptyRow = $(tbody).find('.datagridwidget-empty-row');
+                      var markup = $(emptyRow).clone();
+                      var newTr = $(markup).attr("class","datagridwidget-row");
+                      qtyAttendess = qtyAttendess + 1;
+                      updatePrice();
+                      return newTr[0]
+                  }    
+
+                  dataGridField2Functions.removeFieldRow = function(node) {
+                      /* Remove the row in which the given node is found */
+                      var tbody = this.getParentByClass(node, "datagridwidget-body"); 
+                      var row = this.getParentRow(node);
+                      $(row).detach();
+                      this.updateOrderIndex(tbody,false);
+                      qtyAttendess = qtyAttendess - 1;	    
+                      updatePrice();
+                  }
+                  jQuery('#form-widgets-caipirinha').change(function (){
+                    updatePrice();
+                    }
+                  );
+                  jQuery('#form-widgets-wall').change(function (){
+                    updatePrice();
+                    }
+                  );
+            });
+        </script>
+    </metal:block>
+</html>

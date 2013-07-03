@@ -1,0 +1,109 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="apyb.conference">
+<body>
+
+    <metal:main fill-slot="content-core">
+      <metal:content-core define-macro="content-core">
+        <h2 i18n:translate="">Attendee Info</h2>
+        <div id="attendee_details">
+            <h3 i18n:translate="">Details</h3>        
+            <span i18n:translate="">Registration Type</span>:&nbsp;<strong><span tal:content="view/fmt_registration_type">Individual</span></strong><br/>
+            <span i18n:translate="">Fullname</span>:&nbsp;<strong><span tal:content="context/title">Dorneles Tremea</span></strong><br/>
+            <span i18n:translate="">E-mail</span>:&nbsp;<strong><span tal:content="context/email">deo@x3ng.com.br</span></strong><br/>
+            <span i18n:translate="">Location</span>:&nbsp;<strong><span tal:content="context/city">Garibaldi</span>,<span tal:content="context/state">Rio Grande do Sul</span>, <span tal:content="python:context.country.upper()">BR</span> </strong><br/>
+            <span i18n:translate="">Caipirinha Sprint</span>:&nbsp;<strong><span tal:content="view/caipirinha_sprint">Yes!</span></strong><br/>
+            <span i18n:translate="">Name on the wall</span>:&nbsp;<strong><span tal:content="view/wall_status">Yes!</span></strong><br/>
+        </div>
+        <div id="attendee_details" tal:condition="python:view.confirmed or view.attended">
+            <h3 i18n:translate="">Certificate</h3>
+            <div tal:condition="view/confirmed"><span i18n:translate="">Certificate will be available after conference in this url</span>&nbsp;&nbsp;<span tal:content="view/certificate_url">foo bar</span></div>
+            <div tal:condition="view/attended"><span i18n:translate="">Certificate is available at</span>&nbsp;&nbsp;<a href="" target="_blank" tal:attributes="href view/certificate_url" tal:content="view/certificate_url">foo bar</a></div>
+        </div>
+        <div id="training_list" tal:condition="context/trainings">
+            <br/>
+            <h3 i18n:translate="">Trainings</h3>
+            <table class="grid" id="trainings_registering">
+                <thead>
+                    <tr>
+                        <th i18n:translate="">Start</th>
+                        <th i18n:translate="">End</th>
+                        <th i18n:translate="">Training</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr tal:repeat="training view/registered_trainings">
+                        <td>
+                            <span tal:content="python:view.helper.fmt_date(training.get('start'))">28/09/2011 - 14:00</span>
+                        </td>
+                        <td>
+                            <span tal:content="python:view.helper.fmt_date(training.get('end'))">28/09/2011 - 18:00</span>
+                        </td>
+                        <td>
+                            <span class="talk_title">
+                                <a href="" class="talk_details_link" tal:attributes="href training/url" tal:content="training/title">Plone is cool</a>
+                            </span><br />
+                            <span class="discreet" tal:content="python:view.helper.speaker_name(training.get('speakers'))">Joe Doe</span>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+        </div>
+        <div id="training_form" tal:condition="view/allow_training_registering">
+            <h3 i18n:translate="">Register for trainings</h3>
+            <form action="" tal:condition="view/available_trainings"
+                          method="POST"
+                          tal:attributes="action string:${context/absolute_url}/register_trainings">
+                <table class="grid" id="trainings_registering">
+                    <thead>
+                        <tr>
+                            <th i18n:translate="">Register</th>
+                            <th i18n:translate="">Start</th>
+                            <th i18n:translate="">End</th>
+                            <th i18n:translate="">Training</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr tal:repeat="training view/available_trainings">
+                            <td>
+                                <input type="checkbox" 
+                                    name='trainings_uid' 
+                                    tal:attributes="value training/uid;" />
+                            </td>
+                            <td>
+                                <span tal:content="python:view.helper.fmt_date(training.get('start'))">28/09/2011 - 14:00</span>
+                            </td>
+                            <td>
+                                <span tal:content="python:view.helper.fmt_date(training.get('end'))">28/09/2011 - 18:00</span>
+                            </td>
+                            <td>
+                                <span class="talk_title">
+                                    <a href="" class="talk_details_link" tal:attributes="href training/url" tal:content="training/title">Plone is cool</a>
+                                </span><br />
+                                <span class="discreet" tal:content="python:view.helper.speaker_name(training.get('speakers'))">Joe Doe</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                    </table>
+                        <input type="hidden" name="submitted" value="1" />
+                        <input type="submit" name="confirm_button" value="Register" id="confirm_button" />
+                    <br/>
+            </form>
+            <script type="text/javascript">
+            jQuery(function(){
+              jQuery('a.talk_details_link').prepOverlay({
+                  subtype: 'ajax',
+                  filter: '#content>*',
+                  });
+            });
+            </script>
+        </div>
+      </metal:content-core>
+    </metal:main>
+    </body>
+    </html>
+

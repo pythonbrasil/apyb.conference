@@ -1,0 +1,25 @@
+<div tal:condition="viewlet/available">
+    <h2 class="documentFirstHeading">
+        <span>Sponsors</span>
+    </h2>
+    <div id="patrocinadores">
+        <dl tal:define="spl viewlet/sponsors_by_level;">
+            <tal:level tal:repeat="level spl">
+            <dt tal:content="level/title">Platinum</dt>
+            <tal:sponsors tal:repeat="sponsor level/sponsors">
+            <dd tal:attributes="id sponsor/id">
+                <a 
+                    tal:attributes="title sponsor/title;
+                                    href sponsor/url;"
+                    href="http://plone.org" 
+                    target="_blank">
+                    <img tal:replace="structure sponsor/image"
+                         alt="Plone"
+                         src="/plone_png">
+                </a>
+            </dd>
+            </tal:sponsors>
+            </tal:level>
+        </dl>
+    </div>
+</div>

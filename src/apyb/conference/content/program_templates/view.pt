@@ -1,0 +1,184 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="apyb.papers">
+<body>
+
+<metal:main fill-slot="content-core">
+  <metal:content-core define-macro="content-core"
+         tal:define="cfp view/can_submit">
+    <div class="stats">
+        <h2 i18n:translate="">Stats</h2>
+        <div class="stats_list" tal:define="stats view/stats">
+            <div class="stats_box">
+                <span class="stats_title" i18n:translate="">Tracks</span><br />
+                <span class="stats_number" tal:content="stats/tracks">12</span><br />
+            </div>
+            <div class="stats_box">
+                <span class="stats_title" i18n:translate="">Talks</span><br />
+                <span class="stats_number" tal:content="stats/talks">12</span><br />
+            </div>
+            <div class="stats_box">
+                <span class="stats_title" i18n:translate="">Speakers</span><br />
+                <span class="stats_number" tal:content="stats/speakers">12</span><br />
+            </div>
+        </div>
+    </div>
+    <div class="clear"> </div>
+     <div tal:condition="view/is_anonymous">
+         <span i18n:translate="">In order to submit talk proposals to this conference you need to create an account on this site (so you can manage your talk details later on).</span><br/><br/>
+         <span>
+             <a href="" 
+                tal:attributes="href string:${view/login_url};
+                                id string:login_form;"
+                i18n:translate="">
+             If you already have an account, click here to login.
+             </a>
+         </span><br />
+         <span>
+             <a href="" 
+             tal:attributes="href string:${view/register_url};
+                             id string:register_form;"
+                i18n:translate="">
+             Click here to create an account.
+             </a>
+         </span><br/><br/>
+         <script>
+         jQuery(function(){
+             var common_content_filter = '#content>*:not(div.configlet),dl.portalMessage.error,dl.portalMessage.info';
+             // login form
+             jQuery('#login_form').prepOverlay(
+                 {
+                     subtype: 'ajax',
+                     filter: common_content_filter,
+                     formselector: 'form#login_form',
+                     noform: function () {
+                         if (location.href.search(/pwreset_finish$/) >= 0) {
+                             return 'redirect';
+                         } else {
+                             return 'reload';
+                         }
+                     },
+                     redirect: function () {
+                         var href = location.href;
+                         if (href.search(/pwreset_finish$/) >= 0) {
+                             return href.slice(0, href.length-14) + 'logged_in';
+                         } else {
+                             return href;
+                         }
+                     }
+                 }
+             );
+             jQuery('#register_form').prepOverlay(
+                 {
+                     subtype: 'ajax',
+                     filter: common_content_filter,
+                     formselector: 'form.kssattr-formname-register'
+                 }
+             );
+         });
+         </script>
+    </div>
+    <div class="clear"> </div>
+    <div class="tracks">
+        <h2 i18n:translate="">Tracks</h2>
+        <div class="track_text" i18n:translate="" tal:condition="cfp">Choose a track, submit a talk proposal!</div>
+        <div class="track_text" i18n:translate="" tal:condition="not:cfp">Know more about our tracks</div>
+        <div tal:define="tracks view/tracks" class="tracks_listing">
+            <tal:tracks tal:repeat="track tracks">
+            <div tal:attributes="id track/id" class="track"
+                  tal:define="track_obj track/getObject;
+                                   scale track_obj/@@images;
+                                   img python:scale.scale('image', width=80, height=80, direction='keep');">
+                <a href="" tal:attributes="href string:${track/getURL}"><img tal:condition="img"
+                     tal:replace="structure python:img.tag()"/></a>
+                <a href="" tal:attributes="href string:${track/getURL}"><span class="track_title" tal:content="track/Title">Plone</span></a><br />
+                <span class="discreet" tal:content="track/Description">Plone is a CMS written in Python</span><br />
+                <a href="" tal:condition="python:('keynote' not in track.getId) and cfp" 
+                   tal:attributes="href string:${track/getURL}/@@new-talk"
+                   i18n:translate="">Submit talk proposal here</a>
+            </div>
+            </tal:tracks>
+        </div>
+    </div>
+    <div class="clear"> </div>
+    <div class="my-profile" tal:condition="view/my_profiles">
+        <h2 i18n:translate="">My profile</h2>
+        <div tal:define="speakers view/my_profiles" class="speakers_listing">
+            <tal:speakers tal:repeat="speaker speakers">
+            <div tal:attributes="id speaker/id" class="speaker">
+                <span class="speaker_title"><a href="" tal:attributes="href speaker/getURL" tal:content="speaker/Title">Dorneles Tremea</a></span><br />
+                <span class="discreet" tal:content="speaker/Description">Joe Doe</span><br />
+            </div>
+            </tal:speakers>
+        </div>
+    </div>
+    <div class="clear"> </div>
+    <div class="my-talks" tal:condition="view/my_talks">
+        <h2 i18n:translate="">My talks</h2>
+        <form action="" tal:condition="view/my_talks_accepted"
+              method="POST"
+              tal:attributes="action string:${context/absolute_url}/confirm-talks">
+            <h3 i18n:translate="">Talks waiting for your confirmation</h3>
+            <table class="grid" id="talks_ordering">
+                <thead>
+                    <tr>
+                        <th i18n:translate="">Confirm</th>
+                        <th i18n:translate="">Cancel</th>
+                        <th i18n:translate="">Track</th>
+                        <th i18n:translate="">Information</th>
+                        <th i18n:translate="">Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr tal:repeat="talk view/my_talks_accepted">
+                        <td><input type="radio" value='confirm' tal:attributes="name talk/UID;" /></td>
+                        <td><input type="radio" value='cancel' tal:attributes="name talk/UID;" /></td>
+                        <td><span tal:content="python:view.helper.track_info(talk.track).get('title')">Django</span></td>
+                        <td>
+                            <span class="talk_title"><a href="" tal:attributes="href talk/getURL" tal:content="talk/Title">Plone is cool</a></span><br />
+                            <span class="discreet" tal:content="python:view.speaker_name(talk.speakers)">Joe Doe</span>
+                        </td>
+                        <td><span tal:condition='talk/points' tal:content="python:'%.2f' % talk.points">0.32</span></td>
+                    </tr>
+                </tbody>
+                </table>
+                <div>
+                    <input type="hidden" name="submitted" value="1" />
+                    <input type="submit" name="confirm_button" value="Send" id="confirm_button" />
+                </div>
+                <br/>
+        </form>
+        <div tal:define="talks view/my_talks" class="talks_listing">
+            <h3 i18n:translate="">Submited talks</h3>
+            <table class="grid" id="talks_ordering">
+                <thead>
+                    <tr>
+                        <th i18n:translate="">Track</th>
+                        <th i18n:translate="">Information</th>
+                        <th i18n:translate="">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr tal:repeat="talk view/my_talks">
+                        <td><span tal:content="python:view.helper.track_info(talk.track).get('title')">Django</span></td>
+                        <td>
+                            <span class="talk_title"><a href="" tal:attributes="href talk/getURL" tal:content="talk/Title">Plone is cool</a></span><br />
+                            <span class="discreet" tal:content="python:view.speaker_name(talk.speakers)">Joe Doe</span>
+                        </td>
+                        <td><span tal:content="talk/review_state">Created</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="clear"> </div>
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

@@ -1,0 +1,89 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="apyb.conference">
+<body>
+<metal:main fill-slot="content-core">
+  <metal:content-core define-macro="content-core">
+    
+    <div tal:condition="view/listing_enabled">
+        <h2 i18n:translate="">Registrations Management</h2>
+        <h3 i18n:translate="">Attendees Stats</h3>
+        <div class="stats_list" tal:define="attendees_by_state view/attendees_by_state">
+            <div class="stats_box" tal:repeat="state attendees_by_state">
+                <span class="stats_title" tal:content="state">State</span><br />
+                <span class="stats_number">
+                      <span tal:content="python:len(attendees_by_state[state])">12</span>
+                      <br />
+            </div>
+        </div>
+        <div class="clear"> </div>
+        <h3 i18n:translate="">Attendees</h3>
+        <table class="listing">
+            <thead>
+                <tr>
+                    <th i18n:translate="">Code</th>
+                    <th i18n:translate="">Type</th>
+                    <th i18n:translate="">Fullname</th>
+                    <th i18n:translate="">Email</th>
+                    <th i18n:translate="">Badge Name</th>
+                    <th i18n:translate="">Gender</th>
+                    <th i18n:translate="">T-Shirt</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tal:attendees tal:repeat="att view/attendees">
+                <tr tal:condition="python:att.get('state')=='Confirmado'">
+                    <td>
+                        <a href="" tal:attributes="href att/url" tal:content="att/id">23dsvfr2</a><br/>
+                        <a href="" tal:attributes="href att/reg_url" 
+                            tal:content="python:att.get('reg')[:8]">23dsvfr2</a><br/>
+                    </td>
+                    <td tal:content="att/type">2011-07-13</td>
+                    <td tal:content="att/fullname">Jones</td>
+                    <td tal:content="att/email">1</td>
+                    <td tal:content="att/badge_name">Foo</td>
+                    <td tal:content="att/gender">Male</td>
+                    <td tal:content="att/t_shirt_size">XL</td>
+                </tr>
+                </tal:attendees>
+            </tbody>
+        </table>
+        
+        <table class="listing">
+            <thead>
+                <tr>
+                    <th i18n:translate="">Code</th>
+                    <th i18n:translate="">Date</th>
+                    <th i18n:translate="">Fullname</th>
+                    <th i18n:translate="">Email</th>
+                    <th i18n:translate="">Gender</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tal:attendees tal:repeat="att view/attendees">
+                <tr tal:condition="python:att.get('state')=='Pendente'">
+                    <td>
+                        <a href="" tal:attributes="href att/url" tal:content="att/id">23dsvfr2</a><br/>
+                        <a href="" tal:attributes="href att/reg_url" 
+                            tal:content="python:att.get('reg')[:8]">23dsvfr2</a><br/>
+                    </td>
+                    <td tal:content="att/date">2011-07-13</td>
+                    <td tal:content="att/fullname">Jones</td>
+                    <td tal:content="att/email">1</td>
+                    <td tal:content="att/gender">Male</td>
+                </tr>
+                </tal:attendees>
+            </tbody>
+        </table>
+    </div>
+    
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

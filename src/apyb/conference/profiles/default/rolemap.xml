@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<rolemap>
+  <permissions>
+    <permission name="apyb.conference: Add Attendee" acquire="False">
+      <role name="Manager"/>
+      <role name="Member"/>
+    </permission>
+    <permission name="apyb.conference: Add Registration" acquire="False">
+      <role name="Manager"/>
+      <role name="Member"/>
+    </permission>
+    <permission name="apyb.conference: Add Registrations" acquire="False">
+      <role name="Manager"/>
+      <role name="Editor"/>
+    </permission>
+    <permission name="apyb.conference: Add Program" acquire="False">
+      <role name="Manager"/>
+      <role name="Editor"/>
+    </permission>
+    <permission name="apyb.conference: Add Track" acquire="False">
+      <role name="Manager"/>
+      <role name="Editor"/>
+    </permission>
+    <permission name="apyb.conference: Add Speaker" acquire="False">
+      <role name="Manager"/>
+      <role name="Editor"/>
+    </permission>    
+  </permissions>
+</rolemap>

@@ -1,0 +1,67 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="apyb.papers">
+<body>
+
+<metal:main fill-slot="content-core">
+  <metal:content-core define-macro="content-core"
+         tal:define="cfp view/can_submit;
+                     cot view/can_organize;
+                     voters view/voters;
+                     scale context/@@images;
+                     img python:scale.scale('image', width=80, height=80, direction='keep');">
+   <img tal:condition="img"
+        tal:replace="structure python:img.tag()"/>
+    <div class="clear"> </div>
+    <h2 i18n:translate="">All talks submitted to this track</h2>
+    <div class="talks" tal:define="talks view/ordered_talks">
+        <table class="grid" id="talks_ordering">
+            <thead>
+                <tr>
+                    <th i18n:translate="">Order</th>
+                    <th i18n:translate="">Talk</th>
+                    <th i18n:translate="">Points</th>
+                </tr>
+            </thead>
+            <tbody  class="listing_body">
+            <tal:talks tal:repeat="talk talks">
+                <tr>
+                    <td class="talk_ordering">
+                        <span class="number" tal:content="repeat/talk/number">1</span> 
+                    </td>
+                    <td class="talk_details_">
+                        <input type="hidden" value="" name="talk_uid"
+                            tal:attributes="value talk/UID">
+                        <a href="" 
+                           class="talk_details_link"
+                           tal:attributes="href talk/getURL" 
+                           tal:content="talk/Title">Title</a><br/>
+                        <span class="talk_details_speaker" tal:content="python:view.speaker_name(talk.speakers)">Speakers</span><br/>
+                    </td>
+                    <td class="talk_ordering">
+                        <span class="talk_ordering" tal:condition='talk/points' tal:content="python:'%.2f' % talk.points">0.2</span> 
+                    </td>
+                </tr>
+            </tal:talks>
+            </tbody>
+        </table>
+        <script type="text/javascript">
+        jQuery(function(){
+          foo ='';
+          jQuery('a.talk_details_link').prepOverlay({
+              subtype: 'ajax',
+              filter: '#content>*',
+              });
+
+        });
+        </script>
+    </div>
+  </metal:content-core>
+</metal:main>
+</body>
+</html>
+

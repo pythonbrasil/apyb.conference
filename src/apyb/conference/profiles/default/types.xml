@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<object meta_type="Plone Types Tool" name="portal_types">
+ <property name="title">Controls the available content types in your portal</property>
+ <object meta_type="Dexterity FTI" name="talk" />
+ <object meta_type="Dexterity FTI" name="training" />
+ <object meta_type="Dexterity FTI" name="registrations" />
+ <object meta_type="Dexterity FTI" name="registration" />
+ <object meta_type="Dexterity FTI" name="attendee" />
+ <object meta_type="Dexterity FTI" name="sponsor" />
+ <object meta_type="Dexterity FTI" name="speaker" />
+ <object meta_type="Dexterity FTI" name="track" />
+ <object meta_type="Dexterity FTI" name="program" />
+</object>

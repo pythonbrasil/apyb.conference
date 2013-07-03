@@ -1,0 +1,57 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="apyb.papers">
+<body>
+
+<metal:main fill-slot="content-core">
+  <metal:content-core define-macro="content-core">
+    <h2 i18n:translate="">Speakers list</h2>
+    <table class="listing" 
+           tal:define="speakers view/speakers;
+                       talks_speakers view/talks_speakers;">
+        <thead>
+            <tr>
+                <th i18n:translate=""></th>
+                <th i18n:translate="">Name</th>
+                <th i18n:translate="">Organization</th>
+                <th i18n:translate="">Language</th>
+                <th i18n:translate="">E-mail</th>
+                <th i18n:translate="">Registration</th>
+                <th i18n:translate="">Sent</th>
+                <th i18n:translate="">Conf</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr tal:repeat="speaker view/speakers">
+                <tal:block tal:define="speaker_obj speaker/getObject;">
+                <td> 
+                    <tal:image   tal:define="scale speaker_obj/@@images;
+                                       img python:scale.scale('image', width=40, height=40, direction='keep');">
+                    <img tal:condition="img"
+                         tal:replace="structure python:img.tag()" />
+                     </tal:image>
+                </td>
+                <td><a href="" tal:attributes="href speaker/getURL" tal:content="speaker/Title">Dorneles Tremea</a></td>
+                <td tal:content="speaker/organization">APyB</td>
+                <td tal:content="python:view.voc.getTerm(speaker.language).title">Gauches</td>
+                <td tal:content="speaker/email">foo@bar.com</td>
+                <td><a href="" tal:content="python:view.registration_state(speaker_obj)"
+                               tal:attributes="href python:view.registration_url(speaker_obj)">foo@bar.com</a></td>
+                <td tal:define="talks python:talks_speakers.get(speaker.UID,{}).get('all',[])"
+                    tal:content="python:len(talks)">2</td>
+                <td tal:define="talks python:talks_speakers.get(speaker.UID,{}).get('confirmed',[])"
+                    tal:content="python:len(talks)">2</td>
+                </tal:block>
+            </tr>
+        </tbody>
+    </table>
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

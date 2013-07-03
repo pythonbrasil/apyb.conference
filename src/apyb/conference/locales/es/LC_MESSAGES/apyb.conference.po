@@ -1,0 +1,330 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: apyb.conference 1.0\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"PO-Revision-Date: 2013-05-27 14:01-0300\n"
+"Last-Translator: Rafahela Bazzanella <rafahela@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: es\n"
+"Language-Name: Spanish\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: apyb.conference\n"
+
+#: collective/conference/profiles/default/types/talk.xml
+msgid "Talk"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_fullname"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_fullname"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_identity_document"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_identity_document"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_issuing body"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_issuing body"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_cpf"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_cpf"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_gender"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_gender"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_passaport_number"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_passaport_number"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_passaport_name"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_passaport_name"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_company_name"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_company_name"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_company_url"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_company_url"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_mini_curriculum"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_mini_curriculum"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_need_special_care"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_need_special_care"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_social_networks"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_social_networks"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_student_or_APyB_affiliate"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_student_or_APyB_affiliate"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_address"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_address"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_city"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_city"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_state"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_state"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_zip_code"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_zip_code"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_country"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_country"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_citizenship"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_citizenship"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_phone"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_phone"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_cellphone"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_cellphone"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_accept"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "help_accept"
+msgstr ""
+
+#: collective/conference/content/talk.py
+#: collective/conference/content/training.py
+msgid "Estimated duration"
+msgstr ""
+
+#: collective/conference/content/talk.py
+#: collective/conference/content/training.py
+msgid "How long you want to talk (in minutes)"
+msgstr ""
+
+#: collective/conference/content/talk.py
+#: collective/conference/content/training.py
+msgid "Preferred period"
+msgstr ""
+
+#: collective/conference/content/talk.py
+msgid "Your preferred period of day to your talk"
+msgstr ""
+
+#: collective/conference/content/training.py
+msgid "Your preferred period of day to your training"
+msgstr ""
+
+#: collective/conference/content/talk.py
+#: collective/conference/content/training.py
+msgid "Language"
+msgstr ""
+
+#: collective/conference/content/talk.py
+msgid "Language this talk will be given"
+msgstr ""
+
+#: collective/conference/content/training.py
+msgid "Language this training will be given"
+msgstr ""
+
+#: collective/conference/content/talk.py
+#: collective/conference/content/training.py
+msgid "Global theme"
+msgstr ""
+
+#: collective/conference/content/talk.py
+msgid "What is the subject of your talk ?"
+msgstr ""
+
+#: collective/conference/content/training.py
+msgid "What is the subject of your training ?"
+msgstr ""
+
+#: collective/conference/content/talk.py
+#: collective/conference/content/training.py
+msgid "Level"
+msgstr ""
+
+#: collective/conference/content/talk.py
+msgid "Level of this talk"
+msgstr ""
+
+#: collective/conference/content/training.py
+msgid "Level of this training"
+msgstr ""
+
+
+#: collective/conference/content/talk.py
+msgid "Observations"
+msgstr ""
+
+#: collective/conference/content/talk.py
+msgid "Do you want to give us any other information ?"
+msgstr ""
+
+#: collective/conference/content/training.py
+msgid "Infrastructure's requirements"
+msgstr ""
+
+#: collective/conference/content/training.py
+msgid "What do you need to have in the classroom ?"
+msgstr ""
+
+#: collective/conference/vocabularies.py
+msgid "Morning"
+msgstr ""
+
+#: collective/conference/vocabularies.py
+msgid "Afternon"
+msgstr ""
+
+#: collective/conference/vocabularies.py
+msgid "English"
+msgstr ""
+
+#: collective/conference/vocabularies.py
+msgid "Spanish"
+msgstr ""
+
+#: collective/conference/vocabularies.py
+msgid "Portuguese"
+msgstr ""
+
+#: collective/conference/vocabularies.py
+msgid "Web Development"
+msgstr ""
+
+#: collective/conference/vocabularies.py
+msgid "Mobility and Embedded Systems"
+msgstr ""
+
+#: collective/conference/vocabularies.py
+msgid "Enterprise and Management"
+msgstr ""
+
+#: collective/conference/vocabularies.py
+msgid "Community and Education"
+msgstr ""
+
+#: collective/conference/vocabularies.py
+msgid "Cloud, System Administration and Networks"
+msgstr ""
+
+#: collective/conference/vocabularies.py
+msgid "Media and Networks"
+msgstr ""
+
+#: collective/conference/vocabularies.py
+msgid "Basic"
+msgstr ""
+
+#: collective/conference/vocabularies.py
+msgid "Intermediate"
+msgstr ""
+
+#: collective/conference/vocabularies.py
+msgid "Advanced"
+msgstr ""

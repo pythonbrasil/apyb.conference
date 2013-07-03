@@ -1,0 +1,346 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: apyb.conference 1.0\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"PO-Revision-Date: 2013-05-27 14:01-0300\n"
+"Last-Translator: Rafahela Bazzanella <rafahela@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: pt-BR\n"
+"Language-Name: Portuguese\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: apyb.conference\n"
+
+#: collective/conference/profiles/default/types/talk.xml
+msgid "Talk"
+msgstr "Palestra"
+
+#: collective/conference/profiles/default/types/training.xml
+msgid "Training"
+msgstr "Treinamento"
+
+#: collective/conference/userdataschema.py
+msgid "Male"
+msgstr "Masculino"
+
+#: collective/conference/userdataschema.py
+msgid "Female"
+msgstr "Feminino"
+
+#: collective/conference/userdataschema.py
+msgid "label_fullname"
+msgstr "Nome completo"
+
+#: collective/conference/userdataschema.py
+msgid "help_fullname"
+msgstr "Informe seu nome completo. Ex: João da Silva."
+
+#: collective/conference/userdataschema.py
+msgid "label_identity_document"
+msgstr "Documento de identidade"
+
+#: collective/conference/userdataschema.py
+msgid "help_identity_document"
+msgstr "Informe o número do seu documento de identidade (somente para brasileiros)."
+
+#: collective/conference/userdataschema.py
+msgid "label_issuing_authority"
+msgstr "Órgão expeditor"
+
+#: collective/conference/userdataschema.py
+msgid "help_issuing_authority"
+msgstr "Informe o órgão expeditor do documento de identidade (somente para brasileiros)."
+
+#: collective/conference/userdataschema.py
+msgid "label_cpf"
+msgstr "CPF"
+
+#: collective/conference/userdataschema.py
+msgid "help_cpf"
+msgstr "Informe o número do seu CPF (somente para brasileiros)."
+
+#: collective/conference/userdataschema.py
+msgid "label_gender"
+msgstr "Sexo"
+
+#: collective/conference/userdataschema.py
+msgid "help_gender"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_passaport_number"
+msgstr "Número do passaporte"
+
+#: collective/conference/userdataschema.py
+msgid "help_passaport_number"
+msgstr "Informe o número do seu passaporte (somente para estrangeiros)."
+
+#: collective/conference/userdataschema.py
+msgid "label_passaport_name"
+msgstr "Nome no passaporte"
+
+#: collective/conference/userdataschema.py
+msgid "help_passaport_name"
+msgstr "Informe seu nome conforme consta no passaporte (somente para estrangeiros)."
+
+#: collective/conference/userdataschema.py
+msgid "label_company_name"
+msgstr "Nome da empresa"
+
+#: collective/conference/userdataschema.py
+msgid "help_company_name"
+msgstr "Onde você trabalha?"
+
+#: collective/conference/userdataschema.py
+msgid "label_company_website"
+msgstr "Site da empresa"
+
+#: collective/conference/userdataschema.py
+msgid "help_company_website"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_mini_resume"
+msgstr "Mini curriculum"
+
+#: collective/conference/userdataschema.py
+msgid "help_mini_resume"
+msgstr ""
+
+#: collective/conference/userdataschema.py
+msgid "label_need_special_care"
+msgstr "Necessidades especiais"
+
+#: collective/conference/userdataschema.py
+msgid "help_need_special_care"
+msgstr "Você possui alguma necessidade especial?"
+
+#: collective/conference/userdataschema.py
+msgid "label_social_networks"
+msgstr "Redes sociais"
+
+#: collective/conference/userdataschema.py
+msgid "help_social_networks"
+msgstr "Informe seus id's do Twitter, Facebook, G+, etc..."
+
+#: collective/conference/userdataschema.py
+msgid "label_student_or_APyB_affiliated"
+msgstr "Estudante ou associado da APyB"
+
+#: collective/conference/userdataschema.py
+msgid "help_student_or_APyB_affiliated"
+msgstr "Selecione, se você é estudante ou associado da APyB (para obter descontos na inscrição)."
+
+#: collective/conference/userdataschema.py
+msgid "label_address"
+msgstr "Endereço"
+
+#: collective/conference/userdataschema.py
+msgid "help_address"
+msgstr "Informe seu endereço."
+
+#: collective/conference/userdataschema.py
+msgid "label_city"
+msgstr "Cidade"
+
+#: collective/conference/userdataschema.py
+msgid "help_city"
+msgstr "Informe a cidade onde mora."
+
+#: collective/conference/userdataschema.py
+msgid "label_state"
+msgstr "Estado"
+
+#: collective/conference/userdataschema.py
+msgid "help_state"
+msgstr "Informe a Unidade Federativa da sua cidade."
+
+#: collective/conference/userdataschema.py
+msgid "label_country"
+msgstr "País"
+
+#: collective/conference/userdataschema.py
+msgid "help_country"
+msgstr "Informe o país onde vive."
+
+#: collective/conference/userdataschema.py
+msgid "label_zip_code"
+msgstr "CEP"
+
+#: collective/conference/userdataschema.py
+msgid "help_zip_code"
+msgstr "Informe o CEP do seu endereço."
+
+#: collective/conference/userdataschema.py
+msgid "label_citizenship"
+msgstr "Nacionalidade"
+
+#: collective/conference/userdataschema.py
+msgid "help_citizenship"
+msgstr "Informe sua nacionalidade."
+
+#: collective/conference/userdataschema.py
+msgid "label_phone"
+msgstr "Número de telefone"
+
+#: collective/conference/userdataschema.py
+msgid "help_phone"
+msgstr "Informe o número de telefone no formato +xx-xxx-xxxx-xxxx."
+
+#: collective/conference/userdataschema.py
+msgid "label_mobile_phone"
+msgstr "Celular"
+
+#: collective/conference/userdataschema.py
+msgid "help_mobile_phone"
+msgstr "Informe um número de celular que possamos contatá-lo, no formato +xx-xxx-xxxx-xxxx."
+
+#: collective/conference/userdataschema.py
+msgid "label_accept"
+msgstr "Aceito os termos do código de conduta do evento."
+
+#: collective/conference/userdataschema.py
+msgid "help_accept"
+msgstr 'Marque esta caixa para indicar que você encontrou, leu e aceitou os termos do Código de Coduta do evento. <a href="http://2013.ploneconf.org/the-event/code-of-conduct">http://2013.ploneconf.org/the-event/code-of-conduct</a>'
+
+#: collective/conference/content/training.py
+msgid "Duration"
+msgstr "Duração"
+
+#: collective/conference/content/talk.py
+#: collective/conference/content/training.py
+msgid "Language"
+msgstr "Língua"
+
+#: collective/conference/content/talk.py
+msgid "Language of your talk."
+msgstr "Em que língua sua palestra será dada."
+
+#: collective/conference/content/training.py
+msgid "Language of your training."
+msgstr "Em que língua seu treinamento será dado."
+
+#: collective/conference/content/talk.py
+#: collective/conference/content/training.py
+msgid "Global theme"
+msgstr "Tema"
+
+#: collective/conference/content/talk.py
+msgid "What is the subject of your talk?"
+msgstr "Qual é o macro tema da sua palestra?"
+
+#: collective/conference/content/training.py
+msgid "What is the subject of your training?"
+msgstr "Qual é o macro tema do seu treinamento?"
+
+#: collective/conference/content/talk.py
+#: collective/conference/content/training.py
+msgid "Level"
+msgstr "Nível"
+
+#: collective/conference/content/talk.py
+msgid "Level of your talk."
+msgstr "Nível da sua palestra."
+
+#: collective/conference/content/training.py
+msgid "Level of your training."
+msgstr "Nível do seu treinamento."
+
+#: collective/conference/content/talk.py
+msgid "Observations"
+msgstr "Observações"
+
+#: collective/conference/content/talk.py
+#: collective/conference/content/training.py
+msgid "Do you want to give us another information?"
+msgstr "Você quer nos dar mais alguma informação?"
+
+#: collective/conference/content/training.py
+msgid "Training requirements"
+msgstr "Pré requisitos do treinamento"
+
+#: collective/conference/content/training.py
+msgid "Which software do the student must have installed on her/his own computer?"
+msgstr "O que você precisa que o aluno tenha instalado em sua máquina?"
+
+#: collective/conference/vocabularies.py
+msgid "Half day"
+msgstr "Meio dia"
+
+#: collective/conference/vocabularies.py
+msgid "1 day"
+msgstr "1 dia"
+
+#: collective/conference/vocabularies.py
+msgid "2 days"
+msgstr "2 dias"
+
+#: collective/conference/vocabularies.py
+msgid "Morning"
+msgstr "Manhã"
+
+#: collective/conference/vocabularies.py
+msgid "Afternon"
+msgstr "Tarde"
+
+#: collective/conference/vocabularies.py
+msgid "English"
+msgstr "Inglês"
+
+#: collective/conference/vocabularies.py
+msgid "Spanish"
+msgstr "Espanhol"
+
+#: collective/conference/vocabularies.py
+msgid "Portuguese"
+msgstr "Português"
+
+#: collective/conference/vocabularies.py
+msgid "Web Development"
+msgstr "Desenvolvimento para Web"
+
+#: collective/conference/vocabularies.py
+msgid "Mobility and Embedded Systems"
+msgstr "Mobilidade e Sistemas Embarcados"
+
+#: collective/conference/vocabularies.py
+msgid "Enterprise and Management"
+msgstr "Enterprise e Gestão"
+
+#: collective/conference/vocabularies.py
+msgid "Community and Education"
+msgstr "Comunidade e Educação"
+
+#: collective/conference/vocabularies.py
+msgid "Cloud, System Administration and Networks"
+msgstr "Nuvem, Administração de Sistemas e Redes"
+
+#: collective/conference/vocabularies.py
+msgid "Media and Networks"
+msgstr "Multimídia e Redes"
+
+#: collective/conference/vocabularies.py
+msgid "Basic"
+msgstr "Básico"
+
+#: collective/conference/vocabularies.py
+msgid "Advanced"
+msgstr "Avançado"
+
+msgid "Submit your Talk/Training"
+msgstr "Envie sua Palestra/Treinamento"
+
+msgid "Submit your talk"
+msgstr "Envie sua palestra"
+
+msgid "Submit your training"
+msgstr "Envie seu treinamento"
+
+msgid "Change your informations"
+msgstr "Altere seu cadastro"
+
+msgid "My talks and trainings"
+msgstr "Minhas palestras e treinamentos"

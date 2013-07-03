@@ -1,0 +1,87 @@
+/*Registration*/
+
+.talk_schedule {
+    color:#444;
+    font-family:"Helvetica Neue", Arial, FreeSans, sans-serif;
+    float:right;
+    background: none repeat scroll 0 0 #F1F1F1;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 140px;
+    text-align:center;
+    padding:10px;
+}
+.talk_room {
+    font-size: 1.0em;
+    font-weight: normal;
+    padding-bottom:15px;
+}
+.talk_date {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding-bottom:15px;
+}
+
+.talk_hour {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding-bottom:10px;
+}
+
+.talk_listing_item {
+    font-family:"Helvetica Neue", Arial, FreeSans, sans-serif;
+    margin-top:15px;
+    height: 95px;
+}
+
+.talk_listing_item h2 {
+    margin: 0 0 4px;
+}
+.talk_listing_item_detail {
+    padding: 0px 0px 0px 15px;
+}
+
+span.talk_track {
+    font-size: 0.5em;
+    color:#444;
+    font-weight: bold;
+}
+
+.talk_listing_schedule {
+    color:#444;
+    font-family:"Helvetica Neue", Arial, FreeSans, sans-serif;
+    float:right;
+    background: none repeat scroll 0 0 #F1F1F1;
+    font-weight: bold;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    width: 95px;
+    height: 95px;
+    text-align:center;
+    padding:2px 0 0 0;
+    vertical-align: middle;
+}
+
+a.talk_details_link {
+    background: url("lupa-detalhes.png") no-repeat right center !important;
+    padding-right: 20px !important;
+}
+
+.talk_listing_schedule .talk_room {
+    font-size: 0.5em;
+    font-weight: normal;
+    padding-bottom:4px;
+}
+.talk_listing_schedule .talk_date {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding:8px 0 12px 0;
+}
+
+.talk_listing_schedule .talk_hour {
+    font-size: 2.0em;
+    font-weight: bold;
+    padding-bottom:2px;
+}

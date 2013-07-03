@@ -1,0 +1,51 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="apyb.conference">
+
+  <permission
+      id="apyb.conference.AddRegistration"
+      title="apyb.conference: Add Registration"
+      />
+
+  <permission
+      id="apyb.conference.AddRegistrations"
+      title="apyb.conference: Add Registrations"
+      />
+
+  <permission
+      id="apyb.conference.AddAttendee"
+      title="apyb.conference: Add Attendee"
+      />
+
+  <permission
+      id="apyb.conference.AddSponsor"
+      title="apyb.conference: Add Sponsor"
+      />
+
+  <permission
+      id="apyb.conference.AddSpeaker"
+      title="apyb.conference: Add Speaker"
+      />
+
+  <permission
+      id="apyb.conference.AddProgram"
+      title="apyb.conference: Add Program"
+      />
+
+  <permission
+      id="apyb.conference.AddTrack"
+      title="apyb.conference: Add Track"
+      />
+
+  <permission
+      id="apyb.conference.AddTalk"
+      title="apyb.conference: Add Talk"
+      />
+
+  <permission
+      id="apyb.conference.AllocateTalk"
+      title="apyb.conference: Allocate Talk"
+      />
+
+
+</configure>

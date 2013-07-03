@@ -1,0 +1,297 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="track_workflow"
+             xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+             i18n:domain="apyb.conference"
+             title="Track workflow"
+             description="A simple workflow to manage tracks submission"
+             state_variable="review_state"
+             initial_state="closed"
+             i18n:attributes="title; description">
+ <permission>apyb.conference: Add Talk</permission>
+ <permission>apyb.conference: Allocate Talk</permission>
+ <permission>Add portal content</permission>
+ <permission>Access contents information</permission>
+ <permission>List folder contents</permission>
+ <permission>Modify portal content</permission>
+ <permission>View</permission>
+ <state state_id="closed" title="Closed" i18n:attributes="title">
+  <description i18n:translate="">Talk submission is closed.</description>
+  <exit-transition transition_id="open"/>
+  <permission-map name="apyb.conference: Add Talk"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="apyb.conference: Allocate Talk"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="apyb.conference: Organize Talk"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="Add portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+  <permission-map name="List folder contents"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="open" title="Open" i18n:attributes="title">
+  <description i18n:translate="">Talk submission is open.</description>
+  <exit-transition transition_id="close"/>
+  <exit-transition transition_id="vote"/>
+  <exit-transition transition_id="finish"/>
+  <permission-map name="apyb.conference: Add Talk"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Member</permission-role>
+  </permission-map>
+  <permission-map name="apyb.conference: Allocate Talk"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="apyb.conference: Organize Talk"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="Add portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Member</permission-role>
+  </permission-map>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+  <permission-map name="List folder contents"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="voting" title="Voting" i18n:attributes="title">
+  <description i18n:translate="">Talk voting is allowed.</description>
+  <exit-transition transition_id="open"/>
+  <exit-transition transition_id="close"/>
+  <exit-transition transition_id="finish"/>
+  <permission-map name="apyb.conference: Add Talk"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="apyb.conference: Allocate Talk"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="apyb.conference: Organize Talk"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Reader</permission-role>
+  </permission-map>
+  <permission-map name="Add portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+  <permission-map name="List folder contents"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="finished" title="Finished" i18n:attributes="title">
+  <description i18n:translate="">Talk submission and voting is complete.</description>
+  <exit-transition transition_id="open"/>
+  <exit-transition transition_id="close"/>
+  <permission-map name="apyb.conference: Add Talk"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="apyb.conference: Allocate Talk"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="apyb.conference: Organize Talk"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="Add portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+  <permission-map name="List folder contents"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Editor</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+ </state>
+ <transition transition_id="open"
+             title="Open call for papers"
+             new_state="open" trigger="USER"
+             i18n:attributes="title"
+             before_script="" after_script="">
+  <description i18n:translate="">Open call for papers</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=open"
+          i18n:translate=""
+          category="workflow">Open</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="close"
+             title="Close call for papers"
+             new_state="closed" trigger="USER"
+             i18n:attributes="title"
+             before_script="" after_script="">
+  <description i18n:translate="">Close call for papers -- Initial state</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=close"
+          i18n:translate=""
+          category="workflow">Close</action>
+  <guard>
+   <guard-permission>Manage portal</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="vote"
+             title="Initiate voting"
+             new_state="voting" trigger="USER"
+             i18n:attributes="title"
+             before_script="" after_script="">
+  <description i18n:translate="">Open voting stage</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=vote"
+          i18n:translate=""
+          category="workflow">Allow Voting</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="finish"
+             title="Complete call for papers"
+             new_state="finished" trigger="USER"
+             i18n:attributes="title"
+             before_script="" after_script="">
+  <description i18n:translate="">Finish call for papers</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=finish"
+          i18n:translate=""
+          category="workflow">Finish</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <variable variable_id="action" for_catalog="False"
+           for_status="True" update_always="True">
+  <description i18n:translate="">Previous transition</description>
+  <default>
+   
+   <expression>transition/getId|nothing</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="actor" for_catalog="False"
+           for_status="True" update_always="True">
+  <description i18n:translate="">The ID of the user who performed the previous transition</description>
+  <default>
+   
+   <expression>user/getUserName</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="comments" for_catalog="False"
+           for_status="True" update_always="True">
+  <description i18n:translate="">Comment about the last transition</description>
+  <default>
+   
+   <expression>python:state_change.kwargs.get('comment', '')</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="review_history" for_catalog="False"
+           for_status="False" update_always="False">
+  <description i18n:translate="">Provides access to workflow history</description>
+  <default>
+   
+   <expression>state_change/getHistory</expression>
+  </default>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </variable>
+ <variable variable_id="time" for_catalog="False"
+           for_status="True" update_always="True">
+  <description i18n:translate="">When the previous transition was performed</description>
+  <default>
+   
+   <expression>state_change/getDateTime</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+</dc-workflow>
