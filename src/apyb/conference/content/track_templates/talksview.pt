@@ -11,7 +11,6 @@
   <metal:content-core define-macro="content-core"
          tal:define="cfp view/can_submit;
                      cot view/can_organize;
-                     voters view/voters;
                      scale context/@@images;
                      img python:scale.scale('image', width=80, height=80, direction='keep');">
    <img tal:condition="img"
@@ -24,7 +23,6 @@
                 <tr>
                     <th i18n:translate="">Order</th>
                     <th i18n:translate="">Talk</th>
-                    <th i18n:translate="">Points</th>
                 </tr>
             </thead>
             <tbody  class="listing_body">
@@ -41,9 +39,6 @@
                            tal:attributes="href talk/getURL" 
                            tal:content="talk/Title">Title</a><br/>
                         <span class="talk_details_speaker" tal:content="python:view.speaker_name(talk.speakers)">Speakers</span><br/>
-                    </td>
-                    <td class="talk_ordering">
-                        <span class="talk_ordering" tal:condition='talk/points' tal:content="python:'%.2f' % talk.points">0.2</span> 
                     </td>
                 </tr>
             </tal:talks>
