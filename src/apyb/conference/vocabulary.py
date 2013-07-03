@@ -3,6 +3,7 @@ from apyb.conference import MessageFactory as _
 from apyb.conference.config import SPONSOR_LEVELS
 from five import grok
 from plone.i18n.locales.countries import _countrylist
+from Products.CMFCore.utils import getToolByName
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
@@ -288,3 +289,117 @@ class CountriesVocabulary(object):
         return SimpleVocabulary(items)
 
 grok.global_utility(CountriesVocabulary, name=u"contact.countries")
+
+
+class TalksReferenceTypeVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        ''' Talk Reference Types Options '''
+        terms = []
+        types = [('article', _(u'Article / Post')),
+                 ('presentation', _(u'Presentation')),
+                 ('video', _(u'Video'))]
+        for key, value in types:
+            term = (key, key, value)
+            terms.append(SimpleVocabulary.createTerm(*term))
+
+        return SimpleVocabulary(terms)
+
+
+grok.global_utility(TalksReferenceTypeVocabulary,
+                    name=u"apyb.conference.talk.referencetype")
+
+
+class TalksTypeVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        ''' Talk Types Options '''
+        terms = []
+        types = [('talk', _(u'Talk')),
+                 ('panel', _(u'Panel'))]
+        for key, value in types:
+            term = (key, key, value)
+            terms.append(SimpleVocabulary.createTerm(*term))
+
+        return SimpleVocabulary(terms)
+
+
+grok.global_utility(TalksTypeVocabulary,
+                    name=u"apyb.conference.talk.type")
+
+
+class TracksVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        ''' Tracks Vocabulary '''
+        ct = getToolByName(context, 'portal_catalog')
+        tracks = ct.searchResults(portal_type='track',
+                                  sort_on='getObjPositionInParent')
+        items = [SimpleTerm(b.UID, b.UID, b.Title) for b in tracks]
+        return SimpleVocabulary(items)
+
+
+grok.global_utility(TracksVocabulary,
+                    name=u"apyb.conference.talk.tracks")
+
+
+class TalksLevelVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        ''' Talk Types Options '''
+        terms = []
+        types = [('basic', _(u'Basic')),
+                 ('intermediate', _(u'Intermediate')),
+                 ('advanced', _(u'Advanced'))]
+        for key, value in types:
+            term = (key, key, value)
+            terms.append(SimpleVocabulary.createTerm(*term))
+
+        return SimpleVocabulary(terms)
+
+
+grok.global_utility(TalksTypeVocabulary,
+                    name=u"apyb.conference.talk.level")
+
+
+class RoomsVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        ''' Conference rooms Options '''
+        terms = []
+        rooms = [
+            ('dorneles-tremea', _(u'Auditório Dorneles Treméa')),
+            ('cleese', _(u'Sala John Cleese')),
+            ('idle', _(u'Sala Eric Idle')),
+            ('gillian', _(u'Sala Terry Gilliam')),
+        ]
+        for key, value in rooms:
+            term = (key, key, value)
+            terms.append(SimpleVocabulary.createTerm(*term))
+
+        return SimpleVocabulary(terms)
+
+
+grok.global_utility(TalksTypeVocabulary,
+                    name=u"apyb.conference.talk.rooms")
+
+
+class SpeakersVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        ''' Speakers Vocabulary '''
+        ct = getToolByName(context, 'portal_catalog')
+        speakers = ct.searchResults(portal_type='speaker',
+                                    sort_on='getObjPositionInParent')
+        items = [SimpleTerm(b.UID, b.UID, b.Title) for b in speakers]
+        return SimpleVocabulary(items)
+
+
+grok.global_utility(TracksVocabulary,
+                    name=u"apyb.conference.speakers")
