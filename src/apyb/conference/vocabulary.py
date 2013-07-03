@@ -362,7 +362,7 @@ class TalksLevelVocabulary(object):
         return SimpleVocabulary(terms)
 
 
-grok.global_utility(TalksTypeVocabulary,
+grok.global_utility(TalksLevelVocabulary,
                     name=u"apyb.conference.talk.level")
 
 
