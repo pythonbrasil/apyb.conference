@@ -14,8 +14,10 @@
   <property name="allowed_content_types">
      <element value="Folder"/>
      <element value="activity"/>
+     <element value="speaker"/>
      <element value="talk"/>
      <element value="track"/>
+     <element value="training"/>
   </property>
   <property name="allow_discussion">False</property>
 

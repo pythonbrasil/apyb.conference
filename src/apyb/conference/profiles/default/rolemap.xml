@@ -24,6 +24,6 @@
     <permission name="apyb.conference: Add Speaker" acquire="False">
       <role name="Manager"/>
       <role name="Editor"/>
-    </permission>    
+    </permission>
   </permissions>
 </rolemap>
