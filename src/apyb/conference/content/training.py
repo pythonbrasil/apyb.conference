@@ -1,8 +1,8 @@
 # -*- coding:utf-8 -*
 from Acquisition import aq_inner
 from apyb.conference import MessageFactory as _
-from apyb.conference.talk import SpeakerFieldWidget
-from apyb.conference.talk import SpeakerSourceBinder
+from apyb.conference.content.talk import SpeakerFieldWidget
+from apyb.conference.content.talk import SpeakerSourceBinder
 from DateTime import DateTime
 from five import grok
 from plone.directives import dexterity, form
