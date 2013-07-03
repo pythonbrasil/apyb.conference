@@ -52,5 +52,10 @@
       title="apyb.conference: Allocate Talk"
       />
 
+  <permission
+      id="apyb.conference.AddTraining"
+      title="apyb.conference: Add Training"
+      />
+
 
 </configure>
