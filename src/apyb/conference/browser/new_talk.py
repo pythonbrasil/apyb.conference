@@ -7,6 +7,7 @@ from five import grok
 from plone.dexterity.utils import addContentToContainer
 from plone.dexterity.utils import createContent
 from plone.directives import form
+from plone.uuid.interfaces import IUUID
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.component import getMultiAdapter
@@ -94,7 +95,7 @@ class TalkForm(form.SchemaAddForm):
                       'language', 'level', 'references', 'iul', ]
         talkinfo = dict([(k, data.get(k, '')) for k in talkfields])
         if self.inside_track:
-            talkinfo['track'] = self.context.UID()
+            talkinfo['track'] = IUUID(self.context)
         talk = createContent('talk', checkConstraints=True, **talkinfo)
         return talk
 

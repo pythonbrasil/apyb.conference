@@ -7,6 +7,7 @@ from five import grok
 from plone.dexterity.utils import addContentToContainer
 from plone.dexterity.utils import createContent
 from plone.directives import form
+from plone.uuid.interfaces import IUUID
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.component import getMultiAdapter
@@ -87,7 +88,7 @@ class TrainingForm(form.SchemaAddForm):
                           'level', 'iul']
         traininginfo = dict([(k, data.get(k, '')) for k in trainingfields])
         if self.inside_track:
-            traininginfo['track'] = self.context.UID()
+            traininginfo['track'] = IUUID(self.context)
         training = createContent('training',
                                  checkConstraints=True, **traininginfo)
         return training

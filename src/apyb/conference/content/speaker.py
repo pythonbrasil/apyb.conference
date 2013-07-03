@@ -7,11 +7,10 @@ from five import grok
 from plone.directives import dexterity, form
 from plone.formwidget.contenttree import ObjPathSourceBinder
 from plone.namedfile.field import NamedBlobImage
+from plone.uuid.interfaces import IUUID
 from z3c.relationfield.schema import RelationChoice
 from zope import schema
-from zope.app.intid.interfaces import IIntIds
 from zope.component import getMultiAdapter, queryUtility
-from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
 
 import json
@@ -21,12 +20,6 @@ class ISpeaker(form.Schema):
     """
     A Speaker profile
     """
-
-    form.omitted('uid')
-    uid = schema.Int(
-        title=_(u"uid"),
-        required=False,
-    )
 
     fullname = schema.TextLine(
         title=_(u'Fullname'),
@@ -103,14 +96,6 @@ class Speaker(dexterity.Item):
     def Description(self):
         return self.description
 
-    def UID(self):
-        return self.uid
-
-    @property
-    def uid(self):
-        intids = getUtility(IIntIds)
-        return intids.getId(self)
-
 
 class View(grok.View):
     grok.context(ISpeaker)
@@ -126,11 +111,11 @@ class View(grok.View):
         program = aq_parent(context)
         self.helper = self._multi_adapter(u'helper', program)
         voc_factory = queryUtility(IVocabularyFactory,
-                                   'apyb.conference.talk.rooms')
+                                   'apyb.conference.rooms')
         self.rooms = voc_factory(self.context)
         self._ct = self.tools.catalog()
         self._mt = self.tools.membership()
-        self.speaker_uid = self.context.UID()
+        self.speaker_uid = IUUID(self.context)
         self.member = self.portal.member()
         self.roles_context = self.member.getRolesInContext(context)
         if not self.show_border:

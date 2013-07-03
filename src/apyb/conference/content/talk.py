@@ -13,9 +13,7 @@ from Products.CMFPlone.utils import normalizeString
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from z3c.formwidget.query.interfaces import IQuerySource
 from zope import schema
-from zope.app.intid.interfaces import IIntIds
 from zope.component import getMultiAdapter
-from zope.component import getUtility
 from zope.component import queryUtility
 from zope.interface import implements
 from zope.interface import implementer
@@ -301,14 +299,6 @@ class Talk(dexterity.Item):
 
     def Title(self):
         return self.title
-
-    def UID(self):
-        return self.uid
-
-    @property
-    def uid(self):
-        intids = getUtility(IIntIds)
-        return intids.getId(self)
 
 
 @indexer(ITalk)

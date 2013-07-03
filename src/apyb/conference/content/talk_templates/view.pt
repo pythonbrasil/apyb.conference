@@ -15,8 +15,9 @@
 <body>
 <metal:main fill-slot="content-title">
   <metal:title define-macro="content-title">
-      <div class="talk-track" tal:define="widget view/widgets/track;
-                         token context/track" 
+      <div class="talk-track"
+            tal:define="widget view/widgets/track;
+                        token context/track" 
              tal:content="python:widget.terms.getTermByToken(str(token)).title" />
       <h1 metal:use-macro="context/kss_generic_macros/macros/generic_title_view">
           Generic KSS Title. Is rendered with class="documentFirstHeading".

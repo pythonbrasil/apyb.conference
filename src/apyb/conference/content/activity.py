@@ -6,9 +6,7 @@ from five import grok
 from plone.directives import dexterity, form
 from plone.indexer import indexer
 from zope import schema
-from zope.app.intid.interfaces import IIntIds
 from zope.component import getMultiAdapter
-from zope.component import getUtility
 from zope.component import queryUtility
 from zope.schema.interfaces import IVocabularyFactory
 
@@ -17,12 +15,6 @@ class IActivity(form.Schema):
     """
     An activity in a conference
     """
-    form.omitted('uid')
-    uid = schema.Int(
-        title=_(u"uid"),
-        required=False,
-    )
-
     title = schema.TextLine(
         title=_(u'Activity Title'),
         description=_(u'Inform a title for this activity'),
@@ -72,14 +64,6 @@ class Activity(dexterity.Item):
 
     def Title(self):
         return self.title
-
-    def UID(self):
-        return self.uid
-
-    @property
-    def uid(self):
-        intids = getUtility(IIntIds)
-        return intids.getId(self)
 
 
 @indexer(IActivity)

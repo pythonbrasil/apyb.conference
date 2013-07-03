@@ -6,10 +6,8 @@ from five import grok
 from plone.directives import dexterity, form
 from plone.namedfile.field import NamedBlobImage
 from zope import schema
-from zope.app.intid.interfaces import IIntIds
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
-from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
 
 import json
@@ -19,12 +17,6 @@ class ITrack(form.Schema):
     """
     A track within a conference
     """
-
-    form.omitted('uid')
-    uid = schema.Int(
-        title=_(u"uid"),
-        required=False,
-    )
 
     title = schema.TextLine(
         title=_(u'Title'),
@@ -53,14 +45,6 @@ class Track(dexterity.Container):
 
     def Description(self):
         return self.description
-
-    def UID(self):
-        return self.uid
-
-    @property
-    def uid(self):
-        intids = getUtility(IIntIds)
-        return intids.getId(self)
 
 
 class View(grok.View):

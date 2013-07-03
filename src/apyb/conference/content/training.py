@@ -8,20 +8,13 @@ from five import grok
 from plone.directives import dexterity, form
 from plone.indexer import indexer
 from zope import schema
-from zope.app.intid.interfaces import IIntIds
 from zope.component import getMultiAdapter
-from zope.component import getUtility
 
 
 class ITraining(form.Schema):
     """
     A training session
     """
-    form.omitted('uid')
-    uid = schema.Int(
-        title=_(u"uid"),
-        required=False,
-    )
 
     form.widget(speakers=SpeakerFieldWidget)
     speakers = schema.List(
@@ -152,14 +145,6 @@ class Training(dexterity.Container):
 
     def Title(self):
         return self.title
-
-    def UID(self):
-        return self.uid
-
-    @property
-    def uid(self):
-        intids = getUtility(IIntIds)
-        return intids.getId(self)
 
 
 @indexer(ITraining)
