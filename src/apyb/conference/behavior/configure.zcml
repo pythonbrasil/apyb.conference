@@ -42,5 +42,13 @@
         for="plone.dexterity.interfaces.IDexterityContent"
         />
 
+    <plone:behavior
+        title="Talk allocation"
+        description="Allocation behavihor"
+        provides=".allocation.IAllocation"
+        factory=".allocation.Allocation"
+        for="plone.dexterity.interfaces.IDexterityContent"
+        />
+
 </configure>
 
