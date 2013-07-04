@@ -1343,7 +1343,7 @@ msgstr "Início"
 #: ../behavior/address.py:26
 #: ../content/registrations_templates/registrationsview.pt:69
 msgid "State"
-msgstr "Situação"
+msgstr "Estado"
 
 #: ../browser/register.py:59
 msgid "State /Province"

@@ -385,7 +385,7 @@ class RoomsVocabulary(object):
         return SimpleVocabulary(terms)
 
 
-grok.global_utility(TalksTypeVocabulary,
+grok.global_utility(RoomsVocabulary,
                     name=u"apyb.conference.rooms")
 
 

@@ -134,7 +134,6 @@
                         <th i18n:translate="">Cancel</th>
                         <th i18n:translate="">Track</th>
                         <th i18n:translate="">Information</th>
-                        <th i18n:translate="">Points</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -146,7 +145,6 @@
                             <span class="talk_title"><a href="" tal:attributes="href talk/getURL" tal:content="talk/Title">Plone is cool</a></span><br />
                             <span class="discreet" tal:content="python:view.speaker_name(talk.speakers)">Joe Doe</span>
                         </td>
-                        <td><span tal:condition='talk/points' tal:content="python:'%.2f' % talk.points">0.32</span></td>
                     </tr>
                 </tbody>
                 </table>

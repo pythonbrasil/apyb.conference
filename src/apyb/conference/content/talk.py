@@ -299,6 +299,8 @@ class View(dexterity.DisplayForm):
         if parent.portal_type == 'track':
             track = parent
             program = aq_parent(track)
+            while program.portal_type not in ('program', 'Plone Site'):
+                program = aq_parent(program)
         else:
             program = parent
         self.context = context
