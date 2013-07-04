@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*
 from Acquisition import aq_inner
 from apyb.conference import MessageFactory as _
+from apyb.conference.behavior.allocation import IAllocation
 from DateTime import DateTime
 from five import grok
 from plone.directives import dexterity, form
@@ -83,9 +84,10 @@ class View(dexterity.DisplayForm):
     @property
     def show_calendar(self):
         review_state = self._wt.getInfoFor(self.context, 'review_state')
-        location = self.context.location
-        start = self.context.startDate
-        end = self.context.endDate
+        behavior = IAllocation(self.context)
+        location = behavior.location
+        start = behavior.startDate
+        end = behavior.endDate
         return (review_state == 'confirmed') and location and start and end
 
     @property

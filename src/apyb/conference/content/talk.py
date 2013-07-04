@@ -2,6 +2,7 @@
 from Acquisition import aq_inner
 from Acquisition import aq_parent
 from apyb.conference import MessageFactory as _
+from apyb.conference.behavior.allocation import IAllocation
 from collective.z3cform.datagridfield import DictRow
 from DateTime import DateTime
 from five import grok
@@ -324,9 +325,10 @@ class View(dexterity.DisplayForm):
     @property
     def show_calendar(self):
         review_state = self._wt.getInfoFor(self.context, 'review_state')
-        location = self.context.location
-        start = self.context.startDate
-        end = self.context.endDate
+        behavior = IAllocation(self.context)
+        location = behavior.location
+        start = behavior.startDate
+        end = behavior.endDate
         return (review_state == 'confirmed') and location and start and end
 
     @property
