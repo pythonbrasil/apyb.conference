@@ -55,6 +55,8 @@ class View(grok.View):
         super(View, self).update()
         context = aq_inner(self.context)
         program = aq_parent(context)
+        while program.portal_type not in ('program', 'Plone Site'):
+            program = aq_parent(program)
         self._path = '/'.join(context.getPhysicalPath())
         self.state = getMultiAdapter((context, self.request),
                                      name=u'plone_context_state')
@@ -131,6 +133,14 @@ class View(grok.View):
             return memberdata.getProperty('fullname', userid) or userid
         else:
             return userid
+
+    def pending_talks(self, **kw):
+        ''' Return a list of pending in here '''
+        kw['sort_on'] = 'sortable_title'
+        kw['sort_order'] = 'reverse'
+        kw['review_state'] = 'created'
+        results = self.talks(**kw)
+        return results
 
     def confirmed_talks(self, **kw):
         ''' Return a list of talks in here '''

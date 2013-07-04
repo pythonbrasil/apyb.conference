@@ -4,7 +4,7 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
       metal:use-macro="context/main_template/macros/master"
-      i18n:domain="apyb.papers">
+      i18n:domain="apyb.conference">
 <body>
 
 <metal:main fill-slot="content-core">
@@ -97,9 +97,13 @@
                      tal:replace="structure python:img.tag()"/></a>
                 <a href="" tal:attributes="href string:${track/getURL}"><span class="track_title" tal:content="track/Title">Plone</span></a><br />
                 <span class="discreet" tal:content="track/Description">Plone is a CMS written in Python</span><br />
-                <a href="" tal:condition="python:('keynote' not in track.getId) and cfp" 
+                <a href="" tal:condition="python:(track.getId not in ('keynotes', 'training')) and cfp" 
                    tal:attributes="href string:${track/getURL}/@@new-talk"
                    i18n:translate="">Submit talk proposal here</a>
+                <a href="" tal:condition="python:(track.getId in ('training')) and cfp" 
+                   tal:attributes="href string:${track/getURL}/@@new-training"
+                   i18n:translate="">Submit training proposal here</a>
+
             </div>
             </tal:tracks>
         </div>

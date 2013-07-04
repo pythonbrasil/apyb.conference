@@ -244,7 +244,7 @@
  </transition>
  <variable variable_id="action" for_catalog="False"
            for_status="True" update_always="True">
-  <description i18n:translate="">Previous transition</description>
+  <description>Previous transition</description>
   <default>
    
    <expression>transition/getId|nothing</expression>
@@ -254,7 +254,7 @@
  </variable>
  <variable variable_id="actor" for_catalog="False"
            for_status="True" update_always="True">
-  <description i18n:translate="">The ID of the user who performed the previous transition</description>
+  <description>The ID of the user who performed the previous transition</description>
   <default>
    
    <expression>user/getUserName</expression>
@@ -264,7 +264,7 @@
  </variable>
  <variable variable_id="comments" for_catalog="False"
            for_status="True" update_always="True">
-  <description i18n:translate="">Comment about the last transition</description>
+  <description>Comment about the last transition</description>
   <default>
    
    <expression>python:state_change.kwargs.get('comment', '')</expression>
@@ -274,7 +274,7 @@
  </variable>
  <variable variable_id="review_history" for_catalog="False"
            for_status="False" update_always="False">
-  <description i18n:translate="">Provides access to workflow history</description>
+  <description>Provides access to workflow history</description>
   <default>
    
    <expression>state_change/getHistory</expression>
@@ -286,7 +286,7 @@
  </variable>
  <variable variable_id="time" for_catalog="False"
            for_status="True" update_always="True">
-  <description i18n:translate="">When the previous transition was performed</description>
+  <description>When the previous transition was performed</description>
   <default>
    
    <expression>state_change/getDateTime</expression>

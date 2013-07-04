@@ -205,7 +205,7 @@ class PaymentMethodsVocabulary(object):
         terms = []
         types = [('cash', _(u'Cash / At the conference')),
                  ('paypal', _(u'PayPal')),
-                 ('pagseguro', _(u'Pagseguro'))]
+                 ('pagseguro', _(u'PagSeguro'))]
         for key, value in types:
             term = (key, key, value)
             terms.append(SimpleVocabulary.createTerm(*term))
@@ -223,10 +223,10 @@ class CaipirinhaSprintVocabulary(object):
     def __call__(self, context):
         ''' Caipirinha Sprint Options'''
         terms = []
-        types = [('no', _(u'No, I will not attend')),
-                 ('yes_1', _(u'Yes, I will')),
-                 ('yes_2', _(u'Yes and I will bring my SO')),
-                 ('yes_3', _(u'Yes, plus 2 other people'))]
+        types = [('no', _(u'No! I will not attend.')),
+                 ('yes_1', _(u'Yes! Book me a place (R$350,00)')),
+                 ('yes_2', _(u'Yes! Book me 2 places (R$700,00)')),
+                 ('yes_3', _(u'Yes! Book me 3 places (R$800,00)'))]
         for key, value in types:
             term = (key, key, value)
             terms.append(SimpleVocabulary.createTerm(*term))
@@ -373,10 +373,10 @@ class RoomsVocabulary(object):
         ''' Conference rooms Options '''
         terms = []
         rooms = [
-            ('dorneles-tremea', _(u'Auditório Dorneles Treméa')),
-            ('cleese', _(u'Sala John Cleese')),
-            ('idle', _(u'Sala Eric Idle')),
-            ('gillian', _(u'Sala Terry Gilliam')),
+            ('dorneles-tremea', _(u'Dorneles Treméa Auditorium')),
+            ('cleese', _(u'John Cleese Room')),
+            ('idle', _(u'Eric Idle Room')),
+            ('gillian', _(u'Terry Gilliam Room')),
         ]
         for key, value in rooms:
             term = (key, key, value)

@@ -1,11 +1,13 @@
 <script type="text/javascript" tal:content="structure view/js"></script>
-<div tal:attributes="id string:${view/id}-autocomplete">
+<div tal:attributes="id string:${view/id}-autocomplete"
+     i18n:domain="apyb.conference">
     <div tal:attributes="id string:${view/id}-input-fields" class="autocompleteInputWidget"
          tal:content="structure view/renderQueryWidget" />
     <tal:block replace="structure view/subform/render" />
     
     <a href="" tal:condition="view/new_speaker_url" tal:attributes='href view/new_speaker_url'
-         id="new_speaker">New Speaker</a><br/>
+         id="new_speaker"
+         i18n:translate="">New Speaker</a><br/>
 
       <script type="text/javascript">
       jQuery(function(){

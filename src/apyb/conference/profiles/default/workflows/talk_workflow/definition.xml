@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <dc-workflow workflow_id="talk_workflow"
              xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-             i18n:domain="sc.apyb.papers"
+             i18n:domain="sc.apyb.conference"
              title="Conference talk workflow"
              description="A simple workflow to manage talks in a conference"
              state_variable="review_state"
@@ -10,7 +10,7 @@
  <permission>Access contents information</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
- <permission>apyb.papers: Allocate Talk</permission>
+ <permission>apyb.conference: Allocate Talk</permission>
  <state state_id="created" title="Created" i18n:attributes="title">
   <description i18n:translate="">Talk was created and is available for selection.</description>
   <exit-transition transition_id="accept"/>
@@ -28,7 +28,7 @@
   <permission-map name="View" acquired="False">
    <permission-role>Anonymous</permission-role>
   </permission-map>
-  <permission-map name="apyb.papers: Allocate Talk" acquired="False" />
+  <permission-map name="apyb.conference: Allocate Talk" acquired="False" />
  </state>
  <state state_id="accepted" title="Accepted" i18n:attributes="title">
   <description i18n:translate="">Talk is accepted, waiting for speaker confirmation</description>
@@ -46,7 +46,7 @@
   <permission-map name="View" acquired="False">
    <permission-role>Anonymous</permission-role>
   </permission-map>
-  <permission-map name="apyb.papers: Allocate Talk" acquired="False">
+  <permission-map name="apyb.conference: Allocate Talk" acquired="False">
       <permission-role>Manager</permission-role>
       <permission-role>Reviewer</permission-role>
       <permission-role>Editor</permission-role>
@@ -67,7 +67,7 @@
   <permission-map name="View" acquired="False">
    <permission-role>Anonymous</permission-role>
   </permission-map>
-  <permission-map name="apyb.papers: Allocate Talk" acquired="False" />
+  <permission-map name="apyb.conference: Allocate Talk" acquired="False" />
  </state>
  <state state_id="confirmed" title="Confirmed" i18n:attributes="title">
   <description i18n:translate="">Talk is confirmed by its speaker</description>
@@ -84,7 +84,7 @@
   <permission-map name="View" acquired="False">
    <permission-role>Anonymous</permission-role>
   </permission-map>
-  <permission-map name="apyb.papers: Allocate Talk" acquired="False">
+  <permission-map name="apyb.conference: Allocate Talk" acquired="False">
       <permission-role>Manager</permission-role>
       <permission-role>Reviewer</permission-role>
       <permission-role>Editor</permission-role>
@@ -104,7 +104,7 @@
   <permission-map name="View" acquired="False">
    <permission-role>Anonymous</permission-role>
   </permission-map>
-  <permission-map name="apyb.papers: Allocate Talk" acquired="False" />
+  <permission-map name="apyb.conference: Allocate Talk" acquired="False" />
  </state>
  <transition transition_id="accept"
              title="Reviewer accept talk"
