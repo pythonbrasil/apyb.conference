@@ -48,7 +48,7 @@ class IAttendee(form.Schema):
     organization = schema.TextLine(
         title=_(u'Organization'),
         description=_(u'Please inform the name of the organization you'
-                      u'will represent'),
+                      u'will represent.'),
         required=False,
         missing_value=u'',
     )
@@ -67,15 +67,20 @@ class IAttendee(form.Schema):
 
     caipirinha = schema.Choice(
         title=_(u'Caipirinha Sprint'),
-        description=_(u'Will you attend Caipirinha Sprint in Joao Pessoa/PB?'),
+        description=_(u'Will you attend Caipirinha Sprint in Joao Pessoa/PB? '
+                      u'Please select if you are attending and how many '
+                      u'people you will pay for the hotel accomodation. '
+                      u'Payment in here will cover your stay from October 7th '
+                      u'to October 11th.'),
         required=True,
         vocabulary="apyb.conference.caipirinha",
     )
 
     wall = schema.Choice(
         title=_(u'Name on the wall'),
-        description=_(u'''Support our conference and have your name'''
-                      u'''displayed on our wall.'''),
+        description=_(u'Support our conference and have your name displayed '
+                      u'on a (huge) wall in the entrance of the convention '
+                      u'center.'),
         required=True,
         vocabulary="apyb.conference.wall",
     )
@@ -83,7 +88,7 @@ class IAttendee(form.Schema):
     form.omitted('trainings')
     trainings = schema.List(
         title=_(u'Trainings'),
-        description=_(u'Select trainings'),
+        description=_(u'Select trainings you plan to attendee.'),
         default=[],
         value_type=schema.Choice(title=_(u"Training"),
                                  vocabulary='apyb.conference.trainings'),
