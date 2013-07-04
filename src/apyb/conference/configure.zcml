@@ -15,7 +15,27 @@
   <include file="profiles.zcml" />
   <include file="indexers.zcml" />
 
-  
+  <adapter
+      for="Products.CMFCore.interfaces.IContentish"
+      provides="plone.stringinterp.interfaces.IStringSubstitution"
+      factory=".adapters.EmailSubstitution"
+      name="content_email"
+      />
+
+  <adapter
+      for="Products.CMFCore.interfaces.IContentish"
+      provides="plone.stringinterp.interfaces.IStringSubstitution"
+      factory=".adapters.SpeakerEmailSubstitution"
+      name="speaker_email"
+      />
+
+  <adapter
+      for="Products.CMFCore.interfaces.IContentish"
+      provides="plone.stringinterp.interfaces.IStringSubstitution"
+      factory=".adapters.SpeakerNameSubstitution"
+      name="speaker_name"
+      />
+
   <grok:grok package="." />
   
 </configure>
