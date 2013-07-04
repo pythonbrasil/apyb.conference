@@ -14,317 +14,1696 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: apyb.conference\n"
 
-#: collective/conference/profiles/default/types/talk.xml
-msgid "Talk"
+#: ../content/registrations_templates/regdetailedview.pt:21
+msgid "#"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "label_fullname"
+#: ../content/registrations_templates/registrationsview.pt:66
+msgid "# Attendees"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "help_fullname"
+#: ../content/registrations_templates/regdetailedview.pt:24
+msgid "$"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "label_identity_document"
+#: ../vocabulary.py:36
+msgid "1 day"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "help_identity_document"
+#: ../vocabulary.py:37
+msgid "2 days"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "label_issuing body"
+#: ../profiles/default/types/sponsor.xml
+msgid "A Sponsor of our conference"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "help_issuing body"
+#: ../content/track.py:30
+msgid "A brief description of this track."
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "label_cpf"
+#: ../content/speaker.py:33
+msgid "A brief resumee"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "help_cpf"
+#: ../content/activity.py:28
+msgid "A description of this activity"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "label_gender"
+#: ../content/talk.py:184
+msgid "A description of this talk"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "help_gender"
+#: ../content/training.py:42
+msgid "A description of this training"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "label_passaport_number"
+#: ../content/sponsor.py:30
+msgid "A detailed text about this sponsor."
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "help_passaport_number"
+#: ../profiles/default/types/registration.xml
+msgid "A registration in a conference"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "label_passaport_name"
+#: ../profiles/default/workflows/program_workflow/definition.xml
+msgid "A simple workflow to manage talk submission"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "help_passaport_name"
+#: ../profiles/default/workflows/track_workflow/definition.xml
+msgid "A simple workflow to manage tracks submission"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "label_company_name"
+#: ../profiles/default/types/speaker.xml
+msgid "A speaker"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "help_company_name"
+#: ../profiles/default/types/talk.xml
+msgid "A talk in the conference"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "label_company_url"
+#: ../profiles/default/types/track.xml
+msgid "A track within a conference"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "help_company_url"
+#: ../profiles/default/types/training.xml
+msgid "A training session in the conference"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "label_mini_curriculum"
+#: ../browser/register.py:331
+msgid "APyB Member Registration"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "help_mini_curriculum"
+#: ../vocabulary.py:163
+msgid "APyB Members"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "label_need_special_care"
+#: ../browser/new_speaker.py:16
+#: ../browser/new_talk.py:22
+#: ../browser/new_training.py:22
+msgid "About the speaker"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "help_need_special_care"
+#: ../browser/new_talk.py:28
+msgid "About the talk"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "label_social_networks"
+#: ../browser/new_training.py:28
+msgid "About the training"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "help_social_networks"
+#: ../behavior/optininformation.py:14
+msgid "Accept to be contacted by conference organizers"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "label_student_or_APyB_affiliate"
+#: ../behavior/optininformation.py:20
+msgid "Accept to be contacted by conference partners"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "help_student_or_APyB_affiliate"
+#: ../profiles/default/types/activity.xml
+msgid "Activity"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "label_address"
+#: ../content/activity.py:19
+msgid "Activity Title"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "help_address"
+#: ../content/activity.py:26
+#: ../content/activity_templates/view.pt:33
+msgid "Activity details"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "label_city"
+#: ../behavior/allocation.py:53
+msgid "Activity end date"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "help_city"
+#: ../behavior/allocation.py:45
+msgid "Activity start date"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "label_state"
+#: ../content/registrations_templates/view.pt:90
+msgid "Add Organization Registration and Attendees"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "help_state"
+#: ../content/registrations_templates/view.pt:86
+msgid "Add Sponsor Registration and Attenddees"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "label_zip_code"
+#: ../browser/register.py:43
+msgid "Additional packages"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "help_zip_code"
+#: ../behavior/address.py:16
+msgid "Address"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "label_country"
+#: ../vocabulary.py:105
+msgid "Advanced"
 msgstr ""
 
-#: collective/conference/userdataschema.py
-msgid "help_country"
-msgstr ""
-
-#: collective/conference/userdataschema.py
-msgid "label_citizenship"
-msgstr ""
-
-#: collective/conference/userdataschema.py
-msgid "help_citizenship"
-msgstr ""
-
-#: collective/conference/userdataschema.py
-msgid "label_phone"
-msgstr ""
-
-#: collective/conference/userdataschema.py
-msgid "help_phone"
-msgstr ""
-
-#: collective/conference/userdataschema.py
-msgid "label_cellphone"
-msgstr ""
-
-#: collective/conference/userdataschema.py
-msgid "help_cellphone"
-msgstr ""
-
-#: collective/conference/userdataschema.py
-msgid "label_accept"
-msgstr ""
-
-#: collective/conference/userdataschema.py
-msgid "help_accept"
-msgstr ""
-
-#: collective/conference/content/talk.py
-#: collective/conference/content/training.py
-msgid "Estimated duration"
-msgstr ""
-
-#: collective/conference/content/talk.py
-#: collective/conference/content/training.py
-msgid "How long you want to talk (in minutes)"
-msgstr ""
-
-#: collective/conference/content/talk.py
-#: collective/conference/content/training.py
-msgid "Preferred period"
-msgstr ""
-
-#: collective/conference/content/talk.py
-msgid "Your preferred period of day to your talk"
-msgstr ""
-
-#: collective/conference/content/training.py
-msgid "Your preferred period of day to your training"
-msgstr ""
-
-#: collective/conference/content/talk.py
-#: collective/conference/content/training.py
-msgid "Language"
-msgstr ""
-
-#: collective/conference/content/talk.py
-msgid "Language this talk will be given"
-msgstr ""
-
-#: collective/conference/content/training.py
-msgid "Language this training will be given"
-msgstr ""
-
-#: collective/conference/content/talk.py
-#: collective/conference/content/training.py
-msgid "Global theme"
-msgstr ""
-
-#: collective/conference/content/talk.py
-msgid "What is the subject of your talk ?"
-msgstr ""
-
-#: collective/conference/content/training.py
-msgid "What is the subject of your training ?"
-msgstr ""
-
-#: collective/conference/content/talk.py
-#: collective/conference/content/training.py
-msgid "Level"
-msgstr ""
-
-#: collective/conference/content/talk.py
-msgid "Level of this talk"
-msgstr ""
-
-#: collective/conference/content/training.py
-msgid "Level of this training"
-msgstr ""
-
-
-#: collective/conference/content/talk.py
-msgid "Observations"
-msgstr ""
-
-#: collective/conference/content/talk.py
-msgid "Do you want to give us any other information ?"
-msgstr ""
-
-#: collective/conference/content/training.py
-msgid "Infrastructure's requirements"
-msgstr ""
-
-#: collective/conference/content/training.py
-msgid "What do you need to have in the classroom ?"
-msgstr ""
-
-#: collective/conference/vocabularies.py
-msgid "Morning"
-msgstr ""
-
-#: collective/conference/vocabularies.py
+#: ../vocabulary.py:18
 msgid "Afternon"
 msgstr ""
 
-#: collective/conference/vocabularies.py
-msgid "English"
+#: ../content/track_templates/talksview.pt:18
+msgid "All talks submitted to this track"
 msgstr ""
 
-#: collective/conference/vocabularies.py
-msgid "Spanish"
+#: ../profiles/default/workflows/track_workflow/definition.xml
+msgid "Allow Voting"
 msgstr ""
 
-#: collective/conference/vocabularies.py
-msgid "Portuguese"
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Allow registrations"
 msgstr ""
 
-#: collective/conference/vocabularies.py
-msgid "Web Development"
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Allow registrations to be added to this conference."
 msgstr ""
 
-#: collective/conference/vocabularies.py
-msgid "Mobility and Embedded Systems"
+#: ../behavior/paymentinformation.py:36
+msgid "Amount paid?"
 msgstr ""
 
-#: collective/conference/vocabularies.py
-msgid "Enterprise and Management"
+#: ../profiles/default/types/activity.xml
+msgid "An activity in the conference"
 msgstr ""
 
-#: collective/conference/vocabularies.py
-msgid "Community and Education"
+#: ../profiles/default/types/attendee.xml
+msgid "An attenddee at a conference"
 msgstr ""
 
-#: collective/conference/vocabularies.py
-msgid "Cloud, System Administration and Networks"
+#: ../vocabulary.py:300
+msgid "Article / Post"
 msgstr ""
 
-#: collective/conference/vocabularies.py
-msgid "Media and Networks"
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Attend conference"
 msgstr ""
 
-#: collective/conference/vocabularies.py
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Attend to the conference"
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Attend to the conference."
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Attended"
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Attended to the conference."
+msgstr ""
+
+#: ../browser/register.py:164
+#: ../profiles/default/types/attendee.xml
+msgid "Attendee"
+msgstr ""
+
+#: ../content/attendee_templates/view.pt:12
+msgid "Attendee Info"
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Attendee workflow"
+msgstr ""
+
+#: ../browser/register.py:162
+#: ../content/registration_templates/view.pt:37
+#: ../content/registrations_templates/attendeesview.pt:24
+msgid "Attendees"
+msgstr ""
+
+#: ../content/registrations_templates/attendeesview.pt:14
+msgid "Attendees Stats"
+msgstr ""
+
+#: ../content/training_templates/view.pt:55
+msgid "Attendees details"
+msgstr ""
+
+#: ../behavior/allocation.py:35
+msgid "Available seats to this activity."
+msgstr ""
+
+#: ../content/registrations_templates/attendeesview.pt:32
+msgid "Badge Name"
+msgstr ""
+
+#: ../content/attendee.py:41
+msgid "Badge name"
+msgstr ""
+
+#: ../vocabulary.py:104
 msgid "Basic"
 msgstr ""
 
-#: collective/conference/vocabularies.py
+#: ../config.py:44
+msgid "Bronze"
+msgstr ""
+
+#: ../content/registration_templates/view.pt:23
+msgid "By user"
+msgstr ""
+
+#: ../browser/register.py:108
+#: ../content/attendee.py:69
+#: ../content/attendee_templates/view.pt:19
+msgid "Caipirinha Sprint"
+msgstr ""
+
+#: ../content/program_templates/view.pt:134
+msgid "Cancel"
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Cancel a participation."
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Cancel a registration."
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Cancel attendee"
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Cancel participation"
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Cancel registration"
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Cancelled"
+msgstr ""
+
+#: ../vocabulary.py:206
+msgid "Cash / At the conference"
+msgstr ""
+
+#: ../content/registrations_templates/regdetailedview.pt:20
+#: ../content/registrations_templates/registrationsview.pt:65
+msgid "Category"
+msgstr ""
+
+#: ../content/attendee_templates/view.pt:23
+msgid "Certificate"
+msgstr ""
+
+#: ../content/attendee_templates/view.pt:25
+msgid "Certificate is available at"
+msgstr ""
+
+#: ../content/attendee_templates/view.pt:24
+msgid "Certificate will be available after conference in this url"
+msgstr ""
+
+#: ../content/program_templates/view.pt:88
+msgid "Choose a track, submit a talk proposal!"
+msgstr ""
+
+#: ../behavior/address.py:21
+msgid "City"
+msgstr ""
+
+#: ../content/program_templates/view.pt:42
+#: ../content/registrations_templates/view.pt:25
+msgid "Click here to create an account."
+msgstr ""
+
+#: ../profiles/default/workflows/program_workflow/definition.xml
+#: ../profiles/default/workflows/track_workflow/definition.xml
+msgid "Close"
+msgstr ""
+
+#: ../profiles/default/workflows/program_workflow/definition.xml
+#: ../profiles/default/workflows/track_workflow/definition.xml
+msgid "Close call for papers"
+msgstr ""
+
+#: ../profiles/default/workflows/program_workflow/definition.xml
+#: ../profiles/default/workflows/track_workflow/definition.xml
+msgid "Close call for papers -- Initial state"
+msgstr ""
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Close registration process"
+msgstr ""
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Close registrations"
+msgstr ""
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Close the registration process to this conference."
+msgstr ""
+
+#: ../profiles/default/workflows/program_workflow/definition.xml
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+#: ../profiles/default/workflows/track_workflow/definition.xml
+msgid "Closed"
+msgstr ""
+
+#: ../vocabulary.py:74
+msgid "Cloud, System Administration and Networks"
+msgstr ""
+
+#: ../content/registrations_templates/attendeesview.pt:28
+#: ../content/registrations_templates/regdetailedview.pt:18
+#: ../content/registrations_templates/registrationsview.pt:62
+msgid "Code"
+msgstr ""
+
+#: ../vocabulary.py:75
+msgid "Community and Education"
+msgstr ""
+
+#: ../profiles/default/workflows/program_workflow/definition.xml
+#: ../profiles/default/workflows/track_workflow/definition.xml
+msgid "Complete call for papers"
+msgstr ""
+
+#: ../content/program_templates/speakers.pt:25
+msgid "Conf"
+msgstr ""
+
+#: ../profiles/default/types/program.xml
+msgid "Conference Program"
+msgstr ""
+
+#: ../content/program_templates/talksview.pt:19
+msgid "Conference talks"
+msgstr ""
+
+#: ../content/program_templates/view.pt:133
+msgid "Confirm"
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Confirm a partipation."
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Confirm a registration."
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Confirm attendee"
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Confirm participation"
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Confirm registration"
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Confirmed"
+msgstr ""
+
+#: ../content/registrations_templates/regdetailedview.pt:14
+msgid "Confirmed Registrations"
+msgstr ""
+
+#: ../content/registrations_templates/registrationsview.pt:26
+msgid "Confirmed Registrations Stats"
+msgstr ""
+
+#: ../browser/register.py:37
+msgid "Contact Info"
+msgstr ""
+
+#: ../content/registration_templates/view.pt:25
+msgid "Contact e-mail"
+msgstr ""
+
+#: ../behavior/address.py:36
+msgid "Country"
+msgstr ""
+
+#: ../content/registrations_templates/attendeesview.pt:60
+#: ../content/registrations_templates/regdetailedview.pt:19
+#: ../content/registrations_templates/registrationsview.pt:63
+msgid "Date"
+msgstr ""
+
+#: ../content/talk.py:146
+#: ../content/track.py:28
+msgid "Description"
+msgstr ""
+
+#: ../content/attendee_templates/view.pt:14
+#: ../content/registration_templates/view.pt:21
+msgid "Details"
+msgstr ""
+
+#: ../config.py:40
+msgid "Diamond"
+msgstr ""
+
+#: ../browser/register.py:49
+msgid "Discount"
+msgstr ""
+
+#: ../content/registration.py:39
+msgid "Discount code"
+msgstr ""
+
+#: ../vocabulary.py:76
+msgid "Django"
+msgstr ""
+
+#: ../content/training.py:67
+msgid "Do you allow your image to be used in                   post-conference videos?"
+msgstr ""
+
+#: ../content/talk.py:228
+msgid "Do you allow your image to be used in post-conference videos?"
+msgstr ""
+
+#: ../vocabulary.py:376
+msgid "Dorneles Treméa Auditorium"
+msgstr ""
+
+#: ../behavior/contactinfo.py:18
+#: ../browser/register.py:53
+#: ../content/attendee_templates/view.pt:17
+msgid "E-mail"
+msgstr ""
+
+#: ../content/registrations_templates/attendeesview.pt:31
+#: ../content/speaker.py:43
+msgid "Email"
+msgstr ""
+
+#: ../content/attendee_templates/view.pt:34
+msgid "End"
+msgstr ""
+
+#: ../behavior/allocation.py:51
+msgid "End date"
+msgstr ""
+
+#: ../vocabulary.py:54
+msgid "English"
+msgstr ""
+
+#: ../vocabulary.py:77
+msgid "Enterprise and Management"
+msgstr ""
+
+#: ../vocabulary.py:378
+msgid "Eric Idle Room"
+msgstr ""
+
+#: ../vocabulary.py:124
+msgid "Female"
+msgstr ""
+
+#: ../content/registrations_templates/managepagseguroview.pt:23
+#: ../content/registrations_templates/managepaypalview.pt:23
+msgid "File:"
+msgstr ""
+
+#: ../profiles/default/workflows/program_workflow/definition.xml
+#: ../profiles/default/workflows/track_workflow/definition.xml
+msgid "Finish"
+msgstr ""
+
+#: ../profiles/default/workflows/program_workflow/definition.xml
+#: ../profiles/default/workflows/track_workflow/definition.xml
+msgid "Finish call for papers"
+msgstr ""
+
+#: ../profiles/default/workflows/program_workflow/definition.xml
+#: ../profiles/default/workflows/track_workflow/definition.xml
+msgid "Finished"
+msgstr ""
+
+#: ../profiles/default/types/registrations.xml
+msgid "Folderish content that contains registrations"
+msgstr ""
+
+#: ../config.py:46
+msgid "Free and Open Source"
+msgstr ""
+
+#: ../browser/register.py:84
+#: ../content/attendee.py:35
+#: ../content/attendee_templates/view.pt:16
+msgid "Fullname"
+msgstr ""
+
+#: ../browser/register.py:96
+#: ../content/attendee.py:57
+#: ../content/registrations_templates/attendeesview.pt:33
+msgid "Gender"
+msgstr ""
+
+#: ../config.py:42
+msgid "Gold"
+msgstr ""
+
+#: ../vocabulary.py:166
+msgid "Government"
+msgstr ""
+
+#: ../browser/register.py:375
+msgid "Government registration"
+msgstr ""
+
+#: ../browser/register.py:361
+msgid "Group / Corporate registration"
+msgstr ""
+
+#: ../browser/register.py:383
+msgid "Group registration for sponsors"
+msgstr ""
+
+#: ../browser/register.py:368
+msgid "Group registration for students"
+msgstr ""
+
+#: ../vocabulary.py:167
+msgid "Group/Corporate"
+msgstr ""
+
+#: ../vocabulary.py:35
+msgid "Half day"
+msgstr ""
+
+#: ../content/track_templates/view.pt:43
+msgid "Here is a list of activities in this track that will be presented at our conference."
+msgstr ""
+
+#: ../content/track_templates/view.pt:74
+msgid "Here is a list of activities proposed for this track."
+msgstr ""
+
+#: ../behavior/contactinfo.py:30
+msgid "IRC Nickname"
+msgstr ""
+
+#: ../content/program_templates/view.pt:34
+#: ../content/registrations_templates/view.pt:17
+msgid "If you already have an account, click here to login."
+msgstr ""
+
+#: ../content/registration.py:40
+msgid "If you have a discount code, please inform here"
+msgstr ""
+
+#: ../content/registrations_templates/registrationsview.pt:20
+msgid "Import PagSeguro file"
+msgstr ""
+
+#: ../content/registrations_templates/registrationsview.pt:15
+msgid "Import PayPal file"
+msgstr ""
+
+#: ../content/registrations_templates/view.pt:15
+msgid "In order to register to this conference you need to create an account on this site (so you can manage your registration details later on)."
+msgstr ""
+
+#: ../content/program_templates/view.pt:32
+msgid "In order to submit talk proposals to this conference you need to create an account on this site (so you can manage your talk details later on)."
+msgstr ""
+
+#: ../vocabulary.py:165
+msgid "Individual"
+msgstr ""
+
+#: ../browser/register.py:347
+msgid "Individual registration"
+msgstr ""
+
+#: ../content/registration_templates/view.pt:13
+msgid "Info"
+msgstr ""
+
+#: ../content/talk.py:176
+msgid "Inform a talk title"
+msgstr ""
+
+#: ../content/activity.py:20
+msgid "Inform a title for this activity"
+msgstr ""
+
+#: ../content/training.py:34
+msgid "Inform a training title"
+msgstr ""
+
+#: ../content/sponsor.py:42
+msgid "Inform the sponsor's Twitter account."
+msgstr ""
+
+#: ../browser/register.py:60
+msgid "Inform the state / provice you live."
+msgstr ""
+
+#: ../content/program_templates/view.pt:136
+msgid "Information"
+msgstr ""
+
+#: ../profiles/default/workflows/track_workflow/definition.xml
+msgid "Initiate voting"
+msgstr ""
+
+#: ../vocabulary.py:356
 msgid "Intermediate"
 msgstr ""
 
-#: collective/conference/vocabularies.py
-msgid "Advanced"
+#: ../behavior/paymentinformation.py:28
+msgid "Is this paid?"
 msgstr ""
+
+#: ../vocabulary.py:377
+msgid "John Cleese Room"
+msgstr ""
+
+#: ../content/track_templates/view.pt:31
+msgid "Know about this tracks's subject and is willing to share with others?"
+msgstr ""
+
+#: ../content/program_templates/view.pt:89
+msgid "Know more about our tracks"
+msgstr ""
+
+#: ../content/program_templates/speakers.pt:21
+#: ../content/speaker.py:55
+#: ../content/talk.py:197
+msgid "Language"
+msgstr ""
+
+#: ../content/talk_templates/view.pt:39
+#: ../content/training_templates/view.pt:24
+msgid "Language:"
+msgstr ""
+
+#: ../vocabulary.py:144
+msgid "Large"
+msgstr ""
+
+#: ../browser/new_talk.py:49
+#: ../browser/new_training.py:42
+msgid "Legal information"
+msgstr ""
+
+#: ../content/talk.py:211
+#: ../content/training.py:60
+msgid "Level"
+msgstr ""
+
+#: ../content/talk.py:213
+msgid "Level of this talk"
+msgstr ""
+
+#: ../content/training.py:62
+msgid "Level of this training"
+msgstr ""
+
+#: ../content/talk_templates/view.pt:45
+#: ../content/training_templates/view.pt:30
+msgid "Level:"
+msgstr ""
+
+#: ../content/talk.py:245
+#: ../content/training.py:84
+msgid "Link to the presentation file"
+msgstr ""
+
+#: ../content/talk.py:261
+#: ../content/training.py:100
+msgid "Link to the presentation file downloads"
+msgstr ""
+
+#: ../content/talk.py:253
+#: ../content/training.py:92
+msgid "Link to the presentation video"
+msgstr ""
+
+#: ../browser/register.py:128
+msgid "List of Attendees"
+msgstr ""
+
+#: ../behavior/allocation.py:25
+#: ../browser/register.py:40
+#: ../content/attendee_templates/view.pt:18
+msgid "Location"
+msgstr ""
+
+#: ../content/sponsor.py:47
+msgid "Logo"
+msgstr ""
+
+#: ../vocabulary.py:123
+msgid "Male"
+msgstr ""
+
+#: ../vocabulary.py:78
+msgid "Media and Networks"
+msgstr ""
+
+#: ../vocabulary.py:143
+msgid "Medium"
+msgstr ""
+
+#: ../behavior/contactinfo.py:73
+msgid "Mobile"
+msgstr ""
+
+#: ../vocabulary.py:80
+msgid "Mobility and Embedded Systems"
+msgstr ""
+
+#: ../vocabulary.py:17
+msgid "Morning"
+msgstr ""
+
+#: ../content/program_templates/view.pt:113
+msgid "My profile"
+msgstr ""
+
+#: ../content/program_templates/view.pt:125
+msgid "My talks"
+msgstr ""
+
+#: ../content/program_templates/speakers.pt:19
+#: ../content/registration_templates/view.pt:44
+#: ../content/training_templates/view.pt:61
+msgid "Name"
+msgstr ""
+
+#: ../content/attendee.py:80
+#: ../content/attendee_templates/view.pt:20
+msgid "Name on the wall"
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "New"
+msgstr ""
+
+#: ../content/talk_templates/input.pt:8
+msgid "New Speaker"
+msgstr ""
+
+#: ../vocabulary.py:226
+msgid "No! I will not attend."
+msgstr ""
+
+#: ../vocabulary.py:247
+msgid "No, thanks"
+msgstr ""
+
+#: ../profiles/default/workflows/program_workflow/definition.xml
+#: ../profiles/default/workflows/track_workflow/definition.xml
+msgid "Open"
+msgstr ""
+
+#: ../profiles/default/workflows/program_workflow/definition.xml
+#: ../profiles/default/workflows/track_workflow/definition.xml
+msgid "Open call for papers"
+msgstr ""
+
+#: ../profiles/default/workflows/track_workflow/definition.xml
+msgid "Open voting stage"
+msgstr ""
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Opened"
+msgstr ""
+
+#: ../browser/register.py:46
+msgid "Opt-In"
+msgstr ""
+
+#: ../content/track_templates/talksview.pt:23
+msgid "Order"
+msgstr ""
+
+#: ../browser/register.py:141
+#: ../config.py:47
+#: ../content/attendee.py:49
+msgid "Organization"
+msgstr ""
+
+#: ../browser/register.py:125
+msgid "Organization info"
+msgstr ""
+
+#: ../content/speaker.py:39
+msgid "Organization you represent"
+msgstr ""
+
+#: ../browser/register.py:391
+msgid "Organizers registration"
+msgstr ""
+
+#: ../vocabulary.py:85
+msgid "Other"
+msgstr ""
+
+#: ../content/registrations_templates/registrationsview.pt:19
+#: ../vocabulary.py:208
+msgid "PagSeguro"
+msgstr ""
+
+#: ../content/registrations_templates/managepagseguroview.pt:11
+msgid "Pagseguro Update"
+msgstr ""
+
+#: ../content/registrations_templates/regdetailedview.pt:23
+msgid "Paid"
+msgstr ""
+
+#: ../vocabulary.py:321
+msgid "Panel"
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Participation canceled."
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Participation confirmed."
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Participation pending confirmation."
+msgstr ""
+
+#: ../content/registrations_templates/registrationsview.pt:14
+#: ../vocabulary.py:207
+msgid "PayPal"
+msgstr ""
+
+#: ../content/registrations_templates/managepaypalview.pt:11
+msgid "PayPal Update"
+msgstr ""
+
+#: ../behavior/paymentinformation.py:15
+msgid "Payment Information"
+msgstr ""
+
+#: ../content/registration_templates/view.pt:66
+msgid "Payment options"
+msgstr ""
+
+#: ../behavior/paymentinformation.py:21
+msgid "Payment service provider"
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Pending"
+msgstr ""
+
+#: ../content/registrations_templates/regdetailedview.pt:41
+msgid "Pending Registrations"
+msgstr ""
+
+#: ../content/registrations_templates/registrationsview.pt:42
+msgid "Pending Registrations Stats"
+msgstr ""
+
+#: ../browser/register.py:33
+msgid "Personal information"
+msgstr ""
+
+#: ../behavior/contactinfo.py:66
+msgid "Phone"
+msgstr ""
+
+#: ../config.py:41
+msgid "Platinum"
+msgstr ""
+
+#: ../content/talk.py:165
+#: ../content/training.py:23
+msgid "Please fill in the name of the speaker. If no speaker profile was created for this name, click on Add new speaker"
+msgstr ""
+
+#: ../browser/register.py:142
+msgid "Please inform the name of the organization you will represent"
+msgstr ""
+
+#: ../content/attendee.py:50
+msgid "Please inform the name of the organization youwill represent."
+msgstr ""
+
+#: ../content/attendee.py:42
+msgid "Please inform the name that will appear on your badge -- Leave it blank to use your fullname in the badge"
+msgstr ""
+
+#: ../content/track.py:23
+msgid "Please inform title for this track"
+msgstr ""
+
+#: ../browser/register.py:163
+msgid "Please inform who will attendee this conference."
+msgstr ""
+
+#: ../browser/register.py:85
+#: ../content/attendee.py:36
+#: ../content/speaker.py:26
+msgid "Please inform your fullname"
+msgstr ""
+
+#: ../content/talk.py:147
+msgid "Please provide a brief description of this reference"
+msgstr ""
+
+#: ../content/talk.py:141
+msgid "Please provide a link to the reference"
+msgstr ""
+
+#: ../behavior/contactinfo.py:67
+msgid "Please provide a telephone number where you                         can be reached."
+msgstr ""
+
+#: ../behavior/contactinfo.py:19
+#: ../browser/register.py:54
+#: ../content/registration.py:27
+msgid "Please provide an email address"
+msgstr ""
+
+#: ../browser/register.py:150
+msgid "Please provide an email address to be used to manage this registration."
+msgstr ""
+
+#: ../behavior/contactinfo.py:37
+msgid "Please provide the address of your site, blog                         or profile"
+msgstr ""
+
+#: ../behavior/contactinfo.py:31
+msgid "Please provide your IRC nickname, if you have one."
+msgstr ""
+
+#: ../behavior/contactinfo.py:25
+msgid "Please provide your Twitter name, if you have one."
+msgstr ""
+
+#: ../behavior/contactinfo.py:74
+msgid "Please provide your mobile phone number."
+msgstr ""
+
+#: ../vocabulary.py:81
+msgid "Plone"
+msgstr ""
+
+#: ../content/program_templates/ranking.pt:20
+#: ../content/program_templates/view.pt:137
+msgid "Points"
+msgstr ""
+
+#: ../content/speaker.py:62
+msgid "Portrait"
+msgstr ""
+
+#: ../vocabulary.py:55
+msgid "Portuguese"
+msgstr ""
+
+#: ../behavior/address.py:31
+msgid "Post Code / Zip Code"
+msgstr ""
+
+#: ../vocabulary.py:301
+msgid "Presentation"
+msgstr ""
+
+#: ../content/talk.py:243
+#: ../content/training.py:82
+msgid "Presentation file"
+msgstr ""
+
+#: ../content/talk.py:259
+#: ../content/training.py:98
+msgid "Presentation files"
+msgstr ""
+
+#: ../content/talk.py:251
+#: ../content/training.py:90
+msgid "Presentation video"
+msgstr ""
+
+#: ../browser/templates/register.pt:11
+#: ../content/registrations_templates/registrationsview.pt:68
+msgid "Price"
+msgstr ""
+
+#: ../content/registrations_templates/registrationsview.pt:67
+msgid "Price (est.)"
+msgstr ""
+
+#: ../content/registration_templates/view.pt:34
+msgid "Price paid"
+msgstr ""
+
+#: ../content/registration_templates/view.pt:29
+msgid "Pricing"
+msgstr ""
+
+#: ../profiles/default/types/program.xml
+msgid "Program"
+msgstr ""
+
+#: ../profiles/default/workflows/program_workflow/definition.xml
+msgid "Program workflow"
+msgstr ""
+
+#: ../content/track_templates/view.pt:73
+msgid "Proposed activities"
+msgstr ""
+
+#: ../vocabulary.py:82
+msgid "Pyramid"
+msgstr ""
+
+#: ../content/talk.py:223
+msgid "Reference"
+msgstr ""
+
+#: ../content/talk.py:133
+msgid "Reference type"
+msgstr ""
+
+#: ../content/talk.py:220
+msgid "References"
+msgstr ""
+
+#: ../browser/new_talk.py:43
+#: ../content/talk.py:222
+msgid "References for this talk"
+msgstr ""
+
+#: ../browser/register.py:234
+#: ../content/attendee_templates/view.pt:64
+msgid "Register"
+msgstr ""
+
+#: ../content/registrations.py:86
+msgid "Register as a student"
+msgstr ""
+
+#: ../content/registrations.py:83
+msgid "Register as an APyB Member"
+msgstr ""
+
+#: ../content/registrations.py:89
+msgid "Register as an Individual"
+msgstr ""
+
+#: ../content/attendee_templates/view.pt:57
+msgid "Register for trainings"
+msgstr ""
+
+#: ../content/registrations.py:95
+msgid "Register member(s) of Brazilian Government"
+msgstr ""
+
+#: ../content/registrations.py:92
+msgid "Register members of a group or organization (Group registration)"
+msgstr ""
+
+#: ../browser/register.py:235
+msgid "Register to this conference"
+msgstr ""
+
+#: ../content/registrations_templates/view.pt:13
+msgid "Register!"
+msgstr ""
+
+#: ../content/speaker.py:69
+msgid "Registering Information"
+msgstr ""
+
+#: ../content/program_templates/speakers.pt:23
+#: ../content/speaker.py:75
+#: ../profiles/default/types/registration.xml
+msgid "Registration"
+msgstr ""
+
+#: ../content/registration_templates/view.pt:19
+msgid "Registration Info"
+msgstr ""
+
+#: ../content/attendee_templates/view.pt:15
+#: ../content/registration_templates/view.pt:22
+msgid "Registration Type"
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Registration cancelled."
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Registration confirmed."
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Registration created."
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Registration pending confirmation."
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Registration workflow"
+msgstr ""
+
+#: ../content/registrations_templates/registrationsview.pt:58
+#: ../content/registrations_templates/view.pt:81
+#: ../profiles/default/types/registrations.xml
+msgid "Registrations"
+msgstr ""
+
+#: ../content/registrations_templates/attendeesview.pt:13
+#: ../content/registrations_templates/registrationsview.pt:13
+#: ../content/registrations_templates/view.pt:80
+msgid "Registrations Management"
+msgstr ""
+
+#: ../content/registrations_templates/registrationsview.pt:25
+msgid "Registrations Stats"
+msgstr ""
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Registrations closed."
+msgstr ""
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Registrations opened."
+msgstr ""
+
+#: ../content/registrations_templates/managepagseguroview.pt:13
+#: ../content/registrations_templates/managepaypalview.pt:13
+msgid "Registrations updated"
+msgstr ""
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Registrations workflow"
+msgstr ""
+
+#: ../content/speaker.py:31
+msgid "Resumee"
+msgstr ""
+
+#: ../behavior/allocation.py:27
+msgid "Room where this activity will be presented"
+msgstr ""
+
+#: ../vocabulary.py:83
+msgid "Scipy"
+msgstr ""
+
+#: ../behavior/allocation.py:34
+msgid "Seats"
+msgstr ""
+
+#: ../content/attendee.py:29
+#: ../content/registration.py:33
+msgid "Select the category of your registration"
+msgstr ""
+
+#: ../content/attendee.py:91
+msgid "Select trainings you plan to attendee."
+msgstr ""
+
+#: ../content/track_templates/view.pt:42
+msgid "Selected activities"
+msgstr ""
+
+#: ../content/program_templates/speakers.pt:24
+msgid "Sent"
+msgstr ""
+
+#: ../content/registrations_templates/regdetailedview.pt:25
+msgid "Serv"
+msgstr ""
+
+#: ../config.py:43
+msgid "Silver"
+msgstr ""
+
+#: ../behavior/contactinfo.py:36
+#: ../content/speaker.py:49
+#: ../content/sponsor.py:35
+msgid "Site"
+msgstr ""
+
+#: ../vocabulary.py:142
+msgid "Small"
+msgstr ""
+
+#: ../vocabulary.py:56
+msgid "Spanish"
+msgstr ""
+
+#: ../content/talk.py:164
+#: ../content/training.py:22
+#: ../profiles/default/types/speaker.xml
+msgid "Speaker"
+msgstr ""
+
+#: ../browser/new_speaker.py:31
+msgid "Speaker Profile"
+msgstr ""
+
+#: ../content/talk_templates/view.pt:59
+#: ../content/training_templates/view.pt:41
+msgid "Speaker details"
+msgstr ""
+
+#: ../browser/register.py:354
+msgid "Speaker registration"
+msgstr ""
+
+#: ../content/speaker.py:45
+msgid "Speaker's email"
+msgstr ""
+
+#: ../content/speaker.py:57
+#: ../content/talk.py:199
+#: ../content/training.py:48
+msgid "Speaker's language"
+msgstr ""
+
+#: ../content/speaker.py:51
+msgid "Speaker's site"
+msgstr ""
+
+#: ../content/program_templates/view.pt:25
+msgid "Speakers"
+msgstr ""
+
+#: ../content/program_templates/speakers.pt:12
+msgid "Speakers list"
+msgstr ""
+
+#: ../profiles/default/types/sponsor.xml
+#: ../vocabulary.py:170
+msgid "Sponsor"
+msgstr ""
+
+#: ../content/sponsor.py:48
+msgid "Sponsor logo."
+msgstr ""
+
+#: ../content/sponsor.py:36
+msgid "Sponsor site."
+msgstr ""
+
+#: ../content/sponsor.py:22
+msgid "Sponsorship Level"
+msgstr ""
+
+#: ../content/attendee_templates/view.pt:33
+msgid "Start"
+msgstr ""
+
+#: ../behavior/allocation.py:43
+msgid "Start date"
+msgstr ""
+
+#: ../behavior/address.py:26
+#: ../content/registrations_templates/registrationsview.pt:69
+msgid "State"
+msgstr ""
+
+#: ../browser/register.py:59
+msgid "State /Province"
+msgstr ""
+
+#: ../content/program_templates/view.pt:14
+#: ../content/track_templates/view.pt:114
+msgid "Stats"
+msgstr ""
+
+#: ../content/program_templates/ranking.pt:21
+#: ../content/program_templates/view.pt:166
+msgid "Status"
+msgstr ""
+
+#: ../vocabulary.py:164
+msgid "Student"
+msgstr ""
+
+#: ../browser/register.py:340
+msgid "Student registration"
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Submit a registration"
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Submit registration"
+msgstr ""
+
+#: ../content/program_templates/view.pt:100
+msgid "Submit talk proposal here"
+msgstr ""
+
+#: ../content/program_templates/view.pt:103
+msgid "Submit training proposal here"
+msgstr ""
+
+#: ../content/track_templates/view.pt:34
+msgid "Submit your talk proposal!"
+msgstr ""
+
+#: ../content/track_templates/view.pt:37
+msgid "Submit your training proposal!"
+msgstr ""
+
+#: ../content/program_templates/view.pt:160
+msgid "Submited talks"
+msgstr ""
+
+#: ../content/track_templates/view.pt:117
+msgid "Submitted"
+msgstr ""
+
+#: ../content/activity_templates/view.pt:35
+#: ../content/talk_templates/view.pt:51
+#: ../content/training_templates/view.pt:36
+msgid "Summary:"
+msgstr ""
+
+#: ../content/attendee.py:81
+msgid "Support our conference and have your name displayed on a (huge) wall in the entrance of the convention center."
+msgstr ""
+
+#: ../config.py:45
+msgid "Supporting"
+msgstr ""
+
+#: ../content/registrations_templates/attendeesview.pt:34
+msgid "T-Shirt"
+msgstr ""
+
+#: ../browser/register.py:102
+#: ../content/attendee.py:63
+msgid "T-Shirt Size"
+msgstr ""
+
+#: ../content/program_templates/ranking.pt:19
+#: ../content/program_templates/talksview.pt:25
+#: ../content/track_templates/talksview.pt:24
+msgid "Talk"
+msgstr ""
+
+#: ../content/talk.py:175
+msgid "Talk Title"
+msgstr ""
+
+#: ../content/talk.py:182
+#: ../content/talk_templates/view.pt:37
+msgid "Talk details"
+msgstr ""
+
+#: ../content/talk.py:236
+msgid "Talk materials"
+msgstr ""
+
+#: ../browser/new_talk.py:68
+msgid "Talk submission"
+msgstr ""
+
+#: ../profiles/default/workflows/track_workflow/definition.xml
+msgid "Talk submission and voting is complete."
+msgstr ""
+
+#: ../profiles/default/workflows/program_workflow/definition.xml
+#: ../profiles/default/workflows/track_workflow/definition.xml
+msgid "Talk submission is closed."
+msgstr ""
+
+#: ../profiles/default/workflows/program_workflow/definition.xml
+msgid "Talk submission is complete."
+msgstr ""
+
+#: ../profiles/default/workflows/program_workflow/definition.xml
+#: ../profiles/default/workflows/track_workflow/definition.xml
+msgid "Talk submission is open."
+msgstr ""
+
+#: ../content/talk.py:190
+msgid "Talk type"
+msgstr ""
+
+#: ../profiles/default/workflows/track_workflow/definition.xml
+msgid "Talk voting is allowed."
+msgstr ""
+
+#: ../content/program_templates/view.pt:21
+msgid "Talks"
+msgstr ""
+
+#: ../content/speaker_templates/view.pt:28
+msgid "Talks by this speaker"
+msgstr ""
+
+#: ../content/program_templates/ranking.pt:13
+msgid "Talks ordering"
+msgstr ""
+
+#: ../content/program_templates/view.pt:129
+msgid "Talks waiting for your confirmation"
+msgstr ""
+
+#: ../vocabulary.py:379
+msgid "Terry Gilliam Room"
+msgstr ""
+
+#: ../content/sponsor.py:29
+msgid "Text"
+msgstr ""
+
+#: ../browser/register.py:76
+msgid "The email address you provided does not match any APyB merbership account."
+msgstr ""
+
+#: ../content/registration_templates/view.pt:14
+msgid "This registration is not paid. Please, click on the image button bellow to be taken to our payment processor partner."
+msgstr ""
+
+#: ../content/registrations_templates/registrationsview.pt:64
+#: ../content/track.py:22
+msgid "Title"
+msgstr ""
+
+#: ../content/registration_templates/view.pt:38
+msgid "To register to a training, click on the name of an attendee and then select the desired sessions"
+msgstr ""
+
+#: ../content/registrations_templates/registrationsview.pt:35
+msgid "Total"
+msgstr ""
+
+#: ../content/registration_templates/view.pt:31
+msgid "Total price"
+msgstr ""
+
+#: ../content/program_templates/ranking.pt:18
+#: ../content/program_templates/talksview.pt:24
+#: ../content/program_templates/view.pt:135
+msgid "Track"
+msgstr ""
+
+#: ../content/track.py:34
+msgid "Track Logo"
+msgstr ""
+
+#: ../profiles/default/workflows/track_workflow/definition.xml
+msgid "Track workflow"
+msgstr ""
+
+#: ../content/program_templates/view.pt:17
+msgid "Tracks"
+msgstr ""
+
+#: ../content/attendee.py:93
+#: ../content/attendee_templates/view.pt:35
+#: ../profiles/default/types/training.xml
+msgid "Training"
+msgstr ""
+
+#: ../behavior/allocation.py:18
+msgid "Training Allocation"
+msgstr ""
+
+#: ../content/training.py:33
+msgid "Training Title"
+msgstr ""
+
+#: ../content/training.py:40
+#: ../content/training_templates/view.pt:22
+msgid "Training details"
+msgstr ""
+
+#: ../content/training.py:75
+msgid "Training materials"
+msgstr ""
+
+#: ../browser/new_training.py:61
+msgid "Training submission"
+msgstr ""
+
+#: ../content/attendee.py:90
+#: ../content/attendee_templates/view.pt:29
+msgid "Trainings"
+msgstr ""
+
+#: ../behavior/contactinfo.py:24
+#: ../content/sponsor.py:41
+msgid "Twitter"
+msgstr ""
+
+#: ../content/attendee.py:28
+#: ../content/registration.py:32
+#: ../content/registrations_templates/attendeesview.pt:29
+msgid "Type"
+msgstr ""
+
+#: ../content/talk.py:134
+msgid "Type of this reference"
+msgstr ""
+
+#: ../content/talk.py:140
+msgid "URL"
+msgstr ""
+
+#: ../content/speaker.py:64
+msgid "Upload an image to be used as speakers' portrait."
+msgstr ""
+
+#: ../content/track.py:36
+msgid "Upload an image to be used as this track's logo."
+msgstr ""
+
+#: ../vocabulary.py:302
+msgid "Video"
+msgstr ""
+
+#: ../content/registrations_templates/view.pt:95
+msgid "View attendees"
+msgstr ""
+
+#: ../content/registrations_templates/view.pt:82
+msgid "View registrations"
+msgstr ""
+
+#: ../profiles/default/workflows/track_workflow/definition.xml
+msgid "Voting"
+msgstr ""
+
+#: ../content/registration_templates/view.pt:48
+msgid "Wall"
+msgstr ""
+
+#: ../browser/register.py:114
+msgid "Wall of supporters"
+msgstr ""
+
+#: ../vocabulary.py:84
+msgid "Web Development"
+msgstr ""
+
+#: ../content/registration_templates/view.pt:24
+msgid "When"
+msgstr ""
+
+#: ../behavior/paymentinformation.py:22
+msgid "Which payment service provider was used?"
+msgstr ""
+
+#: ../content/sponsor.py:23
+msgid "Which sponsorship package this sponsor acquired."
+msgstr ""
+
+#: ../content/talk.py:206
+msgid "Which track this talk is"
+msgstr ""
+
+#: ../content/training.py:55
+msgid "Which track this training is"
+msgstr ""
+
+#: ../content/talk.py:192
+msgid "Which type of talk best describes this one"
+msgstr ""
+
+#: ../content/attendee.py:70
+msgid "Will you attend Caipirinha Sprint in Joao Pessoa/PB? Please select if you are attending and how many people you will pay for the hotel accomodation. Payment in here will cover your stay from October 7th to October 11th."
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Workflow to manage a registration to a conference."
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Workflow to manage an attendee status in a conference."
+msgstr ""
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Workflow to manage registrations to a conference."
+msgstr ""
+
+#: ../vocabulary.py:145
+msgid "X-Large"
+msgstr ""
+
+#: ../vocabulary.py:228
+msgid "Yes! Book me 2 places (R$700,00)"
+msgstr ""
+
+#: ../vocabulary.py:229
+msgid "Yes! Book me 3 places (R$800,00)"
+msgstr ""
+
+#: ../vocabulary.py:227
+msgid "Yes! Book me a place (R$350,00)"
+msgstr ""
+
+#: ../vocabulary.py:248
+msgid "Yes, I support with R$100,00"
+msgstr ""
+
+#: ../vocabulary.py:249
+msgid "Yes, I support with R$200,00"
+msgstr ""
+
+#: ../vocabulary.py:250
+msgid "Yes, I support with R$400,00"
+msgstr ""
+
+#: ../browser/register.py:78
+msgid "Your APyB merbership is inactive and needs to be renewed."
+msgstr ""
+
+#: ../content/track_templates/view.pt:30
+msgid "Your activity here!"
+msgstr ""
+
+#: ../content/registrations_templates/regdetailedview.pt:22
+msgid "code"
+msgstr ""
+
+#: ../content/attendee.py:23
+#: ../content/registration.py:21
+#: ../content/talk.py:158
+msgid "uid"
+msgstr ""
+
