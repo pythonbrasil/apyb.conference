@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 from apyb.conference import MessageFactory as _
+from apyb.conference.behavior.allocation import IAllocation
 from apyb.conference.content.program import IProgram
 from apyb.conference.content.track import ITrack
 from apyb.conference.content.training import ITraining
@@ -13,7 +14,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.component import getMultiAdapter
 
 
-class ITrainingForm(ITraining):
+class ITrainingForm(ITraining, IAllocation):
     ''' An interface representing a training submission form '''
 
     form.fieldset(
@@ -28,6 +29,7 @@ class ITrainingForm(ITraining):
         fields=['title', 'text', 'track', 'language', 'level', ],
     )
 
+    form.omitted('seats')
     form.omitted('location')
     form.omitted('startDate')
     form.omitted('endDate')

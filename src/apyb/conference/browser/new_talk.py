@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 from apyb.conference import MessageFactory as _
+from apyb.conference.behavior.allocation import IAllocation
 from apyb.conference.content.program import IProgram
 from apyb.conference.content.talk import ITalk
 from apyb.conference.content.track import ITrack
@@ -13,7 +14,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.component import getMultiAdapter
 
 
-class ITalkForm(ITalk):
+class ITalkForm(ITalk, IAllocation):
     ''' An interface representing a talk submission form '''
 
     form.fieldset(
@@ -28,6 +29,7 @@ class ITalkForm(ITalk):
         fields=['title', 'text', 'talk_type', 'track', 'language', 'level', ]
     )
     form.omitted('talk_type')
+    form.omitted('seats')
     form.omitted('location')
     form.omitted('startDate')
     form.omitted('endDate')

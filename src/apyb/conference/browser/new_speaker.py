@@ -52,7 +52,7 @@ class SpeakerForm(form.SchemaAddForm):
         self.immediate_view = "%s/%s" % (context.absolute_url(), speakerObj.id)
 
 
-@form.default_value(field=ISpeakerForm['country'], form=SpeakerForm)
+@form.default_value(field=ISpeakerForm['country'])
 def default_country(data):
     return u'br'
 
@@ -79,3 +79,11 @@ def default_home_page(data):
                             name=u'plone_portal_state')
     member = state.member()
     return member.getProperty('home_page')
+
+
+@form.default_value(field=ISpeakerForm['description'])
+def default_description(data):
+    state = getMultiAdapter((data.context, data.request),
+                            name=u'plone_portal_state')
+    member = state.member()
+    return member.getProperty('description')
