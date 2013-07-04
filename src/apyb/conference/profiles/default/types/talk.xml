@@ -21,6 +21,7 @@
  <property name="klass">apyb.conference.content.talk.Talk</property>
  <property name="behaviors">
      <element value="plone.app.content.interfaces.INameFromTitle" />
+     <element value="apyb.conference.behavior.allocation.IAllocation" />
  </property>
  <property name="schema">apyb.conference.content.talk.ITalk</property>
  <property name="model_file"></property>

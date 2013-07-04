@@ -5,7 +5,8 @@ from apyb.conference.content.talk import SpeakerFieldWidget
 from apyb.conference.content.talk import SpeakerSourceBinder
 from DateTime import DateTime
 from five import grok
-from plone.directives import dexterity, form
+from plone.directives import dexterity
+from plone.directives import form
 from plone.indexer import indexer
 from zope import schema
 from zope.component import getMultiAdapter
@@ -19,9 +20,9 @@ class ITraining(form.Schema):
     form.widget(speakers=SpeakerFieldWidget)
     speakers = schema.List(
         title=_(u'Speaker'),
-        description=_(u'Please fill in the name of the speaker. \
-                        If no speaker profile was created for this name, \
-                        click on Add new speaker'),
+        description=_(u'Please fill in the name of the speaker. If no speaker '
+                      u'profile was created for this name, click on '
+                      u'Add new speaker'),
         default=[],
         value_type=schema.Choice(title=_(u"Speaker"),
                                  source=SpeakerSourceBinder()),
@@ -67,46 +68,6 @@ class ITraining(form.Schema):
                   post-conference videos?"),
         required=False,
         default=True,
-    )
-
-    form.fieldset(
-        'allocation',
-        label=_(u"Training Allocation"),
-        fields=['seats', 'startDate', 'endDate', 'location'],
-    )
-
-    dexterity.read_permission(location='zope2.View')
-    dexterity.write_permission(location='apyb.conference.AllocateTalk')
-    location = schema.Choice(
-        title=_(u"Location"),
-        required=False,
-        description=_(u"Room where this training will be presented"),
-        vocabulary='apyb.conference.rooms',
-    )
-
-    dexterity.read_permission(seats='zope2.View')
-    dexterity.write_permission(seats='apyb.conference.AllocateTalk')
-    seats = schema.Int(
-        title=_(u"Seats"),
-        description=_(u"Available seats to this training."),
-        default=1,
-        required=False,
-    )
-
-    dexterity.read_permission(startDate='zope2.View')
-    dexterity.write_permission(startDate='apyb.conference.AllocateTalk')
-    startDate = schema.Datetime(
-        title=_(u"Start date"),
-        required=False,
-        description=_(u"Training start date"),
-    )
-
-    dexterity.read_permission(endDate='zope2.View')
-    dexterity.write_permission(endDate='apyb.conference.AllocateTalk')
-    endDate = schema.Datetime(
-        title=_(u"End date"),
-        required=False,
-        description=_(u"Training end date"),
     )
 
     form.fieldset(

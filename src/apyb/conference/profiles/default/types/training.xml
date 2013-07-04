@@ -21,6 +21,7 @@
  <property name="klass">apyb.conference.content.training.Training</property>
  <property name="behaviors">
      <element value="plone.app.content.interfaces.INameFromTitle" />
+     <element value="apyb.conference.behavior.allocation.IAllocation" />
  </property>
  <property name="schema">apyb.conference.content.training.ITraining</property>
  <property name="model_file"></property>

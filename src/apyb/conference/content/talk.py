@@ -232,38 +232,6 @@ class ITalk(form.Schema):
     )
 
     form.fieldset(
-        'allocation',
-        label=_(u"Talk Allocation"),
-        fields=['startDate', 'endDate', 'location'],
-    )
-
-    dexterity.read_permission(location='zope2.View')
-    dexterity.write_permission(location='apyb.conference.AllocateTalk')
-    location = schema.Choice(
-        title=_(u"Location"),
-        required=False,
-        description=_(u"Room where this talk will be presented"),
-        vocabulary='apyb.conference.rooms',
-    )
-    dexterity.read_permission(startDate='zope2.View')
-    dexterity.write_permission(startDate='apyb.conference.AllocateTalk')
-#    form.widget(startDate='collective.z3cform.datetimewidget.DatetimeWidget')
-    startDate = schema.Datetime(
-        title=_(u"Start date"),
-        required=False,
-        description=_(u"Talk start date"),
-    )
-
-    dexterity.read_permission(endDate='zope2.View')
-    dexterity.write_permission(endDate='apyb.conference.AllocateTalk')
-#    form.widget(endDate='collective.z3cform.datetimewidget.DatetimeWidget')
-    endDate = schema.Datetime(
-        title=_(u"End date"),
-        required=False,
-        description=_(u"Talk end date"),
-    )
-
-    form.fieldset(
         'material',
         label=_(u"Talk materials"),
         fields=['presentation', 'video', 'files'],

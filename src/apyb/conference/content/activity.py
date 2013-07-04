@@ -28,36 +28,6 @@ class IActivity(form.Schema):
         description=_(u"A description of this activity"),
     )
 
-    form.fieldset(
-        'allocation',
-        label=_(u"Activity Allocation"),
-        fields=['startDate', 'endDate', 'location'],
-    )
-
-    dexterity.read_permission(location='zope2.View')
-    dexterity.write_permission(location='apyb.conference.AllocateTalk')
-    location = schema.Choice(
-        title=_(u"Location"),
-        required=False,
-        description=_(u"Room where this activity will be presented"),
-        vocabulary='apyb.conference.rooms',
-    )
-    dexterity.read_permission(startDate='zope2.View')
-    dexterity.write_permission(startDate='apyb.conference.AllocateTalk')
-    startDate = schema.Datetime(
-        title=_(u"Start date"),
-        required=False,
-        description=_(u"Activity start date"),
-    )
-
-    dexterity.read_permission(endDate='zope2.View')
-    dexterity.write_permission(endDate='apyb.conference.AllocateTalk')
-    endDate = schema.Datetime(
-        title=_(u"End date"),
-        required=False,
-        description=_(u"Activity end date"),
-    )
-
 
 class Activity(dexterity.Item):
     grok.implements(IActivity)
