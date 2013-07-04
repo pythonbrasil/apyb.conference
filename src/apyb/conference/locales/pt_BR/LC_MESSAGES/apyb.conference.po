@@ -553,7 +553,7 @@ msgstr "Encerrada"
 msgid "Folderish content that contains registrations"
 msgstr "Pasta que contém todas as inscrições"
 
-#: ../config.py:46
+#: ../config.py:47
 msgid "Free and Open Source"
 msgstr "Comunidades"
 
@@ -769,6 +769,10 @@ msgstr "Logo"
 msgid "Male"
 msgstr "Masculino"
 
+#: ../config.py:46
+msgid "Media Support"
+msgstr "Apoio de mídia"
+
 #: ../vocabulary.py:78
 msgid "Media and Networks"
 msgstr ""
@@ -851,7 +855,7 @@ msgid "Order"
 msgstr "Ordem"
 
 #: ../browser/register.py:141
-#: ../config.py:47
+#: ../config.py:48
 #: ../content/attendee.py:49
 msgid "Organization"
 msgstr "Entidade (Empresa, Instituição)"

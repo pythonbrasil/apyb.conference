@@ -553,7 +553,7 @@ msgstr ""
 msgid "Folderish content that contains registrations"
 msgstr ""
 
-#: ../config.py:46
+#: ../config.py:47
 msgid "Free and Open Source"
 msgstr ""
 
@@ -769,6 +769,10 @@ msgstr ""
 msgid "Male"
 msgstr ""
 
+#: ../config.py:46
+msgid "Media Support"
+msgstr ""
+
 #: ../vocabulary.py:78
 msgid "Media and Networks"
 msgstr ""
@@ -851,7 +855,7 @@ msgid "Order"
 msgstr ""
 
 #: ../browser/register.py:141
-#: ../config.py:47
+#: ../config.py:48
 #: ../content/attendee.py:49
 msgid "Organization"
 msgstr ""

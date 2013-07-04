@@ -43,5 +43,6 @@ SPONSOR_LEVELS = [('diamond', _(u'Diamond')),
                   ('silver', _(u'Silver')),
                   ('bronze', _(u'Bronze')),
                   ('supporting', _(u'Supporting')),
+                  ('midia', _(u'Media Support')),
                   ('foss', _(u'Free and Open Source')),
                   ('organizers', _(u'Organization'))]
