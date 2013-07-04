@@ -1,0 +1,158 @@
+/* tracks */
+.stats_box {
+background: none repeat scroll 0 0 #F1F1F1;
+color: #CCCCCC;
+float: left;
+font-size: 1.5em;
+font-weight: bold;
+margin-right: 20px;
+margin-bottom: 20px;
+padding: 10px;
+width: 140px;
+}
+.stats_number {
+display: block;
+text-align: right;
+font-size: 3em;
+}
+
+.track {
+border: 1px solid #F1F1F1;
+float: left;
+margin: 1% 2% 1% 0;
+padding: 1%;
+width: 45%;
+min-height: 110px;
+}
+.track img {float: right;}
+.track_title {font-weight:bold; font-size: 1.3em;}
+
+.talks, .tracks {clear: left; padding-top: 20px;}
+
+/* profiles */
+.speaker_profile img {
+float: right;
+border: 10px solid #2271a9;
+margin: 35px;
+-webkit-transform: rotate(7deg);
+-moz-transform: rotate(7deg);
+transform: rotate(7deg);
+-moz-box-shadow: 3px 3px 3px #f1f1f1;
+-webkit-box-shadow: 3px 3px 3px #f1f1f1;
+box-shadow: 3px 3px 3px #f1f1f1;
+border-radius: 11px;
+-moz-border-radius: 11px;
+-webkit-border-radius: 11px;
+}
+.speaker_name {
+font-size: 2em;
+font-weight: bold;
+display: block;
+color: #2271a9;
+}
+.speaker_bio {
+display: block;
+}
+
+
+/* patrocinadores */
+#patrocinadores {padding: 20px 40px;}
+#patrocinadores dt {
+border-bottom: 1px solid #F1F1F1;
+color: #CCCCCC;
+margin: 20px 0 10px;
+}
+#patrocinadores dd a img{
+vertical-align:middle;
+}
+
+
+/* inscricoes */
+.lista-precos {text-align: center !important; width: 100%;}
+.lista-precos td.tipo-inscricao {
+padding-left: 5px !important;
+text-align: left;
+}
+.lista-precos td {
+padding: 0 !important;
+background-image: -webkit-gradient(
+linear,
+left bottom,
+left top,
+color-stop(0.15, rgb(230,230,230)),
+color-stop(0.69, rgb(250,250,250))
+);
+background-image: -moz-linear-gradient(
+center bottom,
+rgb(230,230,230) 15%,
+rgb(250,250,250) 69%
+);
+}
+.lista-precos th {
+color: #fff;
+padding: 0 !important;
+background-image: -webkit-gradient(
+linear,
+left bottom,
+left top,
+color-stop(0.15, rgb(32,92,144)),
+color-stop(0.69, rgb(17,69,112))
+);
+background-image: -moz-linear-gradient(
+center bottom,
+rgb(32,92,144) 15%,
+rgb(17,69,112) 69%
+);
+}
+.lista-precos th .visualHighlight {
+display: block;
+padding: 10px;
+color: #fff;
+font-size: 1.2em;
+font-weight: bold;
+background-image: -webkit-gradient(
+linear,
+left bottom,
+left top,
+color-stop(0.15, rgb(32,92,144)),
+color-stop(0.69, rgb(17,69,112))
+);
+background-image: -moz-linear-gradient(
+center bottom,
+rgb(32,92,144) 15%,
+rgb(17,69,112) 69%
+);
+}
+.lista-precos td .visualHighlight {
+display: block;
+font-weight: bold;
+padding: 10px;
+color: #205C90;
+background-image: -webkit-gradient(
+linear,
+left bottom,
+left top,
+color-stop(0.15, rgb(230,230,230)),
+color-stop(0.69, rgb(250,250,250))
+);
+background-image: -moz-linear-gradient(
+center bottom,
+rgb(230,230,230) 15%,
+rgb(250,250,250) 69%
+);
+}
+th.tipo-inscricao {
+background: none !important; border-top:none !important; border-left: none !important;
+}
+
+
+td.talk_details {
+background: url(setas.png) no-repeat right center transparent !important;
+padding-right: 50px !important;
+}
+
+
+a.talk_details_link {
+background: url(lupa-detalhes.png) no-repeat right center !important;
+padding-right: 20px !important;
+}
