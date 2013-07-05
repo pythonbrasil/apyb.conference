@@ -218,9 +218,10 @@ class View(grok.View):
         ''' show only if registration not paid and
             registration is from brazil
         '''
-        country = self.context.country
-        paid = self.paid
-        return (country == u'br' and not (paid or self.show_empenho))
+        #country = self.context.country
+        #paid = self.paid
+        #return (country == u'br' and not (paid or self.show_empenho))
+        return False
 
     @property
     def show_paypal(self):
