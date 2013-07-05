@@ -50,7 +50,7 @@ class Sponsors(grok.Viewlet):
         # Sponsors should be published to be listed
         results = ct.searchResults(portal_type='sponsor',
                                    review_state='published',
-                                   order_by='getObjectPositionInParent')
+                                   sort_on='getObjPositionInParent')
         for brain in results:
             o = brain.getObject()
             level = brain.level
@@ -67,4 +67,4 @@ class Sponsors(grok.Viewlet):
         return sponsors
 
     def available(self):
-        return True
+        return True if self.sponsors_by_level() else False
