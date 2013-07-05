@@ -1,8 +1,8 @@
-<div tal:condition="viewlet/available">
-    <h2 class="documentFirstHeading">
-        <span>Sponsors</span>
-    </h2>
+<div tal:condition="viewlet/available"
+     i18n:domain="apyb.conference">
     <div id="patrocinadores">
+        <h2 class="documentFirstHeading"
+            i18n:translate="">Sponsors</h2>
         <dl tal:define="spl viewlet/sponsors_by_level;">
             <tal:level tal:repeat="level spl">
             <dt tal:content="level/title">Platinum</dt>
