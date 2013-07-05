@@ -46,11 +46,11 @@ msgstr "Uma breve descrição desta trilha."
 msgid "A brief resumee"
 msgstr "Curriculo resumido"
 
-#: ../content/activity.py:28
+#: ../content/activity.py:29
 msgid "A description of this activity"
 msgstr "Descrição desta atividade"
 
-#: ../content/talk.py:184
+#: ../content/talk.py:185
 msgid "A description of this talk"
 msgstr "Descrição desta palestra"
 
@@ -124,11 +124,11 @@ msgstr "Aceito ser contatado por parceiros da conferência"
 msgid "Activity"
 msgstr "Atividade"
 
-#: ../content/activity.py:19
+#: ../content/activity.py:20
 msgid "Activity Title"
 msgstr "Título da atividade"
 
-#: ../content/activity.py:26
+#: ../content/activity.py:27
 #: ../content/activity_templates/view.pt:33
 msgid "Activity details"
 msgstr "Detalhes"
@@ -164,6 +164,10 @@ msgstr "Avançado"
 #: ../vocabulary.py:18
 msgid "Afternon"
 msgstr "Tarde"
+
+#: ../adapters.py:11
+msgid "All Content"
+msgstr "Todo conteúdo"
 
 #: ../content/track_templates/talksview.pt:18
 msgid "All talks submitted to this track"
@@ -446,6 +450,10 @@ msgstr "Informações de contato"
 msgid "Contact e-mail"
 msgstr "E-mail de contato"
 
+#: ../adapters.py:12
+msgid "Content E-mail"
+msgstr "E-mail do conteúdo"
+
 #: ../behavior/address.py:36
 msgid "Country"
 msgstr "País"
@@ -456,7 +464,7 @@ msgstr "País"
 msgid "Date"
 msgstr "Data"
 
-#: ../content/talk.py:146
+#: ../content/talk.py:147
 #: ../content/track.py:28
 msgid "Description"
 msgstr "Descrição"
@@ -486,7 +494,7 @@ msgstr ""
 msgid "Do you allow your image to be used in                   post-conference videos?"
 msgstr "Você permite que sua imagem seja utilizada nos vídeos liberados após a conferência?"
 
-#: ../content/talk.py:228
+#: ../content/talk.py:229
 msgid "Do you allow your image to be used in post-conference videos?"
 msgstr "Você permite que sua imagem seja utilizada nos vídeos liberados após a conferência?"
 
@@ -650,11 +658,11 @@ msgstr "Inscrição de pessoa física (Individual)"
 msgid "Info"
 msgstr "Informações"
 
-#: ../content/talk.py:176
+#: ../content/talk.py:177
 msgid "Inform a talk title"
 msgstr "Por favor informe o título da palestra"
 
-#: ../content/activity.py:20
+#: ../content/activity.py:21
 msgid "Inform a title for this activity"
 msgstr "Por favor informe o título desta atividade"
 
@@ -700,7 +708,7 @@ msgstr "Saiba mais sobre nossas trilhas"
 
 #: ../content/program_templates/speakers.pt:21
 #: ../content/speaker.py:55
-#: ../content/talk.py:197
+#: ../content/talk.py:198
 msgid "Language"
 msgstr "Idioma"
 
@@ -718,12 +726,12 @@ msgstr "Grande"
 msgid "Legal information"
 msgstr "Informação legal"
 
-#: ../content/talk.py:211
+#: ../content/talk.py:212
 #: ../content/training.py:60
 msgid "Level"
 msgstr "Nível"
 
-#: ../content/talk.py:213
+#: ../content/talk.py:214
 msgid "Level of this talk"
 msgstr "Nível desta palestra"
 
@@ -736,17 +744,17 @@ msgstr "Nível deste treinamento"
 msgid "Level:"
 msgstr "Nível:"
 
-#: ../content/talk.py:245
+#: ../content/talk.py:246
 #: ../content/training.py:84
 msgid "Link to the presentation file"
 msgstr "Link para o arquivo da apresentação"
 
-#: ../content/talk.py:261
+#: ../content/talk.py:262
 #: ../content/training.py:100
 msgid "Link to the presentation file downloads"
 msgstr "Link para o dowload da apresentação"
 
-#: ../content/talk.py:253
+#: ../content/talk.py:254
 #: ../content/training.py:92
 msgid "Link to the presentation video"
 msgstr "Link para o vídeo da apresentação"
@@ -951,7 +959,7 @@ msgstr "Telefone"
 msgid "Platinum"
 msgstr "Platina"
 
-#: ../content/talk.py:165
+#: ../content/talk.py:166
 #: ../content/training.py:23
 msgid "Please fill in the name of the speaker. If no speaker profile was created for this name, click on Add new speaker"
 msgstr "Por favor informe o nome do palestrante. Caso o perfil deste palestrante ainda não exista, clique em Adicionar novo palestrante. Ao terminar, por favor, preencha este campo novamente."
@@ -982,11 +990,11 @@ msgstr "Informe quais serão os participantes"
 msgid "Please inform your fullname"
 msgstr "Informe seu nome completo"
 
-#: ../content/talk.py:147
+#: ../content/talk.py:148
 msgid "Please provide a brief description of this reference"
 msgstr "Por favor descreva esta referência"
 
-#: ../content/talk.py:141
+#: ../content/talk.py:142
 msgid "Please provide a link to the reference"
 msgstr "Informe um link para esta referência"
 
@@ -1025,7 +1033,6 @@ msgid "Plone"
 msgstr ""
 
 #: ../content/program_templates/ranking.pt:20
-#: ../content/program_templates/view.pt:137
 msgid "Points"
 msgstr ""
 
@@ -1045,17 +1052,17 @@ msgstr "CEP"
 msgid "Presentation"
 msgstr "Apresentação"
 
-#: ../content/talk.py:243
+#: ../content/talk.py:244
 #: ../content/training.py:82
 msgid "Presentation file"
 msgstr "Arquivo da apresentação"
 
-#: ../content/talk.py:259
+#: ../content/talk.py:260
 #: ../content/training.py:98
 msgid "Presentation files"
 msgstr "Arquivos da apresentação"
 
-#: ../content/talk.py:251
+#: ../content/talk.py:252
 #: ../content/training.py:90
 msgid "Presentation video"
 msgstr "Vídeo da apresentação"
@@ -1093,20 +1100,20 @@ msgstr "Atividades propostas"
 msgid "Pyramid"
 msgstr ""
 
-#: ../content/talk.py:223
+#: ../content/talk.py:224
 msgid "Reference"
 msgstr "Referência"
 
-#: ../content/talk.py:133
+#: ../content/talk.py:134
 msgid "Reference type"
 msgstr "Tipo de referência"
 
-#: ../content/talk.py:220
+#: ../content/talk.py:221
 msgid "References"
 msgstr "Referências"
 
 #: ../browser/new_talk.py:43
-#: ../content/talk.py:222
+#: ../content/talk.py:223
 msgid "References for this talk"
 msgstr "Referências para esta palestra"
 
@@ -1274,11 +1281,15 @@ msgstr "Pequena"
 msgid "Spanish"
 msgstr "Espanhol"
 
-#: ../content/talk.py:164
+#: ../content/talk.py:165
 #: ../content/training.py:22
 #: ../profiles/default/types/speaker.xml
 msgid "Speaker"
 msgstr "Palestrante"
+
+#: ../adapters.py:22
+msgid "Speaker E-mail"
+msgstr "E-mail do palestrante"
 
 #: ../browser/new_speaker.py:31
 msgid "Speaker Profile"
@@ -1298,7 +1309,7 @@ msgid "Speaker's email"
 msgstr "E-mail do palestrante"
 
 #: ../content/speaker.py:57
-#: ../content/talk.py:199
+#: ../content/talk.py:200
 #: ../content/training.py:48
 msgid "Speaker's language"
 msgstr "Idioma do palestrante"
@@ -1328,6 +1339,10 @@ msgstr "Logo do patrocinador"
 msgid "Sponsor site."
 msgstr "Site do patrocinador"
 
+#: ../browser/templates/sponsors.pt:4
+msgid "Sponsors"
+msgstr "Patrocinadores"
+
 #: ../content/sponsor.py:22
 msgid "Sponsorship Level"
 msgstr "Níveis de patrocínio"
@@ -1355,7 +1370,7 @@ msgid "Stats"
 msgstr "Estatísticas"
 
 #: ../content/program_templates/ranking.pt:21
-#: ../content/program_templates/view.pt:166
+#: ../content/program_templates/view.pt:164
 msgid "Status"
 msgstr "Situação"
 
@@ -1391,7 +1406,7 @@ msgstr "Envie sua proposta de palestra!"
 msgid "Submit your training proposal!"
 msgstr "Envie sua proposta de treinamento!"
 
-#: ../content/program_templates/view.pt:160
+#: ../content/program_templates/view.pt:158
 msgid "Submited talks"
 msgstr "Palestras submetidas"
 
@@ -1428,16 +1443,16 @@ msgstr "Tamanho da camiseta"
 msgid "Talk"
 msgstr "Palestra"
 
-#: ../content/talk.py:175
+#: ../content/talk.py:176
 msgid "Talk Title"
 msgstr "Título da palestra"
 
-#: ../content/talk.py:182
+#: ../content/talk.py:183
 #: ../content/talk_templates/view.pt:37
 msgid "Talk details"
 msgstr "Detalhes da palestra"
 
-#: ../content/talk.py:236
+#: ../content/talk.py:237
 msgid "Talk materials"
 msgstr "Materiais"
 
@@ -1463,7 +1478,7 @@ msgstr "A submissão de palestras está encerrada."
 msgid "Talk submission is open."
 msgstr "A submissão de palestras está aberta"
 
-#: ../content/talk.py:190
+#: ../content/talk.py:191
 msgid "Talk type"
 msgstr "Tipo de palestra"
 
@@ -1581,11 +1596,11 @@ msgstr "Twitter"
 msgid "Type"
 msgstr "Tipo"
 
-#: ../content/talk.py:134
+#: ../content/talk.py:135
 msgid "Type of this reference"
 msgstr "O tipo desta referência"
 
-#: ../content/talk.py:140
+#: ../content/talk.py:141
 msgid "URL"
 msgstr "URL"
 
@@ -1637,7 +1652,7 @@ msgstr "Qual meio de pagamento foi utilizado?"
 msgid "Which sponsorship package this sponsor acquired."
 msgstr "Pacote de patrocínio escolhido"
 
-#: ../content/talk.py:206
+#: ../content/talk.py:207
 msgid "Which track this talk is"
 msgstr "Trilha a qual esta palestra pertence"
 
@@ -1645,7 +1660,7 @@ msgstr "Trilha a qual esta palestra pertence"
 msgid "Which track this training is"
 msgstr "Trilha a qual este treinamento pertence"
 
-#: ../content/talk.py:192
+#: ../content/talk.py:193
 msgid "Which type of talk best describes this one"
 msgstr "Tipo que melhor se enquadra a esta palestra"
 
@@ -1707,7 +1722,7 @@ msgstr "Código"
 
 #: ../content/attendee.py:23
 #: ../content/registration.py:21
-#: ../content/talk.py:158
+#: ../content/talk.py:159
 msgid "uid"
 msgstr "uid"
 
