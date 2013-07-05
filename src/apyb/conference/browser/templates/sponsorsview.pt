@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<body>
+
+<div metal:fill-slot="content-core"
+     tal:define="spl view/sponsors_by_level;">
+     <tal:level tal:repeat="level spl">
+        <h2 tal:content="level/title">Platinum</h2>
+        <tal:sponsors tal:repeat="sponsor level/sponsors">
+        <div class="tileItem visualIEFloatFix">
+            <a href="#"
+                  tal:condition="sponsor/image|nothing"
+                  tal:attributes="href sponsor/url">
+                  <img src="" alt=""
+                           tal:replace="structure sponsor/image" />
+            </a>
+
+            <h3 class="tileHeadline" metal:define-macro="listitem">
+                <a href="#"
+                   class="summary url"
+                   tal:attributes="href sponsor/url"
+                   tal:content="sponsor/title">
+                    Item Title
+                </a>
+            </h3>
+
+            <p class="tileBody" tal:condition="sponsor/description">
+                <span class="description" 
+                      tal:content="sponsor/description">
+                    description
+                </span>
+            </p>
+
+            <div class="visualClear"><!-- --></div>
+        </div>
+        </tal:sponsors>
+    </tal:level>
+</div>
+</body>
+</html>
