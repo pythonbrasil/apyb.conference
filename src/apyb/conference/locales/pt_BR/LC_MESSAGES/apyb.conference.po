@@ -1298,7 +1298,7 @@ msgstr "Perfil de palestrante"
 #: ../content/talk_templates/view.pt:59
 #: ../content/training_templates/view.pt:41
 msgid "Speaker details"
-msgstr "Imnformações sobre o palestrante"
+msgstr "Informações sobre o palestrante"
 
 #: ../browser/register.py:354
 msgid "Speaker registration"
