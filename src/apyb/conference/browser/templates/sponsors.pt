@@ -6,19 +6,20 @@
         <dl tal:define="spl viewlet/sponsors_by_level;">
             <tal:level tal:repeat="level spl">
             <dt tal:content="level/title">Platinum</dt>
+            <dd>
             <tal:sponsors tal:repeat="sponsor level/sponsors">
-            <dd tal:attributes="id sponsor/id">
                 <a 
                     tal:attributes="title sponsor/title;
-                                    href sponsor/url;"
+                                    href sponsor/url;
+                                    id sponsor/id;"
                     href="http://plone.org" 
                     target="_blank">
                     <img tal:replace="structure sponsor/image"
                          alt="Plone"
                          src="/plone_png">
                 </a>
-            </dd>
             </tal:sponsors>
+            </dd>
             </tal:level>
         </dl>
     </div>
