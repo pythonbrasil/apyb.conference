@@ -1,7 +1,20 @@
 /*Registration*/
 
-.price_container {text-align:center;
-                  float:right;
-                  font-weight:bold;
-                  padding:20px;
-                  color:#FF0000;}
+.price_container {
+	text-align: center;
+	float: right;
+	font-weight: bold;
+	padding: 20px;
+	color: #000000;
+	border: 1px solid black;
+	position: fixed;
+	top: 200px;
+	right: 10px;
+	background-color: white;
+}
+
+.price_container #price{
+	font-weight: bold;
+    font-size: 1.5em;
+	color: #FF0000;
+}
