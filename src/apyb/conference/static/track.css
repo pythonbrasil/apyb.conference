@@ -156,3 +156,7 @@ a.talk_details_link {
 background: url(lupa-detalhes.png) no-repeat right center !important;
 padding-right: 20px !important;
 }
+
+#talks_ordering {
+	width: 100%;
+}
