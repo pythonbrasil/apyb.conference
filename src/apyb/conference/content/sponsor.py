@@ -50,6 +50,15 @@ class ISponsor(form.Schema):
     )
 
 
+@indexer(ISponsor)
+def level_as_subject(obj):
+    if obj.level is None:
+        return []
+    return [obj.level, ]
+
+grok.global_adapter(level_as_subject, name="Subject")
+
+
 class Sponsor(dexterity.Item):
     """ A Sponsor
     """
