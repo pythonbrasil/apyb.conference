@@ -1690,7 +1690,7 @@ msgstr "Sim! Reserve 2 lugares (R$700,00)"
 
 #: ../vocabulary.py:229
 msgid "Yes! Book me 3 places (R$800,00)"
-msgstr "Sim! Reserve 3 lugares (R$700,00)"
+msgstr "Sim! Reserve 3 lugares (R$800,00)"
 
 #: ../vocabulary.py:227
 msgid "Yes! Book me a place (R$350,00)"
