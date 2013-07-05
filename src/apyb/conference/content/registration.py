@@ -234,7 +234,8 @@ class View(grok.View):
         view = self.price_view
         attendees = self.attendees()
         qty = len(attendees)
-        caipirinha = '|'.join([str(c.get('caipirinha', '')) for c in attendees])
+        caipirinha = '|'.join([str(c.get('caipirinha', ''))
+                              for c in attendees])
         wall = '|'.join([str(c.get('wall', '')) for c in attendees])
         registration_type = self.registration_type
         discount_code = self.context.discount_code

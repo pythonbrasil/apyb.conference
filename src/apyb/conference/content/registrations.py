@@ -78,21 +78,23 @@ class View(grok.View):
 
     def registration_options(self):
         base = self.context.absolute_url()
-        options = [{'type': 'apyb',
-                    'href': '%s/@@registration-apyb' % base,
-                    'text': _(u'Register as an APyB Member'), },
-                   {'type': 'student',
-                    'href': '%s/@@registration-student' % base,
-                    'text': _(u'Register as a student'), },
-                   {'type': 'individual',
-                    'href': '%s/@@registration-individual' % base,
-                    'text':_(u'Register as an Individual'), },
-                   {'type': 'group',
-                    'href': '%s/@@registration-group' % base,
-                    'text':_(u'Register members of a group or organization (Group registration)'), },
-                   {'type': 'government',
-                    'href': '%s/@@registration-gov' % base,
-                    'text':_(u'Register member(s) of Brazilian Government'), }, ]
+        options = [
+            {'type': 'apyb',
+             'href': '%s/@@registration-apyb' % base,
+             'text': _(u'Register as an APyB Member'), },
+            {'type': 'student',
+             'href': '%s/@@registration-student' % base,
+             'text': _(u'Register as a student'), },
+            {'type': 'individual',
+             'href': '%s/@@registration-individual' % base,
+             'text': _(u'Register as an Individual'), },
+            {'type': 'group',
+             'href': '%s/@@registration-group' % base,
+             'text': _(u'Register members of a group or organization '
+                       u'(Group registration)'), },
+            {'type': 'government',
+             'href': '%s/@@registration-gov' % base,
+             'text': _(u'Register member(s) of Brazilian Government'), }, ]
         return options
 
     @property
@@ -137,11 +139,14 @@ class View(grok.View):
             att['url'] = brain.getURL()
             att['date'] = DateTime(brain.created).strftime('%Y-%m-%d %H:%M')
             att['fullname'] = brain.Title
-            att['type'] = brain.Subject and voc['types'].getTerm(brain.Subject[0]).title or ''
+            att_type = voc['types'].getTerm(
+                brain.Subject[0]).title if brain.Subject else ''
+            att['type'] = att_type
             att['email'] = brain.email
             att['badge_name'] = brain.badge_name or att['fullname']
             att['gender'] = voc['gender'].getTerm(brain.gender).title
-            att['t_shirt_size'] = voc['tshirt'].getTerm(brain.t_shirt_size).title
+            att['t_shirt_size'] = voc['tshirt'].getTerm(
+                brain.t_shirt_size).title
             att['state'] = REVIEW_STATE.get(brain.review_state,
                                             brain.review_state)
             atts.append(att)
@@ -150,7 +155,7 @@ class View(grok.View):
     def registrations(self):
         ''' List registrations'''
         ct = self._ct
-        results = ct.searchResults(portal_type='apyb.conference.registration',
+        results = ct.searchResults(portal_type='registration',
                                    sort_on='created',
                                    sort_order='reverse',
                                    path=self._path)
@@ -173,7 +178,7 @@ class View(grok.View):
     def attendees(self):
         ''' List attenddees'''
         ct = self._ct
-        results = ct.searchResults(portal_type='apyb.conference.attendee',
+        results = ct.searchResults(portal_type='attendee',
                                    sort_on='created',
                                    sort_order='reverse',
                                    path=self._path)
@@ -250,7 +255,8 @@ class AttendeesCSVView(View):
             att['email'] = brain.email
             att['badge_name'] = brain.badge_name or att['fullname']
             att['gender'] = voc['gender'].getTerm(brain.gender).title
-            att['t_shirt_size'] = voc['tshirt'].getTerm(brain.t_shirt_size).title
+            att['t_shirt_size'] = voc['tshirt'].getTerm(
+                brain.t_shirt_size).title
             att['rev_state'] = REVIEW_STATE.get(brain.review_state,
                                                 brain.review_state)
             att['organization'] = brain.organization
@@ -266,9 +272,11 @@ class AttendeesCSVView(View):
         self.request.response.setHeader('Content-Type',
                                         'text/plain;charset=utf-8')
         data = []
-        data.append('initial;cod;state;type;raw_type;fullname;badge_name;gender;t_shirt_size;email;organization;lat;lgn;city;state;country')
+        data.append('initial;cod;state;type;raw_type;fullname;'
+                    'badge_name;gender;t_shirt_size;email;organization;'
+                    'lat;lgn;city;state;country')
         ct = self._ct
-        results = ct.searchResults(portal_type='apyb.conference.attendee',
+        results = ct.searchResults(portal_type='attendee',
                                    sort_on='created',
                                    sort_order='reverse',
                                    path=self._path)
@@ -319,7 +327,7 @@ class RegDetailedView(View):
     def registrations(self, state='confirmed'):
         ''' List registrations'''
         ct = self._ct
-        results = ct.searchResults(portal_type='apyb.conference.registration',
+        results = ct.searchResults(portal_type='registration',
                                    sort_on='created',
                                    sort_order='reverse',
                                    review_state=state,
@@ -357,9 +365,9 @@ class ManagePagSeguroView(grok.View):
         context = aq_inner(self.context)
         self.payment = 'pagseguro'
         self._path = '/'.join(context.getPhysicalPath())
-        self.state = getMultiAdapter((context, self.request), name=u'plone_context_state')
-        self.tools = getMultiAdapter((context, self.request), name=u'plone_tools')
-        self.portal = getMultiAdapter((context, self.request), name=u'plone_portal_state')
+        self.state = self._multi_adapter(u'plone_context_state')
+        self.tools = self._multi_adapter(u'plone_tools')
+        self.portal = self._multi_adapter(u'plone_portal_state')
         self._ct = self.tools.catalog()
         self._wt = self.tools.workflow()
         self.mt = self.tools.membership()
@@ -368,6 +376,9 @@ class ManagePagSeguroView(grok.View):
         if pfile:
             items = self.process_file(pfile)
             self.update_registrations(items)
+
+    def _multi_adapter(self, name):
+        return getMultiAdapter((self.context, self.request), name=name)
 
     def fix_value(self, value):
         ''' Convert string from PagSeguro to an int representing cents '''
@@ -416,9 +427,9 @@ class ManagePayPalView(grok.View):
         context = aq_inner(self.context)
         self.payment = 'paypal'
         self._path = '/'.join(context.getPhysicalPath())
-        self.state = getMultiAdapter((context, self.request), name=u'plone_context_state')
-        self.tools = getMultiAdapter((context, self.request), name=u'plone_tools')
-        self.portal = getMultiAdapter((context, self.request), name=u'plone_portal_state')
+        self.state = self._multi_adapter(u'plone_context_state')
+        self.tools = self._multi_adapter(u'plone_tools')
+        self.portal = self._multi_adapter(u'plone_portal_state')
         self._ct = self.tools.catalog()
         self._wt = self.tools.workflow()
         self.mt = self.tools.membership()
@@ -427,6 +438,9 @@ class ManagePayPalView(grok.View):
         if pfile:
             items = self.process_file(pfile)
             self.update_registrations(items)
+
+    def _multi_adapter(self, name):
+        return getMultiAdapter((self.context, self.request), name=name)
 
     def fix_value(self, value):
         ''' Convert string from PayPal to an int representing cents '''
@@ -440,7 +454,16 @@ class ManagePayPalView(grok.View):
         lines = data.replace('"', '')
         lines = lines.split('\n')
         lines = [l.split('\t') for l in lines]
-        header = ['Data', 'Hora', 'TZ', 'Nome', 'Tipo', 'Status', 'Moeda', 'Bruto', 'Taxa', 'Líquido', 'From', 'To', 'Id_Transacao', 'Status_equivalente', 'Status_endereco', 'Título_item', 'ID_item', 'Valor_envio_manuseio', 'Valor_seguro', 'Imposto_vendas', 'Opcao_1_nome', 'Opcao_1_valor', 'Opcao_2_nome', 'Opcao_2_valor', 'Site_leilao', 'ID_comprador', 'URL_do_item', 'Data_termino', 'ID_escritura', 'ID_fatura', 'ID_txn_ref', 'Num_fatura', 'Num_personalizado', 'ID_recibo', 'End_lin1', 'End_lin2', 'Cidade', 'UF', 'CEP', 'Pais', 'Tel', ]
+        header = ['Data', 'Hora', 'TZ', 'Nome', 'Tipo', 'Status', 'Moeda',
+                  'Bruto', 'Taxa', 'Líquido', 'From', 'To', 'Id_Transacao',
+                  'Status_equivalente', 'Status_endereco', 'Título_item',
+                  'ID_item', 'Valor_envio_manuseio', 'Valor_seguro',
+                  'Imposto_vendas', 'Opcao_1_nome', 'Opcao_1_valor',
+                  'Opcao_2_nome', 'Opcao_2_valor', 'Site_leilao',
+                  'ID_comprador', 'URL_do_item', 'Data_termino',
+                  'ID_escritura', 'ID_fatura', 'ID_txn_ref', 'Num_fatura',
+                  'Num_personalizado', 'ID_recibo', 'End_lin1',
+                  'End_lin2', 'Cidade', 'UF', 'CEP', 'Pais', 'Tel', ]
         items = [dict(zip(header, l)) for l in lines[1:] if len(l) > 1]
         return items
 
