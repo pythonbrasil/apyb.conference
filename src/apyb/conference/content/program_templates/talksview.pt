@@ -6,13 +6,6 @@
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="apyb.conference">
 <body>
-    <head>
-        <metal:styleslot fill-slot="style_slot">
-            <link rel="stylesheet" type="text/css" media="screen" 
-                  tal:attributes="href string:${view/portal/portal_url}/portal_css/Sunburst%20Theme/++resource++apyb.conference/talk.css"
-                  href="http://localhost:8045/pythonbrasil/portal_css/Sunburst%20Theme/base.css">
-        </metal:styleslot>
-    </head>
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
     <div class="clear"> </div>
