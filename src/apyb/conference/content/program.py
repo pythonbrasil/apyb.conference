@@ -282,7 +282,8 @@ class Speakers(grok.View):
         self._ct = self.tools.catalog()
         self._wt = self.tools.workflow()
         self.member = self.portal.member()
-        factory = queryUtility(IVocabularyFactory, 'languages')
+        factory = queryUtility(IVocabularyFactory,
+                               'apyb.conference.languages')
         self.voc = factory(self.context)
         # Remove Portlets
         self.request['disable_plone.leftcolumn'] = 1

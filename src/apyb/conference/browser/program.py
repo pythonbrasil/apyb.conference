@@ -196,9 +196,13 @@ class View(grok.View):
     @memoize
     def program_stats(self):
         stats = {}
-        stats['speakers'] = len([uid
-                                 for uid, data in self.talks_speaker().items()
-                                 if data['confirmed']])
+        talks_speakers = self.talks_speaker().items()
+        stats['speakers'] = len([uid for uid, data in talks_speakers
+                                if data['confirmed']])
         stats['talks'] = len(self.talks(review_state='confirmed'))
+        stats['trainings'] = len(self.trainings(review_state='confirmed'))
+        stats['all_speakers'] = len([uid for uid, data in talks_speakers])
+        stats['all_talks'] = len(self.talks())
+        stats['all_trainings'] = len(self.trainings())
         stats['tracks'] = len(self.tracks())
         return stats

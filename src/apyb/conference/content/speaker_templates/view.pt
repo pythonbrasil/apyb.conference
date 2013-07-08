@@ -38,6 +38,20 @@
           </tal:talks>
       </div>
   </div>
+  <div class="my-talks" tal:condition="view/my_talks">
+      <h2 i18n:translate="">All Submited Talks by this speaker</h2>
+      <div tal:define="talks view/my_talks" class="talks_listing">
+          <tal:talks tal:repeat="talk talks">
+          <div tal:attributes="id talk/id" class="talk">
+              <span class="track_title" tal:define='track python:view.track_info(talk.track);'>
+                  <a href="" tal:attributes="href track/url" tal:content="track/title">Plone Core</a>
+              </span><br />
+              <span class="talk_title"><a href="" tal:attributes="href talk/getURL" tal:content="talk/Title">Plone is cool</a></span><br />
+              <span class="discreet" tal:content="python:view.speaker_name(talk.speakers)">Joe Doe</span><br />
+          </div>
+          </tal:talks>
+      </div>
+  </div>
   </metal:content-core>
 </metal:main>
 
