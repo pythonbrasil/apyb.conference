@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-07-05 03:07+0000\n"
+"POT-Creation-Date: 2013-07-08 04:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -134,7 +134,7 @@ msgid "Activity Title"
 msgstr ""
 
 #: ../content/activity.py:27
-#: ../content/activity_templates/view.pt:33
+#: ../content/activity_templates/view.pt:26
 msgid "Activity details"
 msgstr ""
 
@@ -172,6 +172,10 @@ msgstr ""
 
 #: ../adapters.py:11
 msgid "All Content"
+msgstr ""
+
+#: ../content/speaker_templates/view.pt:42
+msgid "All Submited Talks by this speaker"
 msgstr ""
 
 #: ../content/track_templates/talksview.pt:18
@@ -406,7 +410,7 @@ msgstr ""
 msgid "Conference Program"
 msgstr ""
 
-#: ../content/program_templates/talksview.pt:19
+#: ../content/program_templates/talksview.pt:12
 msgid "Conference talks"
 msgstr ""
 
@@ -712,12 +716,12 @@ msgid "Know more about our tracks"
 msgstr ""
 
 #: ../content/program_templates/speakers.pt:21
-#: ../content/speaker.py:55
+#: ../content/speaker.py:61
 #: ../content/talk.py:198
 msgid "Language"
 msgstr ""
 
-#: ../content/talk_templates/view.pt:39
+#: ../content/talk_templates/view.pt:32
 #: ../content/training_templates/view.pt:24
 msgid "Language:"
 msgstr ""
@@ -744,7 +748,7 @@ msgstr ""
 msgid "Level of this training"
 msgstr ""
 
-#: ../content/talk_templates/view.pt:45
+#: ../content/talk_templates/view.pt:38
 #: ../content/training_templates/view.pt:30
 msgid "Level:"
 msgstr ""
@@ -1041,7 +1045,7 @@ msgstr ""
 msgid "Points"
 msgstr ""
 
-#: ../content/speaker.py:62
+#: ../content/speaker.py:68
 msgid "Portrait"
 msgstr ""
 
@@ -1127,15 +1131,15 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: ../content/registrations.py:86
+#: ../content/registrations.py:87
 msgid "Register as a student"
 msgstr ""
 
-#: ../content/registrations.py:83
+#: ../content/registrations.py:84
 msgid "Register as an APyB Member"
 msgstr ""
 
-#: ../content/registrations.py:89
+#: ../content/registrations.py:90
 msgid "Register as an Individual"
 msgstr ""
 
@@ -1143,11 +1147,11 @@ msgstr ""
 msgid "Register for trainings"
 msgstr ""
 
-#: ../content/registrations.py:95
+#: ../content/registrations.py:97
 msgid "Register member(s) of Brazilian Government"
 msgstr ""
 
-#: ../content/registrations.py:92
+#: ../content/registrations.py:93
 msgid "Register members of a group or organization (Group registration)"
 msgstr ""
 
@@ -1159,12 +1163,12 @@ msgstr ""
 msgid "Register!"
 msgstr ""
 
-#: ../content/speaker.py:69
+#: ../content/speaker.py:75
 msgid "Registering Information"
 msgstr ""
 
 #: ../content/program_templates/speakers.pt:23
-#: ../content/speaker.py:75
+#: ../content/speaker.py:81
 #: ../profiles/default/types/registration.xml
 msgid "Registration"
 msgstr ""
@@ -1273,7 +1277,7 @@ msgid "Silver"
 msgstr ""
 
 #: ../behavior/contactinfo.py:36
-#: ../content/speaker.py:49
+#: ../content/speaker.py:55
 #: ../content/sponsor.py:35
 msgid "Site"
 msgstr ""
@@ -1296,11 +1300,11 @@ msgstr ""
 msgid "Speaker E-mail"
 msgstr ""
 
-#: ../browser/new_speaker.py:31
+#: ../browser/new_speaker.py:32
 msgid "Speaker Profile"
 msgstr ""
 
-#: ../content/talk_templates/view.pt:59
+#: ../content/talk_templates/view.pt:52
 #: ../content/training_templates/view.pt:41
 msgid "Speaker details"
 msgstr ""
@@ -1313,13 +1317,13 @@ msgstr ""
 msgid "Speaker's email"
 msgstr ""
 
-#: ../content/speaker.py:57
+#: ../content/speaker.py:63
 #: ../content/talk.py:200
 #: ../content/training.py:48
 msgid "Speaker's language"
 msgstr ""
 
-#: ../content/speaker.py:51
+#: ../content/speaker.py:57
 msgid "Speaker's site"
 msgstr ""
 
@@ -1411,6 +1415,12 @@ msgstr ""
 msgid "Submit your training proposal!"
 msgstr ""
 
+msgid "Submited Talks"
+msgstr ""
+
+msgid "Submited Trainings"
+msgstr ""
+
 #: ../content/program_templates/view.pt:158
 msgid "Submited talks"
 msgstr ""
@@ -1419,8 +1429,8 @@ msgstr ""
 msgid "Submitted"
 msgstr ""
 
-#: ../content/activity_templates/view.pt:35
-#: ../content/talk_templates/view.pt:51
+#: ../content/activity_templates/view.pt:28
+#: ../content/talk_templates/view.pt:44
 #: ../content/training_templates/view.pt:36
 msgid "Summary:"
 msgstr ""
@@ -1443,7 +1453,7 @@ msgid "T-Shirt Size"
 msgstr ""
 
 #: ../content/program_templates/ranking.pt:19
-#: ../content/program_templates/talksview.pt:25
+#: ../content/program_templates/talksview.pt:18
 #: ../content/track_templates/talksview.pt:24
 msgid "Talk"
 msgstr ""
@@ -1453,7 +1463,7 @@ msgid "Talk Title"
 msgstr ""
 
 #: ../content/talk.py:183
-#: ../content/talk_templates/view.pt:37
+#: ../content/talk_templates/view.pt:30
 msgid "Talk details"
 msgstr ""
 
@@ -1541,7 +1551,7 @@ msgid "Total price"
 msgstr ""
 
 #: ../content/program_templates/ranking.pt:18
-#: ../content/program_templates/talksview.pt:24
+#: ../content/program_templates/talksview.pt:17
 #: ../content/program_templates/view.pt:135
 msgid "Track"
 msgstr ""
@@ -1609,7 +1619,7 @@ msgstr ""
 msgid "URL"
 msgstr ""
 
-#: ../content/speaker.py:64
+#: ../content/speaker.py:70
 msgid "Upload an image to be used as speakers' portrait."
 msgstr ""
 

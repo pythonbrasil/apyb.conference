@@ -129,7 +129,7 @@ msgid "Activity Title"
 msgstr "Título da atividade"
 
 #: ../content/activity.py:27
-#: ../content/activity_templates/view.pt:33
+#: ../content/activity_templates/view.pt:26
 msgid "Activity details"
 msgstr "Detalhes"
 
@@ -168,6 +168,10 @@ msgstr "Tarde"
 #: ../adapters.py:11
 msgid "All Content"
 msgstr "Todo conteúdo"
+
+#: ../content/speaker_templates/view.pt:42
+msgid "All Submited Talks by this speaker"
+msgstr "Todas as palestras submetidas por este palestrante"
 
 #: ../content/track_templates/talksview.pt:18
 msgid "All talks submitted to this track"
@@ -401,7 +405,7 @@ msgstr "Conf"
 msgid "Conference Program"
 msgstr "Grade da conferência"
 
-#: ../content/program_templates/talksview.pt:19
+#: ../content/program_templates/talksview.pt:12
 msgid "Conference talks"
 msgstr "Palestras da conferência"
 
@@ -707,12 +711,12 @@ msgid "Know more about our tracks"
 msgstr "Saiba mais sobre nossas trilhas"
 
 #: ../content/program_templates/speakers.pt:21
-#: ../content/speaker.py:55
+#: ../content/speaker.py:61
 #: ../content/talk.py:198
 msgid "Language"
 msgstr "Idioma"
 
-#: ../content/talk_templates/view.pt:39
+#: ../content/talk_templates/view.pt:32
 #: ../content/training_templates/view.pt:24
 msgid "Language:"
 msgstr "Idioma:"
@@ -739,7 +743,7 @@ msgstr "Nível desta palestra"
 msgid "Level of this training"
 msgstr "Nível deste treinamento"
 
-#: ../content/talk_templates/view.pt:45
+#: ../content/talk_templates/view.pt:38
 #: ../content/training_templates/view.pt:30
 msgid "Level:"
 msgstr "Nível:"
@@ -1036,7 +1040,7 @@ msgstr ""
 msgid "Points"
 msgstr ""
 
-#: ../content/speaker.py:62
+#: ../content/speaker.py:68
 msgid "Portrait"
 msgstr "Foto"
 
@@ -1122,15 +1126,15 @@ msgstr "Referências para esta palestra"
 msgid "Register"
 msgstr "Inscrição"
 
-#: ../content/registrations.py:86
+#: ../content/registrations.py:87
 msgid "Register as a student"
 msgstr "Inscrever-se como estudante"
 
-#: ../content/registrations.py:83
+#: ../content/registrations.py:84
 msgid "Register as an APyB Member"
 msgstr "Inscrever-se como membro da APyB"
 
-#: ../content/registrations.py:89
+#: ../content/registrations.py:90
 msgid "Register as an Individual"
 msgstr "Inscrever-se como pessoa física (Indivíduo)"
 
@@ -1138,11 +1142,11 @@ msgstr "Inscrever-se como pessoa física (Indivíduo)"
 msgid "Register for trainings"
 msgstr "Inscrições para treinamentos"
 
-#: ../content/registrations.py:95
+#: ../content/registrations.py:97
 msgid "Register member(s) of Brazilian Government"
 msgstr "Inscrever membro(s) do Governo Brasileiro"
 
-#: ../content/registrations.py:92
+#: ../content/registrations.py:93
 msgid "Register members of a group or organization (Group registration)"
 msgstr "Inscrever membros de um grupo ou entidade (Inscrição de grupo)"
 
@@ -1154,12 +1158,12 @@ msgstr "Inscrever-se na conferência"
 msgid "Register!"
 msgstr "Inscreva-se!"
 
-#: ../content/speaker.py:69
+#: ../content/speaker.py:75
 msgid "Registering Information"
 msgstr "Informações de inscrições"
 
 #: ../content/program_templates/speakers.pt:23
-#: ../content/speaker.py:75
+#: ../content/speaker.py:81
 #: ../profiles/default/types/registration.xml
 msgid "Registration"
 msgstr "Inscrição"
@@ -1268,7 +1272,7 @@ msgid "Silver"
 msgstr "Prata"
 
 #: ../behavior/contactinfo.py:36
-#: ../content/speaker.py:49
+#: ../content/speaker.py:55
 #: ../content/sponsor.py:35
 msgid "Site"
 msgstr "Site"
@@ -1291,11 +1295,11 @@ msgstr "Palestrante"
 msgid "Speaker E-mail"
 msgstr "E-mail do palestrante"
 
-#: ../browser/new_speaker.py:31
+#: ../browser/new_speaker.py:32
 msgid "Speaker Profile"
 msgstr "Perfil de palestrante"
 
-#: ../content/talk_templates/view.pt:59
+#: ../content/talk_templates/view.pt:52
 #: ../content/training_templates/view.pt:41
 msgid "Speaker details"
 msgstr "Informações sobre o palestrante"
@@ -1308,13 +1312,13 @@ msgstr "Inscrição de palestrante"
 msgid "Speaker's email"
 msgstr "E-mail do palestrante"
 
-#: ../content/speaker.py:57
+#: ../content/speaker.py:63
 #: ../content/talk.py:200
 #: ../content/training.py:48
 msgid "Speaker's language"
 msgstr "Idioma do palestrante"
 
-#: ../content/speaker.py:51
+#: ../content/speaker.py:57
 msgid "Speaker's site"
 msgstr "Site do palestrante"
 
@@ -1406,6 +1410,12 @@ msgstr "Envie sua proposta de palestra!"
 msgid "Submit your training proposal!"
 msgstr "Envie sua proposta de treinamento!"
 
+msgid "Submited Talks"
+msgstr "Palestras"
+
+msgid "Submited Trainings"
+msgstr "Treinamentos"
+
 #: ../content/program_templates/view.pt:158
 msgid "Submited talks"
 msgstr "Palestras submetidas"
@@ -1414,8 +1424,8 @@ msgstr "Palestras submetidas"
 msgid "Submitted"
 msgstr "Submissões"
 
-#: ../content/activity_templates/view.pt:35
-#: ../content/talk_templates/view.pt:51
+#: ../content/activity_templates/view.pt:28
+#: ../content/talk_templates/view.pt:44
 #: ../content/training_templates/view.pt:36
 msgid "Summary:"
 msgstr "Sumário:"
@@ -1438,7 +1448,7 @@ msgid "T-Shirt Size"
 msgstr "Tamanho da camiseta"
 
 #: ../content/program_templates/ranking.pt:19
-#: ../content/program_templates/talksview.pt:25
+#: ../content/program_templates/talksview.pt:18
 #: ../content/track_templates/talksview.pt:24
 msgid "Talk"
 msgstr "Palestra"
@@ -1448,7 +1458,7 @@ msgid "Talk Title"
 msgstr "Título da palestra"
 
 #: ../content/talk.py:183
-#: ../content/talk_templates/view.pt:37
+#: ../content/talk_templates/view.pt:30
 msgid "Talk details"
 msgstr "Detalhes da palestra"
 
@@ -1536,7 +1546,7 @@ msgid "Total price"
 msgstr "Preço total"
 
 #: ../content/program_templates/ranking.pt:18
-#: ../content/program_templates/talksview.pt:24
+#: ../content/program_templates/talksview.pt:17
 #: ../content/program_templates/view.pt:135
 msgid "Track"
 msgstr "Trilha"
@@ -1604,7 +1614,7 @@ msgstr "O tipo desta referência"
 msgid "URL"
 msgstr "URL"
 
-#: ../content/speaker.py:64
+#: ../content/speaker.py:70
 msgid "Upload an image to be used as speakers' portrait."
 msgstr "Envie uma imagem para ser utilizada como foto do palestrante"
 
