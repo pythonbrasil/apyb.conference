@@ -51,9 +51,9 @@ class LanguagesVocabulary(object):
 
     def __call__(self, context):
         terms = []
-        levels = [('english', _(u'English')),
-                  ('portuguese', _(u'Portuguese')),
-                  ('spanish', _(u'Spanish'))]
+        levels = [('en', _(u'English')),
+                  ('pt-br', _(u'Portuguese')),
+                  ('es', _(u'Spanish'))]
         for code, text in levels:
             term = (code, code, text)
             terms.append(SimpleVocabulary.createTerm(*term))

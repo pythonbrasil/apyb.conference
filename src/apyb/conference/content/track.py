@@ -160,6 +160,8 @@ class View(grok.View):
     def talks(self, **kw):
         ''' Return a list of talks in here '''
         kw['portal_type'] = 'talk'
+        if self.context.getId() == 'training':
+            kw['portal_type'] = 'training'
         kw['path'] = self._path
         if not 'sort_on' in kw:
             kw['sort_on'] = 'sortable_title'
