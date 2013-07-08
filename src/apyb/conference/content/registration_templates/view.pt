@@ -71,13 +71,13 @@
             <br/><br/>
             Por favor providencie a emiss&atilde;o do empenho para:
             <br/><br/>
-            <strong>Diaspar Servi&ccedil;os de Informa&ccedil;&otilde;es LTDA</strong><br/>
-            <strong>10.782.042/0001-85</strong><br/>
+            <strong>Associa&ccedil;&atilde;o Python Brasil</strong><br/>
+            <strong>09.344.485/0001-05</strong><br/>
             <address>
-                Rua dos Pinheiros, 836 -  Cj 6<br/>
-                Pinheiros - S&atilde;o Paulo - SP<br/>
-                05422-001<br/>
-                financeiro@diaspar.com.br<br/>
+                Rua Professora Andrea Viero, 215
+                Marechal Floriano - Caxias do Sul - RS
+                95013-060
+                cobranca@python.org.br
             </address>
             <br />
         </div>        
@@ -86,13 +86,13 @@
                   action="https://pagseguro.uol.com.br/checkout/checkout.jhtml"
                   method="post" target="_new">
 
-                <input type="hidden" name="email_cobranca" value="pagseguro@diaspar.com.br" />
+                <input type="hidden" name="email_cobranca" value="cobranca@python.org.br" />
                 <input type="hidden" name="encoding" value="UTF-8" />
                 <input type="hidden" name="tipo" value="CP" />
                 <input type="hidden" name="moeda" value="BRL" />
                 <input type="hidden" name="item_id_1" value="1" />
                 <input type="hidden" name="item_quant_1" tal:attributes="value python:len(view.attendees());" value="1" />
-                <input type="hidden" name="item_descr_1" value="Inscrição PythonBrasil[7]" />
+                <input type="hidden" name="item_descr_1" value="Ploneconf 2013 & PythonBrasil[9] Registration" />
 
                 <input type="hidden" 
                       tal:attributes="value view/base_price"
@@ -122,12 +122,12 @@
         <div id="paypal" tal:condition="view/show_paypal"> 
             <form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
                 <input type="hidden" name="cmd" value="_xclick">
-                <input type="hidden" name="business" value="financeiro@diaspar.com.br">
+                <input type="hidden" name="business" value="cobranca@python.org.br">
                 <input type="hidden" name="currency_code" value="BRL" />
                 <input type="hidden" name="amount" value="1"  tal:attributes="value python:'%.2f' % ((view.base_price)/100.0)">
                 <input type="hidden" name="quantity" value="1"  tal:attributes="value python:len(view.attendees());" />
-                <input type="hidden" name="item_name" value="Inscrição PythonBrasil[7]" />
-                <input type="hidden" name="item_number" value="1"  value="ewre" tal:attributes="value context/id" />
+                <input type="hidden" name="item_name" value="Ploneconf 2013 & PythonBrasil[9] Registration" />
+                <input type="hidden" name="item_number" value="1" tal:attributes="value context/id" />
                 <input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - A maneira mais fácil e segura de efetuar pagamentos online!">
                 <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
             </form>
