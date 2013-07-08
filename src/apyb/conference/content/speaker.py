@@ -45,6 +45,12 @@ class ISpeaker(form.Schema):
         description=_(u"Speaker's email"),
     )
 
+    gender = schema.Choice(
+        title=_(u'Gender'),
+        required=True,
+        vocabulary="apyb.conference.gender",
+    )
+
     home_page = schema.TextLine(
         title=_(u"Site"),
         required=True,

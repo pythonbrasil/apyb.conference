@@ -15,7 +15,8 @@ class ISpeakerForm(ISpeaker, IAddress):
         'speaker',
         label=_(u"About the speaker"),
         fields=['fullname', 'organization', 'description', 'language',
-                'email', 'home_page', 'country', 'state', 'city', 'image']
+                'gender', 'email', 'home_page', 'country', 'state',
+                'city', 'image']
     )
     form.omitted('address')
     form.omitted('postcode')
