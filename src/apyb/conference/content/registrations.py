@@ -126,7 +126,9 @@ class View(grok.View):
             attendees = att_by_reg.get(brain.getId, [])
             caipirinha = sum([int(att['caipirinha']) for att in attendees])
             reg['caipirinha'] = caipirinha
-            wall = sum([int(att['wall']) for att in attendees])
+            wall = sum([int(att['wall'])
+                        for att in attendees
+                        if att['wall'].isdigit()])
             reg['wall'] = wall
             reg['state'] = REVIEW_STATE.get(brain.review_state,
                                             brain.review_state)
