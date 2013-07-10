@@ -476,7 +476,7 @@ class ManagePayPalView(grok.View):
 
     def fix_value(self, value):
         ''' Convert string from PayPal to an int representing cents '''
-        return int(value.replace(',', ''))
+        return int(value.replace(',', '').replace('.', '').replace('-', ''))
 
     def process_file(self, pfile=None):
         ''' Try to process a txt file exported by PagSeguro '''
