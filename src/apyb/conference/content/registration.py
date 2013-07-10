@@ -62,10 +62,14 @@ def price_est(obj):
         view = aq_parent(obj).restrictedTraverse('@@reg-price')
         qty = len(children)
         caipirinha = '|'.join([c.caipirinha for c in children])
+        wall = '|'.join([c.wall for c in children])
 
         registration_type = obj.registration_type
         discount_code = obj.discount_code
-        price = view.price(registration_type, qty, caipirinha, discount_code)
+        price = view.price(registration_type, qty,
+                           discount_code,
+                           caipirinha=caipirinha,
+                           wall=wall)
     else:
         price = obj.amount
     return price
@@ -126,9 +130,9 @@ class View(grok.View):
         self.roles_context = self.member.getRolesInContext(context)
         url = context.absolute_url()
         self.training_form = '%s/@@registration-training' % url
-        if not [r for r in self.roles_context
-                if r in ['Manager', 'Editor', 'Reviewer', ]]:
-            self.request['disable_border'] = True
+        self.show_border = [r for r in self.roles_context
+                            if r in ['Manager', 'Editor', 'Reviewer', ]]
+        self.request['disable_border'] = self.show_border
 
     def _vocab(self, name):
         factory = queryUtility(IVocabularyFactory, name)
@@ -207,6 +211,18 @@ class View(grok.View):
             amount = 0
         fmtPrice = view.fmtPrice(amount)
         return fmtPrice
+
+    @property
+    def payment_details(self):
+        view = self.price_view
+        fmtPrice = view.fmtPrice
+        details = {
+            'amount': fmtPrice(getattr(self.context, 'amount', 0)),
+            'net_amount': fmtPrice(getattr(self.context, 'net_amount', 0)),
+            'fee': fmtPrice(getattr(self.context, 'fee', 0)),
+            'processor': getattr(self.context, 'service', ''),
+        }
+        return details
 
     @property
     def show_empenho(self):

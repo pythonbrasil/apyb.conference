@@ -110,6 +110,7 @@ class View(grok.View):
     def _regs_as_dict(self, registrations):
         ''' Given a list of brains, we return proper dictionaries '''
         voc = self.vocabs
+        att_by_reg = self.attendees_by_registration()
         regs = []
         for brain in registrations:
             reg = {}
@@ -122,6 +123,11 @@ class View(grok.View):
             reg['num_attendees'] = brain.num_attendees
             reg['price_est'] = fmt_price(brain.price_est)
             reg['amount'] = fmt_price(brain.amount)
+            attendees = att_by_reg.get(brain.getId, [])
+            caipirinha = sum([int(att['caipirinha']) for att in attendees])
+            reg['caipirinha'] = caipirinha
+            wall = sum([int(att['wall']) for att in attendees])
+            reg['wall'] = wall
             reg['state'] = REVIEW_STATE.get(brain.review_state,
                                             brain.review_state)
             regs.append(reg)
@@ -143,6 +149,13 @@ class View(grok.View):
                 brain.Subject[0]).title if brain.Subject else ''
             att['type'] = att_type
             att['email'] = brain.email
+            caipirinha = brain.caipirinha
+            if caipirinha.startswith('yes'):
+                caipirinha = int(caipirinha[-1])
+            else:
+                caipirinha = 0
+            att['caipirinha'] = caipirinha
+            att['wall'] = brain.wall
             att['badge_name'] = brain.badge_name or att['fullname']
             att['gender'] = voc['gender'].getTerm(brain.gender).title
             att['t_shirt_size'] = voc['tshirt'].getTerm(
@@ -183,6 +196,17 @@ class View(grok.View):
                                    sort_order='reverse',
                                    path=self._path)
         return self._att_as_dict(results)
+
+    def attendees_by_registration(self):
+        ''' List attendees by Registration '''
+        attendees = self.attendees()
+        att_by_reg = {}
+        for att in attendees:
+            att_reg = att['reg']
+            if not att_reg in att_by_reg:
+                att_by_reg[att_reg] = []
+            att_by_reg[att_reg].append(att)
+        return att_by_reg
 
     def attendees_by_type(self):
         ''' List attendees by type '''
@@ -345,6 +369,13 @@ class RegDetailedView(View):
             reg['num_attendees'] = brain.num_attendees
             reg['price_est'] = brain.price_est
             reg['amount'] = brain.amount or '0000'
+            caipirinha = brain.caipirinha
+            if caipirinha.startswith('yes'):
+                caipirinha = int(caipirinha[-1])
+            else:
+                caipirinha = 0
+            reg['caipirinha'] = caipirinha
+            reg['wall'] = brain.wall
             reg['state'] = brain.review_state
             reg['paid'] = getattr(regObj, 'paid', False)
             reg['service'] = getattr(regObj, 'service', '----')
@@ -383,7 +414,8 @@ class ManagePagSeguroView(grok.View):
     def fix_value(self, value):
         ''' Convert string from PagSeguro to an int representing cents '''
         # If there is a thousands separator, kill it
-        value = value.replace('.', '')
+        # Remove also negative sign
+        value = value.replace('.', '').replace('-', '')
         return int(value.replace(',', '')[:-2])
 
     def process_file(self, pfile=None):
@@ -455,7 +487,7 @@ class ManagePayPalView(grok.View):
         lines = lines.split('\n')
         lines = [l.split('\t') for l in lines]
         header = ['Data', 'Hora', 'TZ', 'Nome', 'Tipo', 'Status', 'Moeda',
-                  'Bruto', 'Taxa', 'Líquido', 'From', 'To', 'Id_Transacao',
+                  'Bruto', 'Taxa', 'Liquido', 'From', 'To', 'Id_Transacao',
                   'Status_equivalente', 'Status_endereco', 'Título_item',
                   'ID_item', 'Valor_envio_manuseio', 'Valor_seguro',
                   'Imposto_vendas', 'Opcao_1_nome', 'Opcao_1_valor',
@@ -481,6 +513,8 @@ class ManagePayPalView(grok.View):
             if getattr(reg, 'paid', False):
                 continue
             reg.amount = self.fix_value(item.get('Bruto', '0,00'))
+            reg.fee = self.fix_value(item.get('Taxa', '0,00'))
+            reg.net_amount = self.fix_value(item.get('Liquido', '0,00'))
             reg.paid = True
             reg.service = self.payment
             self._wt.doActionFor(reg, 'confirm')
