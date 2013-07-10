@@ -24,6 +24,7 @@ class IPaymentInformation(form.Schema):
         vocabulary="apyb.conference.paymentservices")
 
     dexterity.read_permission(paid='zope2.View')
+    dexterity.write_permission(service='cmf.ReviewPortalContent')
     paid = schema.Bool(
         title=_(u'Is this paid?'),
         default=False,
@@ -38,5 +39,20 @@ class IPaymentInformation(form.Schema):
         required=False,
     )
 
+    dexterity.read_permission(amount='cmf.ReviewPortalContent')
+    dexterity.write_permission(amount='cmf.ReviewPortalContent')
+    net_amount = schema.Int(
+        title=_(u'Net amount'),
+        default=0,
+        required=False,
+    )
+
+    dexterity.read_permission(amount='cmf.ReviewPortalContent')
+    dexterity.write_permission(amount='cmf.ReviewPortalContent')
+    fee = schema.Int(
+        title=_(u'Processor fee'),
+        default=0,
+        required=False,
+    )
 
 alsoProvides(IPaymentInformation, IFormFieldProvider)
