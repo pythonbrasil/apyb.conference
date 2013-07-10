@@ -30,8 +30,14 @@
         <div tal:condition="not:view/paid">
             <span i18n:translate="">Total price</span>:&nbsp;<strong><span tal:content="view/fmtPrice">UsD123.00</span></strong><br/>
         </div>
-        <div tal:condition="view/paid">
-            <span i18n:translate="">Price paid</span>:&nbsp;<strong><span tal:content="view/price_paid">UsD123.00</span></strong><br/>
+        <div tal:condition="view/paid"
+             tal:define="details view/payment_details">
+            <span i18n:translate="">Price paid</span>:&nbsp;<strong><span tal:content="details/amount">UsD123.00</span></strong><br/>
+            <tal:review tal:condition="view/show_border">
+            <span i18n:translate="">Service</span>:&nbsp;<strong><span tal:content="details/processor">PayPal</span></strong><br/>
+            <span i18n:translate="">Net amount</span>:&nbsp;<strong><span tal:content="details/net_amount">UsD123.00</span></strong><br/>
+            <span i18n:translate="">Service Fees</span>:&nbsp;<strong><span tal:content="details/fee">UsD123.00</span></strong><br/>
+            </tal:review>
         </div>
     </div>
     <h2 i18n:translate="">Attendees</h2>

@@ -19,7 +19,7 @@
             <span i18n:translate="">Caipirinha Sprint</span>:&nbsp;<strong><span tal:content="view/caipirinha_sprint">Yes!</span></strong><br/>
             <span i18n:translate="">Name on the wall</span>:&nbsp;<strong><span tal:content="view/wall_status">Yes!</span></strong><br/>
         </div>
-        <div id="attendee_details" tal:condition="python:view.confirmed or view.attended">
+        <div id="attendee_details" tal:condition="python:False">
             <h3 i18n:translate="">Certificate</h3>
             <div tal:condition="view/confirmed"><span i18n:translate="">Certificate will be available after conference in this url</span>&nbsp;&nbsp;<span tal:content="view/certificate_url">foo bar</span></div>
             <div tal:condition="view/attended"><span i18n:translate="">Certificate is available at</span>&nbsp;&nbsp;<a href="" target="_blank" tal:attributes="href view/certificate_url" tal:content="view/certificate_url">foo bar</a></div>

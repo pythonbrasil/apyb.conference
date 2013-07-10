@@ -66,6 +66,8 @@
                     <th i18n:translate=""># Attendees</th>
                     <th i18n:translate="">Price (est.)</th>
                     <th i18n:translate="">Price</th>
+                    <th i18n:translate="">Caipirinha #</th>
+                    <th i18n:translate="">Wall</th>
                     <th i18n:translate="">State</th>
                 </tr>
             </thead>
@@ -78,6 +80,8 @@
                     <td tal:content="reg/num_attendees">1</td>
                     <td tal:content="reg/price_est">R$120,00</td>
                     <td tal:content="reg/amount">--</td>
+                    <td tal:content="reg/caipirinha">--</td>
+                    <td tal:content="reg/wall">--</td>
                     <td tal:content="reg/state">Pending</td>
                 </tr>
             </tbody>
