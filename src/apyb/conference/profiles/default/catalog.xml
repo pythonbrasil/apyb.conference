@@ -55,6 +55,8 @@
  <column value="price_est"/>
  <column value="paid"/>
  <column value="amount"/>
+ <column value="net_amount"/>
+ <column value="fee"/>
  <column value="email"/>
  <column value="num_attendees"/>
  <column value="price"/>
