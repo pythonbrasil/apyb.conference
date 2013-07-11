@@ -31,10 +31,15 @@
         <div class="talk_submission" i18n:translate="">Know about this tracks's subject and is willing to share with others? </div>        
         <div class="talk_submission"
              tal:condition="python:not(context.getId() == 'training')")>
-             <a href="" tal:attributes="href string:${context/absolute_url}/@@new-talk" i18n:translate="">Submit your talk proposal!</a></div>
+             <a href="" tal:attributes="href string:${context/absolute_url}/@@new-talk" 
+             class="submit-talk-proposal"
+             i18n:translate="">Submit your talk proposal!</a></div>
         <div class="talk_submission"
              tal:condition="python:context.getId() == 'training'")>
-          <a href="" tal:attributes="href string:${context/absolute_url}/@@new-training" i18n:translate="">Submit your training proposal!</a>
+          <a href=""
+            tal:attributes="href string:${context/absolute_url}/@@new-training"
+            class="submit-training-proposal"
+            i18n:translate="">Submit your training proposal!</a>
         </div>        
     </div>
     <div class="clear"> </div>
@@ -114,8 +119,8 @@
         <h2 i18n:translate="">Stats</h2>
         <div class="stats_list">
             <div class="stats_box" tal:condition="talks">
-                <span class="stats_title" i18n:translate="">Submitted</span><br />
                 <span class="stats_number" tal:content="python:len(talks)">12</span><br />
+                <span class="stats_title" i18n:translate="">Submitted</span><br />
             </div>
         </div>
     </div>

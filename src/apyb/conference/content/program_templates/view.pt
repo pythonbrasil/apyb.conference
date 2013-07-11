@@ -14,16 +14,16 @@
         <h2 i18n:translate="">Stats</h2>
         <div class="stats_list" tal:define="stats view/stats">
             <div class="stats_box">
-                <span class="stats_title" i18n:translate="">Tracks</span><br />
                 <span class="stats_number" tal:content="stats/tracks">12</span><br />
+                <span class="stats_title" i18n:translate="">Tracks</span><br />
             </div>
             <div class="stats_box">
-                <span class="stats_title" i18n:translate="">Talks</span><br />
                 <span class="stats_number" tal:content="stats/talks">12</span><br />
+                <span class="stats_title" i18n:translate="">Talks</span><br />
             </div>
             <div class="stats_box">
-                <span class="stats_title" i18n:translate="">Speakers</span><br />
                 <span class="stats_number" tal:content="stats/speakers">12</span><br />
+                <span class="stats_title" i18n:translate="">Speakers</span><br />
             </div>
         </div>
     </div>
@@ -99,9 +99,11 @@
                 <span class="discreet" tal:content="track/Description">Plone is a CMS written in Python</span><br />
                 <a href="" tal:condition="python:(track.getId not in ('keynotes', 'training')) and cfp" 
                    tal:attributes="href string:${track/getURL}/@@new-talk"
+                   class="submit-talk-proposal"
                    i18n:translate="">Submit talk proposal here</a>
                 <a href="" tal:condition="python:(track.getId in ('training')) and cfp" 
                    tal:attributes="href string:${track/getURL}/@@new-training"
+                   class="submit-training-proposal"
                    i18n:translate="">Submit training proposal here</a>
 
             </div>
