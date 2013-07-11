@@ -1,31 +1,66 @@
 /* tracks */
 .stats_box {
-background: none repeat scroll 0 0 #F1F1F1;
-color: #CCCCCC;
-float: left;
-font-size: 1.5em;
-font-weight: bold;
-margin-right: 20px;
-margin-bottom: 20px;
-padding: 10px;
-width: 140px;
+	color: #727272;
+	float: left;
+	font-size: 1.2em;
+	text-align: center;
+	padding: 20px;
 }
 .stats_number {
-display: block;
-text-align: right;
-font-size: 3em;
+	font-size: 2.5em;
+	font-weight: normal;
+	color: #286fb2;
+	background: #f1f1f1;
+	padding: 0.2em;
+	border-radius: 15px;
+}
+.stats_title {
+	display: block;
+	margin-top: 20px;
+}
+
+.tracks h3 {
+	color: #336600;
+	clear: left;
+	font-size: 3em;
+	border-bottom: 1px solid #d2d2d2;
 }
 
 .track {
-border: 1px solid #F1F1F1;
-float: left;
-margin: 1% 2% 1% 0;
-padding: 1%;
-width: 45%;
-min-height: 110px;
+	float: left;
+	margin: 1% 2% 1% 0;
+	padding: 1%;
+	border: 1px solid #d2d2d2;
+	width: 28%;
+	min-height: 110px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	position: relative;
 }
-.track img {float: right;}
-.track_title {font-weight:bold; font-size: 1.3em;}
+.track img {
+	float: right;
+	margin: 0.5em 0 2em 0.5em;
+}
+.track .discreet {
+	display: block;
+	margin-top: -10px;
+}
+.track_title {
+	font-weight:bold; 
+	font-size: 1.3em;
+	display: block;
+}
+.submit-talk-proposal,
+.submit-trainning-proposal {
+	color: #fff;
+	padding: 0.2em;
+	background: green;
+	border-radius: 5px;
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+}
 
 .talks, .tracks {clear: left; padding-top: 20px;}
 
