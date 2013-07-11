@@ -56,6 +56,8 @@
 	color: #fff;
 	padding: 0.2em;
 	background: green;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
 	border-radius: 5px;
 	position: absolute;
 	bottom: 10px;
@@ -64,29 +66,68 @@
 
 .talks, .tracks {clear: left; padding-top: 20px;}
 
+#talks_ordering {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background: #f1f1f1;
+}
+#talks_ordering td,
+#talks_ordering th {
+	border: 1px solid #fff;
+	padding: 1em;
+}
+.talk_details_ a {
+	font-weight: bold;
+	font-size: 1.5em;
+}
+.talk_submission a {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background: green;
+	color: #fff;
+	padding: 0.2em;
+}
+
 /* profiles */
 .speaker_profile img {
-float: right;
-border: 10px solid #2271a9;
-margin: 35px;
--webkit-transform: rotate(7deg);
--moz-transform: rotate(7deg);
-transform: rotate(7deg);
--moz-box-shadow: 3px 3px 3px #f1f1f1;
--webkit-box-shadow: 3px 3px 3px #f1f1f1;
-box-shadow: 3px 3px 3px #f1f1f1;
-border-radius: 11px;
--moz-border-radius: 11px;
--webkit-border-radius: 11px;
+	float: right;
+	border: 10px solid #2271a9;
+	margin: 35px;
+	-webkit-transform: rotate(7deg);
+	-moz-transform: rotate(7deg);
+	transform: rotate(7deg);
+	-moz-box-shadow: 3px 3px 3px #f1f1f1;
+	-webkit-box-shadow: 3px 3px 3px #f1f1f1;
+	box-shadow: 3px 3px 3px #f1f1f1;
+	border-radius: 11px;
+	-moz-border-radius: 11px;
+	-webkit-border-radius: 11px;
 }
 .speaker_name {
-font-size: 2em;
-font-weight: bold;
-display: block;
-color: #2271a9;
+	font-size: 1.5em;
+	font-weight: bold;
+	display: block;
+	color: #2271a9;
+	margin: 1em 0 0 0;
 }
 .speaker_bio {
-display: block;
+	display: block;
+}
+.talk-track {
+    font-size: 3em;
+    font-weight: bold;
+    color: #ccc;
+}
+.talk_details h2,
+.speaker_details h2 {
+    display: none; 
+}
+.talk_details,
+.speaker_details {
+    line-height: 1.6em;
+    font-size: 1.1em;
 }
 
 
