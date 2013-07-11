@@ -8,7 +8,7 @@
 <body>
 
 <metal:title fill-slot="content-title" tal:define="scale context/@@images;
-                                                  img python:scale.scale('image', width=120, height=120, direction='keep');">
+                                                  img python:scale.scale('image', width=300, height=300, direction='keep');">
         <img tal:condition="img" tal:replace="structure python:img.tag(css_class='logo_track')"/>
         <h1 metal:use-macro="context/kss_generic_macros/macros/generic_title_view">Track</h1>
         <div metal:use-macro="context/kss_generic_macros/macros/generic_description_view">
