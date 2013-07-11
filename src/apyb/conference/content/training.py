@@ -8,6 +8,7 @@ from five import grok
 from plone.directives import dexterity
 from plone.directives import form
 from plone.indexer import indexer
+from plone.uuid.interfaces import IUUID
 from zope import schema
 from zope.component import getMultiAdapter
 
@@ -164,7 +165,7 @@ class View(dexterity.DisplayForm):
 
     def attendees(self):
         ''' return a list of attendees '''
-        training_uid = self.context.uid
+        training_uid = IUUID(self.context)
         ct = self._ct
         results = ct.searchResults(portal_type='attendee',
                                    trainings=training_uid,
