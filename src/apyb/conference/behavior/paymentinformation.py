@@ -13,7 +13,8 @@ class IPaymentInformation(form.Schema):
 
     form.fieldset('payment',
                   label=_(u"Payment Information"),
-                  fields=['service', 'paid', 'amount', ])
+                  fields=['service', 'paid', 'amount',
+                          'net_amount', 'fee', ])
 
     dexterity.read_permission(amount='zope2.View')
     dexterity.write_permission(service='cmf.ReviewPortalContent')
