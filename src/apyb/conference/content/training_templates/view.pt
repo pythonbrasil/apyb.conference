@@ -51,7 +51,7 @@
             <div class="clear"> </div>
         </div>
     </div>
-    <div class="attendee_details">
+    <div class="attendee_details" tal:condition="python:False">
         <h2 i18n:translate="">Attendees details</h2>
         <div id="attendees">
             <table  class="listing">
