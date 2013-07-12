@@ -22,6 +22,7 @@
         </div>
         <div class="clear"> </div>
         <h3 i18n:translate="">Attendees</h3>
+        <h4 i18n:translate="">Confirmed Attendees</h4>
         <table class="listing">
             <thead>
                 <tr>
@@ -53,6 +54,7 @@
             </tbody>
         </table>
         
+        <h4 i18n:translate="">Pending Attendees</h4>
         <table class="listing">
             <thead>
                 <tr>
