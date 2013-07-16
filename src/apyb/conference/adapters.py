@@ -47,3 +47,34 @@ class SpeakerNameSubstitution(BaseSubstitution):
                                        UID=speakers)
             name = results[0].Title if results else ''
         return name
+
+
+class SpeakerProfileSubstitution(BaseSubstitution):
+    adapts(IContentish)
+
+    category = _(u'All Content')
+    description = _(u'Speaker Profile URL')
+
+    def safe_call(self):
+        url = ''
+        if hasattr(self.context, 'speakers'):
+            speakers = self.context.speakers
+            ct = self.context.portal_catalog
+            results = ct.searchResults(portal_type='speaker',
+                                       UID=speakers)
+            url = results[0].getURL() if results else ''
+        return url
+
+
+class ProgramURLSubstitution(BaseSubstitution):
+    adapts(IContentish)
+
+    category = _(u'All Content')
+    description = _(u'Program URL')
+
+    def safe_call(self):
+        url = ''
+        portal = self.context.portal_url.getPortalObject()
+        if hasattr(portal, 'program'):
+            url = portal.program.absolute_url()
+        return url

@@ -36,6 +36,20 @@
       name="speaker_name"
       />
 
+  <adapter
+      for="Products.CMFCore.interfaces.IContentish"
+      provides="plone.stringinterp.interfaces.IStringSubstitution"
+      factory=".adapters.SpeakerProfileSubstitution"
+      name="speaker_url"
+      />
+
+  <adapter
+      for="Products.CMFCore.interfaces.IContentish"
+      provides="plone.stringinterp.interfaces.IStringSubstitution"
+      factory=".adapters.ProgramURLSubstitution"
+      name="program_url"
+      />
+
   <grok:grok package="." />
   
 </configure>
