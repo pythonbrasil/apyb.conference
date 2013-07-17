@@ -4,7 +4,7 @@
 	float: left;
 	font-size: 1.2em;
 	text-align: center;
-	padding: 20px;
+	padding: 0 20px 10px;
 }
 .stats_number {
 	font-size: 2.5em;
@@ -24,6 +24,7 @@
 	clear: left;
 	font-size: 3em;
 	border-bottom: 1px solid #d2d2d2;
+	padding-top: 0.5em;
 }
 
 .track {
