@@ -144,6 +144,12 @@ class TalksView(View):
                                sort_on='sortable_title')
         return results
 
+    def talks_all(self):
+        ''' Return a list of all talks '''
+        helper = self.helper
+        results = helper.talks(sort_on='sortable_title')
+        return results
+
     def show_calendar(self, item):
         location = item.location
         start = item.start
