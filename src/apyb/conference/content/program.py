@@ -174,6 +174,11 @@ class TalksView(View):
         return start.strftime('%H:%M')
 
 
+class TalksAllView(TalksView):
+    grok.name('talks-all')
+    grok.require('cmf.ReviewPortalContent')
+
+
 class JSONView(View):
     grok.name('json')
 
