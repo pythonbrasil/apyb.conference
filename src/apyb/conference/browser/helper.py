@@ -104,6 +104,10 @@ class View(grok.View):
             value = DateTime(value)
         return value.strftime('%d/%m/%Y %H:%M')
 
+    def registrations_username(self, username, **kw):
+        registrations = self.registrations(email=username)
+        return registrations
+
     def speaker_name(self, speaker_uids):
         ''' Given a list os uids, we return a string with speakers names '''
         program_helper = self.program_helper
