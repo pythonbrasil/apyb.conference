@@ -10,8 +10,7 @@
   <metal:content-core define-macro="content-core">
     <div class="clear"> </div>
     <h2 i18n:translate="">Conference talks</h2>
-    <h3 i18n:translate="">All submited talks</h3>
-    <div class="talks" tal:define="talks view/talks_all">
+    <div class="talks" tal:define="talks view/talks_confirmed">
         <table class="grid" id="talks_ordering">
             <thead>
                 <tr>
