@@ -144,11 +144,10 @@ class View(grok.View):
                                       name=u'plone_portal_state')
         self.helper = getMultiAdapter((registrations, self.request),
                                       name=u'helper')
-
-#        portal = self.portal.portal()
-#        edition = portal['2011']
-#        self.certificate_url = '%s/certificate/%s' % (edition.absolute_url(),
-#                                                      self.context.uid)
+        portal = self.portal.portal()
+        program = portal.program
+        self.program_helper = getMultiAdapter((program, self.request),
+                                              name=u'helper')
         self._ct = self.tools.catalog()
         self.member = self.portal.member()
         self.voc = self._vocab('apyb.conference.types')
@@ -166,8 +165,7 @@ class View(grok.View):
 
     @property
     def trainings(self):
-        helper = self.helper
-        program_helper = helper.program_helper
+        program_helper = self.program_helper
         trainings_dict = program_helper.trainings_dict
         return trainings_dict
 
