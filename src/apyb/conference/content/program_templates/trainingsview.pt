@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="apyb.conference">
+<body>
+<metal:main fill-slot="content-core">
+  <metal:content-core define-macro="content-core">
+    <div class="clear"> </div>
+    <h2 i18n:translate="">Conference trainings</h2>
+    <div class="trainings" tal:define="trainings view/trainings_confirmed">
+        <table class="grid" id="trainings_ordering">
+            <thead>
+                <tr>
+                    <th i18n:translate="">Track</th>
+                    <th i18n:translate="">Training</th>
+                </tr>
+            </thead>
+            <tbody  class="listing_body">
+            <tal:trainings tal:repeat="training trainings">
+                <tr>
+                    <td class="training_ordering">
+                        <a href="" class="track_details_link" 
+                            tal:define="track python:view.track_info(training.track);"
+                            tal:attributes="href track/url" tal:content="track/title">Title</a><br/>
+                    </td>
+                    <td class="training_details_">
+                        <input type="hidden" value="" name="training_uid"
+                            tal:attributes="value training/UID">
+                        <a href="" 
+                           class="training_details_link"
+                           tal:attributes="href training/getURL" 
+                           tal:content="training/Title">Title</a><br/>
+                        <span class="training_details_speaker" tal:content="python:view.speaker_name(training.speakers)">Speakers</span><br/>
+                        <div tal:condition="python:view.show_calendar(training)" 
+                             class="training_listing_schedule">
+                            <div class="training_room" tal:content="python:view.location(training)">Room</div>
+                            <div class="training_date" tal:content="python:view.date(training)">29/09</div>
+                            <div class="training_hour">
+                                <span tal:content="python:view.start(training)">20:12</span><br/>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tal:trainings>
+            </tbody>
+        </table>
+        <script type="text/javascript">
+        jQuery(function(){
+          foo ='';
+          jQuery('a.training_details_link').prepOverlay({
+              subtype: 'ajax',
+              filter: '#content>*',
+              });
+
+        });
+        </script>
+    </div>
+  </metal:content-core>
+</metal:main>
+</body>
+</html>
+

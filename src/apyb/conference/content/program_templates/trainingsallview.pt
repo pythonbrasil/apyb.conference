@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="apyb.conference">
+<body>
+<metal:main fill-slot="content-core">
+  <metal:content-core define-macro="content-core">
+    <div class="clear"> </div>
+    <h2 i18n:translate="">Conference trainings</h2>
+    <h3 i18n:translate="">All submited trainings</h3>
+    <div class="training" tal:define="trainings view/training_all">
+        <table class="listing">
+            <thead>
+                <tr>
+                    <th i18n:translate="">Track</th>
+                    <th i18n:translate="">Training</th>
+                    <th i18n:translate="">Speakers</th>
+                    <th i18n:translate="">Submited</th>
+                    <th i18n:translate="">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tal:training tal:repeat="training trainings">
+                <tr>
+                    <td>
+                        <a href="" class="track_details_link" 
+                            tal:define="track python:view.track_info(training.track);"
+                            tal:attributes="href track/url" tal:content="track/title">Title</a><br/>
+                    </td>
+                    <td>
+                        <a href="" 
+                           class="training_details_link"
+                           tal:attributes="href training/getURL" 
+                           tal:content="training/Title">Title</a><br/>
+                    </td>
+                    <td>
+                        <span class="training_details_speaker" tal:content="python:view.speaker_name(training.speakers)">Speakers</span>
+                    </td>
+                    <td>
+                        <span 
+                              tal:define="created training/created"
+                              tal:content="created" />
+                    </td>
+                    <td>
+                        <span 
+                              tal:define="review_state training/review_state"
+                              tal:content="review_state" />
+                    </td>
+                </tr>
+            </tal:training>
+            </tbody>
+        </table>
+    </div>    
+  </metal:content-core>
+</metal:main>
+</body>
+</html>
+

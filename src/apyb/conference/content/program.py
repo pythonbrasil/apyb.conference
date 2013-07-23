@@ -162,7 +162,7 @@ class TalksView(View):
         try:
             term = rooms.getTerm(location)
         except LookupError:
-            return 'PythonBrasil[7]'
+            return 'PythonBrasil[9]'
         return term.title
 
     def date(self, item):
@@ -176,6 +176,55 @@ class TalksView(View):
 
 class TalksAllView(TalksView):
     grok.name('talks-all')
+    grok.require('cmf.ReviewPortalContent')
+
+
+class TrainingView(View):
+    grok.name('trainings')
+
+    def track_info(self, track_uid):
+        helper = self.helper
+        return helper.track_info(track_uid)
+
+    def trainings_confirmed(self):
+        ''' Return a list of confirmed trainings '''
+        helper = self.helper
+        results = helper.trainings(review_state='confirmed',
+                                   sort_on='sortable_title')
+        return results
+
+    def trainings_all(self):
+        ''' Return a list of all trainings '''
+        helper = self.helper
+        results = helper.trainings(sort_on='sortable_title')
+        return results
+
+    def show_calendar(self, item):
+        location = item.location
+        start = item.start
+        end = item.end
+        return location and start and end
+
+    def location(self, item):
+        rooms = self.rooms
+        location = item.location
+        try:
+            term = rooms.getTerm(location)
+        except LookupError:
+            return 'PythonBrasil[9]'
+        return term.title
+
+    def date(self, item):
+        date = item.start
+        return date.strftime('%d/%m')
+
+    def start(self, item):
+        start = item.start
+        return start.strftime('%H:%M')
+
+
+class TrainingsAllView(TalksView):
+    grok.name('trainings-all')
     grok.require('cmf.ReviewPortalContent')
 
 
