@@ -33,6 +33,8 @@
                     <th i18n:translate="">Badge Name</th>
                     <th i18n:translate="">Gender</th>
                     <th i18n:translate="">T-Shirt</th>
+                    <th i18n:translate="">Caipirinha</th>
+                    <th i18n:translate="">Wall</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,6 +51,8 @@
                     <td tal:content="att/badge_name">Foo</td>
                     <td tal:content="att/gender">Male</td>
                     <td tal:content="att/t_shirt_size">XL</td>
+                    <td tal:content="att/caipirinha">XL</td>
+                    <td tal:content="att/wall">XL</td>
                 </tr>
                 </tal:attendees>
             </tbody>
