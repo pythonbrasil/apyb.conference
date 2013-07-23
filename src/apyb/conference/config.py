@@ -7,7 +7,6 @@ PRICES = {'apyb': 2500,
           'government': 40000,
           'group': 5000,
           'speaker': 5000,
-          'speaker_c': 5000,
           'sponsor': 0,
           'organizer': 0,
           'training': 0}
