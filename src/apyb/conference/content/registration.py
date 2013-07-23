@@ -198,8 +198,6 @@ class View(grok.View):
     @property
     def paid(self):
         is_paid = getattr(self.context, 'paid', False)
-        if self.registration_type in ['organizer', 'sponsor']:
-            is_paid = True
         return is_paid
 
     @property
