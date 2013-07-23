@@ -179,7 +179,7 @@ class TalksAllView(TalksView):
     grok.require('cmf.ReviewPortalContent')
 
 
-class TrainingView(View):
+class TrainingsView(View):
     grok.name('trainings')
 
     def track_info(self, track_uid):
