@@ -12,12 +12,12 @@
         <h2 i18n:translate="">Attendee Info</h2>
         <div id="attendee_details">
             <h3 i18n:translate="">Details</h3>        
-            <span i18n:translate="">Registration Type</span>:&nbsp;<strong><span tal:content="view/fmt_registration_type">Individual</span></strong><br/>
-            <span i18n:translate="">Fullname</span>:&nbsp;<strong><span tal:content="context/title">Dorneles Tremea</span></strong><br/>
-            <span i18n:translate="">E-mail</span>:&nbsp;<strong><span tal:content="context/email">deo@x3ng.com.br</span></strong><br/>
-            <span i18n:translate="">Location</span>:&nbsp;<strong><span tal:content="context/city">Garibaldi</span>,<span tal:content="context/state">Rio Grande do Sul</span>, <span tal:content="python:context.country.upper()">BR</span> </strong><br/>
-            <span i18n:translate="">Caipirinha Sprint</span>:&nbsp;<strong><span tal:content="view/caipirinha_sprint">Yes!</span></strong><br/>
-            <span i18n:translate="">Name on the wall</span>:&nbsp;<strong><span tal:content="view/wall_status">Yes!</span></strong><br/>
+            <span i18n:translate="">Registration Type</span>:&nbsp;<strong><span tal:replace="view/fmt_registration_type">Individual</span></strong><br/>
+            <span i18n:translate="">Fullname</span>:&nbsp;<strong><span tal:replace="context/title">Dorneles Tremea</span></strong><br/>
+            <span i18n:translate="">E-mail</span>:&nbsp;<strong><span tal:replace="context/email">deo@x3ng.com.br</span></strong><br/>
+            <span i18n:translate="">Location</span>:&nbsp;<strong><span tal:replace="context/city">Garibaldi</span>,<span tal:replace="context/state">Rio Grande do Sul</span>, <span tal:replace="python:context.country.upper()">BR</span> </strong><br/>
+            <span i18n:translate="">Caipirinha Sprint</span>:&nbsp;<strong><span tal:replace="view/caipirinha_sprint">Yes!</span></strong><br/>
+            <span i18n:translate="">Name on the wall</span>:&nbsp;<strong><span tal:replace="view/wall_status">Yes!</span></strong><br/>
         </div>
         <div id="attendee_details" tal:condition="python:False">
             <h3 i18n:translate="">Certificate</h3>
