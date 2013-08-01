@@ -3,6 +3,11 @@ from apyb.conference.content.registration import IRegistration
 from five import grok
 from Products.CMFCore.interfaces import IActionSucceededEvent
 from Products.CMFCore.utils import getToolByName
+from Products.CMFCore.WorkflowCore import WorkflowException
+
+import logging
+
+logger = logging.getLogger('apyb.conference')
 
 
 @grok.subscribe(IRegistration, IActionSucceededEvent)
@@ -17,4 +22,7 @@ def update_attendees(folder, event):
     else:
         return None
     for obj in objects:
-        wt.doActionFor(obj, transition)
+        try:
+            wt.doActionFor(obj, transition)
+        except WorkflowException:
+            logger.info('Error in %s' % obj.absolute_url())
