@@ -360,6 +360,11 @@ class Speakers(grok.View):
         helper = self.helper
         return helper.talks_speaker()
 
+    def trainings_speakers(self, **kw):
+        ''' Return a dict of trainings per speaker '''
+        helper = self.helper
+        return helper.trainings_speaker()
+
     def keynote_speakers(self):
         ''' List uids of keynote speakers
         '''

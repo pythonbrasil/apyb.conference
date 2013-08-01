@@ -39,10 +39,11 @@
                     <td>
                         <span class="talk_details_speaker" tal:content="python:view.speaker_name(talk.speakers)">Speakers</span>
                     </td>
-                    <td>
-                        <span 
-                              tal:define="created talk/created"
-                              tal:content="created" />
+                    <td tal:define="created talk/created;
+                                    sortable python:created.strftime('%Y-%m-%d-%H-%M-%S');
+                                    displayable python:created.strftime('%d/%m/%Y %H:%M')"
+                        tal:attributes="class python:'sortabledata-'+sortable">
+                        <span tal:content="displayable" />
                     </td>
                     <td>
                         <span 

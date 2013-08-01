@@ -11,7 +11,7 @@
     <div class="clear"> </div>
     <h2 i18n:translate="">Conference trainings</h2>
     <h3 i18n:translate="">All submited trainings</h3>
-    <div class="training" tal:define="trainings view/training_all">
+    <div class="training" tal:define="trainings view/trainings_all">
         <table class="listing">
             <thead>
                 <tr>

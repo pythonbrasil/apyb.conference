@@ -138,7 +138,7 @@ class View(grok.View):
         ''' Return a list of pending in here '''
         kw['sort_on'] = 'sortable_title'
         kw['sort_order'] = 'reverse'
-        kw['review_state'] = 'created'
+        kw['review_state'] = ['created', 'accepted', ]
         results = self.talks(**kw)
         return results
 
@@ -184,7 +184,7 @@ class JSONView(View):
         try:
             term = rooms.getTerm(location)
         except LookupError:
-            return 'PythonBrasil[7]'
+            return 'PythonBrasil[9]'
         return term.title
 
     def talks(self):

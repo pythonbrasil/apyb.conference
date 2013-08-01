@@ -198,6 +198,25 @@ class View(grok.View):
         return talks_speaker
 
     @memoize
+    def trainings_speaker(self):
+        trainings = self.trainings_dict
+        trainings_speaker = {}
+        for training_uid, training in trainings.items():
+            speakers = training['speakers']
+            for speaker in speakers:
+                if not speaker in trainings_speaker:
+                    trainings_speaker[speaker] = {'all': [],
+                                                  'confirmed': [],
+                                                  'submitted': [],
+                                                  'created': [],
+                                                  'accepted': [],
+                                                  'rejected': [],
+                                                  'cancelled': []}
+                trainings_speaker[speaker][training['review_state']].append(training_uid)
+                trainings_speaker[speaker]['all'].append(training_uid)
+        return trainings_speaker
+
+    @memoize
     def program_stats(self):
         stats = {}
         talks_speakers = self.talks_speaker().items()

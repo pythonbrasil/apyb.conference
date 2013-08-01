@@ -12,22 +12,31 @@
     <h2 i18n:translate="">Speakers list</h2>
     <table class="listing" 
            tal:define="speakers view/speakers;
-                       talks_speakers view/talks_speakers;">
+                       talks_speakers view/talks_speakers;
+                       trainings_speakers view/trainings_speakers;">
         <thead>
             <tr>
-                <th i18n:translate=""></th>
+                <th i18n:translate="">#</th>
+                <th i18n:translate="">Portrait</th>
                 <th i18n:translate="">Name</th>
                 <th i18n:translate="">Organization</th>
                 <th i18n:translate="">Language</th>
                 <th i18n:translate="">E-mail</th>
+                <th i18n:translate="">Country</th>
+                <th i18n:translate="">State</th>
                 <th i18n:translate="">Registration</th>
-                <th i18n:translate="">Sent</th>
-                <th i18n:translate="">Conf</th>
+                <th i18n:translate="">Talks Sent</th>
+                <th i18n:translate="">Talks Conf</th>
+                <th i18n:translate="">Train. Sent</th>
+                <th i18n:translate="">Train. Conf</th>
             </tr>
         </thead>
         <tbody>
             <tr tal:repeat="speaker view/speakers">
                 <tal:block tal:define="speaker_obj speaker/getObject;">
+                <td>
+                  <span tal:content="repeat/speaker/number">1</span>
+                </td>
                 <td> 
                     <tal:image   tal:define="scale speaker_obj/@@images;
                                        img python:scale.scale('image', width=40, height=40, direction='keep');">
@@ -37,14 +46,20 @@
                 </td>
                 <td><a href="" tal:attributes="href speaker/getURL" tal:content="speaker/Title">Dorneles Tremea</a></td>
                 <td tal:content="speaker/organization">APyB</td>
-                <td tal:content="python:view.voc.getTerm(speaker.language).title">Gauches</td>
+                <td tal:content="speaker/language">Gauches</td>
                 <td tal:content="speaker/email">foo@bar.com</td>
+                <td tal:content="speaker/country">BR</td>
+                <td tal:content="speaker/state">SP</td>
                 <td><a href="" tal:content="python:view.registration_state(speaker_obj)"
                                tal:attributes="href python:view.registration_url(speaker_obj)">foo@bar.com</a></td>
                 <td tal:define="talks python:talks_speakers.get(speaker.UID,{}).get('all',[])"
                     tal:content="python:len(talks)">2</td>
                 <td tal:define="talks python:talks_speakers.get(speaker.UID,{}).get('confirmed',[])"
                     tal:content="python:len(talks)">2</td>
+                <td tal:define="trainings python:trainings_speakers.get(speaker.UID,{}).get('all',[])"
+                    tal:content="python:len(trainings)">2</td>
+                <td tal:define="trainings python:trainings_speakers.get(speaker.UID,{}).get('confirmed',[])"
+                    tal:content="python:len(trainings)">2</td>
                 </tal:block>
             </tr>
         </tbody>
