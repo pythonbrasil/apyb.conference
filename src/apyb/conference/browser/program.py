@@ -122,7 +122,9 @@ class View(grok.View):
                                    'location': b.location or '',
                                    'start': b.start,
                                    'end': b.end,
-                                   'seats': b.seats or 0,
+                                   'seats': (
+                                       b.seats if hasattr(b, 'seats') else 0
+                                   ),
                                    'url': b.getURL(),
                                    'json_url': '%s/json' % b.getURL(), })
                          for b in brains])
