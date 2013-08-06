@@ -483,7 +483,7 @@ class ConfirmTalksView(grok.View):
     template = None
 
     def update(self):
-        super(ConfirmView, self).update()
+        super(ConfirmTalksView, self).update()
         context = aq_inner(self.context)
         self.state = getMultiAdapter((context, self.request),
                                      name=u'plone_context_state')
@@ -525,7 +525,7 @@ class ConfirmTrainingsView(grok.View):
     template = None
 
     def update(self):
-        super(ConfirmView, self).update()
+        super(ConfirmTrainingsView, self).update()
         context = aq_inner(self.context)
         self.state = getMultiAdapter((context, self.request),
                                      name=u'plone_context_state')
