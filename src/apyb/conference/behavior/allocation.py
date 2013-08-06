@@ -13,6 +13,16 @@ from zope.interface import alsoProvides
 class IAllocation(form.Schema):
     """Marker/Form interface for Allocation behavior
     """
+
+    dexterity.read_permission(location='zope2.View')
+    dexterity.write_permission(location='cmf.ModifyPortalContent')
+    duration = schema.Choice(
+        title=_(u"Duration"),
+        required=False,
+        description=_(u"Duration of this activity"),
+        vocabulary='apyb.conference.duration',
+    )
+
     form.fieldset(
         'allocation',
         label=_(u"Training Allocation"),
@@ -66,6 +76,7 @@ class Allocation(object):
         self.context = context
 
     location = context_property('location')
+    duration = context_property('duration')
     seats = context_property('seats')
     startDate = context_property('startDate')
     endDate = context_property('endDate')
