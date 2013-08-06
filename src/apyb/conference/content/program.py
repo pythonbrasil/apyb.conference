@@ -114,6 +114,29 @@ class View(grok.View):
                                         sort_on='sortable_title')
         return results
 
+    def my_trainings(self):
+        ''' Return a list of my trainings '''
+        helper = self.helper
+        results = helper.trainings_username(username=self.member.getUserName(),
+                                        sort_on='sortable_title', )
+        return results
+
+    def my_trainings_accepted(self):
+        ''' Return a list of my trainings waiting for confirmation '''
+        helper = self.helper
+        results = helper.trainings_username(username=self.member.getUserName(),
+                                        review_state='accepted',
+                                        sort_on='sortable_title')
+        return results
+
+    def my_trainings_confirmed(self):
+        ''' Return a list of my trainings waiting for confirmation '''
+        helper = self.helper
+        results = helper.trainings_username(username=self.member.getUserName(),
+                                        review_state='confirmed',
+                                        sort_on='sortable_title')
+        return results
+
     def my_profiles(self):
         ''' Return a list of my speaker profiles '''
         helper = self.helper
@@ -452,7 +475,7 @@ class Speakers(grok.View):
         return self.state.is_editable()
 
 
-class ConfirmView(grok.View):
+class ConfirmTalksView(grok.View):
     grok.context(IProgram)
     grok.require('zope2.View')
     grok.name('confirm-talks')
@@ -487,6 +510,48 @@ class ConfirmView(grok.View):
         talks = dict([(str(b.UID), b) for b in talks])
         for talk_uid, brain in talks.items():
             action = self.request.form.get(talk_uid, '')
+            if not action in ['confirm', 'cancel']:
+                continue
+            o = brain.getObject()
+            self._wt.doActionFor(o, action)
+        return self.request.response.redirect(self.context.absolute_url())
+
+
+class ConfirmTrainingsView(grok.View):
+    grok.context(IProgram)
+    grok.require('zope2.View')
+    grok.name('confirm-trainings')
+
+    template = None
+
+    def update(self):
+        super(ConfirmView, self).update()
+        context = aq_inner(self.context)
+        self.state = getMultiAdapter((context, self.request),
+                                     name=u'plone_context_state')
+        self.tools = getMultiAdapter((context, self.request),
+                                     name=u'plone_tools')
+        self.portal = getMultiAdapter((context, self.request),
+                                      name=u'plone_portal_state')
+        self.helper = getMultiAdapter((context, self.request),
+                                      name=u'helper')
+        self._ct = self.tools.catalog()
+        self._wt = self.tools.workflow()
+        self.member = self.portal.member()
+
+    def my_trainings_accepted(self):
+        ''' Return a list of my trainings waiting for confirmation '''
+        helper = self.helper
+        results = helper.trainings_username(username=self.member.getUserName(),
+                                            review_state='accepted',
+                                            sort_on='sortable_title')
+        return results
+
+    def render(self):
+        trainings = self.my_trainings_accepted()
+        trainings = dict([(str(b.UID), b) for b in trainings])
+        for training_uid, brain in trainings.items():
+            action = self.request.form.get(training_uid, '')
             if not action in ['confirm', 'cancel']:
                 continue
             o = brain.getObject()

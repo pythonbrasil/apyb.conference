@@ -179,6 +179,62 @@
             </table>
         </div>
     </div>
+    <div class="my-trainings" tal:condition="view/my_trainings">
+        <h2 i18n:translate="">My trainings</h2>
+        <form action="" tal:condition="view/my_trainings_accepted"
+              method="POST"
+              tal:attributes="action string:${context/absolute_url}/confirm-trainings">
+            <h3 i18n:translate="">Trainings waiting for your confirmation</h3>
+            <table class="grid" id="trainings_ordering">
+                <thead>
+                    <tr>
+                        <th i18n:translate="">Confirm</th>
+                        <th i18n:translate="">Cancel</th>
+                        <th i18n:translate="">Track</th>
+                        <th i18n:translate="">Information</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr tal:repeat="training view/my_trainings_accepted">
+                        <td><input type="radio" value='confirm' tal:attributes="name training/UID;" /></td>
+                        <td><input type="radio" value='cancel' tal:attributes="name training/UID;" /></td>
+                        <td><span tal:content="python:view.helper.track_info(training.track).get('title')">Django</span></td>
+                        <td>
+                            <span class="training_title"><a href="" tal:attributes="href training/getURL" tal:content="training/Title">Plone is cool</a></span><br />
+                            <span class="discreet" tal:content="python:view.speaker_name(training.speakers)">Joe Doe</span>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+                <div>
+                    <input type="hidden" name="submitted" value="1" />
+                    <input type="submit" name="confirm_button" value="Send" id="confirm_button" />
+                </div>
+                <br/>
+        </form>
+        <div tal:define="trainings view/my_trainings" class="trainings_listing">
+            <h3 i18n:translate="">Submited trainings</h3>
+            <table class="grid" id="trainings_ordering">
+                <thead>
+                    <tr>
+                        <th i18n:translate="">Track</th>
+                        <th i18n:translate="">Information</th>
+                        <th i18n:translate="">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr tal:repeat="training view/my_trainings">
+                        <td><span tal:content="python:view.helper.track_info(training.track).get('title')">Django</span></td>
+                        <td>
+                            <span class="training_title"><a href="" tal:attributes="href training/getURL" tal:content="training/Title">Plone is cool</a></span><br />
+                            <span class="discreet" tal:content="python:view.speaker_name(training.speakers)">Joe Doe</span>
+                        </td>
+                        <td><span tal:content="training/review_state">Created</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div> 
     <div class="clear"> </div>
   </metal:content-core>
 </metal:main>

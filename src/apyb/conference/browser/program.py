@@ -178,6 +178,12 @@ class View(grok.View):
         kw['speakers'] = tuple(speakers_profiles)
         return self.talks(**kw)
 
+    def trainings_username(self, username, **kw):
+        # HACK: username is an email
+        speakers_profiles = [b.UID for b in self.speakers_username(username)]
+        kw['speakers'] = tuple(speakers_profiles)
+        return self.trainings(**kw)
+
     @memoize
     def talks_speaker(self):
         talks = self.talks_dict

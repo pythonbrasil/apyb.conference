@@ -403,3 +403,28 @@ class SpeakersVocabulary(object):
 
 grok.global_utility(TracksVocabulary,
                     name=u"apyb.conference.speakers")
+
+
+class DurationVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        ''' Activity duration '''
+        terms = []
+        durations = [
+            ('30 min.', _(u'30 Minutes')),
+            ('45 min.', _(u'45 Minutes')),
+            ('60 min.', _(u'60 Minutes')),
+            ('4 hours', _(u'4 Hours')),
+            ('8 hours', _(u'8 Hours')),
+            ('16 hours', _(u'16 Hours')),
+        ]
+        for key, value in durations:
+            term = (key, key, value)
+            terms.append(SimpleVocabulary.createTerm(*term))
+
+        return SimpleVocabulary(terms)
+
+
+grok.global_utility(DurationVocabulary,
+                    name=u"apyb.conference.duration")
