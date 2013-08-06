@@ -27,25 +27,6 @@ grok.global_utility(PeriodsVocabulary,
                     name=u"apyb.conference.periods")
 
 
-class DurationVocabulary(object):
-    grok.implements(IVocabularyFactory)
-
-    def __call__(self, context):
-        terms = []
-        levels = [('half_day', _(u'Half day')),
-                  ('one_day', _(u'1 day')),
-                  ('two_days', _(u'2 days'))]
-        for code, text in levels:
-            term = (code, code, text)
-            terms.append(SimpleVocabulary.createTerm(*term))
-
-        return SimpleVocabulary(terms)
-
-
-grok.global_utility(DurationVocabulary,
-                    name=u"apyb.conference.duration")
-
-
 class LanguagesVocabulary(object):
     grok.implements(IVocabularyFactory)
 
