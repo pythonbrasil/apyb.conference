@@ -110,7 +110,8 @@ class View(grok.View):
 
     def speaker_name(self, speaker_uids):
         ''' Given a list os uids, we return a string with speakers names '''
-        program_helper = self.program_helper
+        portal = self.ps.portal()
+        program_helper = self.program.restrictedTraverse('@@helper')
         speakers_dict = program_helper.speakers_dict
         results = [speaker for uid, speaker in speakers_dict.items()
                    if uid in speaker_uids]
