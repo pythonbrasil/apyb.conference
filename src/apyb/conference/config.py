@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 from apyb.conference import MessageFactory as _
 
-PRICES = {'apyb': 2500,
-          'student': 2500,
-          'individual': 5000,
+PRICES = {'apyb': 5000,
+          'student': 5000,
+          'individual': 10000,
           'government': 40000,
-          'group': 5000,
-          'speaker': 5000,
+          'group': 10000,
+          'speaker': 10000,
           'sponsor': 0,
           'organizer': 0,
           'training': 0}
