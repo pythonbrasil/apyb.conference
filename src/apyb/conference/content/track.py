@@ -138,7 +138,7 @@ class View(grok.View):
         ''' Return a list of pending in here '''
         kw['sort_on'] = 'sortable_title'
         kw['sort_order'] = 'reverse'
-        kw['review_state'] = ['created', 'accepted', ]
+        kw['review_state'] = ['created', ]
         results = self.talks(**kw)
         return results
 
@@ -146,7 +146,7 @@ class View(grok.View):
         ''' Return a list of talks in here '''
         kw['sort_on'] = 'sortable_title'
         kw['sort_order'] = 'reverse'
-        kw['review_state'] = 'confirmed'
+        kw['review_state'] = ['confirmed', 'accepted', ]
         results = self.talks(**kw)
         return results
 

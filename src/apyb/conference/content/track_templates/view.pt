@@ -23,7 +23,7 @@
          tal:define="cfp view/can_submit;
                      talks view/talks;
                      confirmed view/confirmed_talks;
-                     pending view/pending_talks;">
+                     pending python:False;">
 
     <div tal:condition="cfp">
         <h2 i18n:translate="">Your activity here!</h2>
