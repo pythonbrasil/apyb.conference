@@ -225,7 +225,7 @@ class View(grok.View):
 
     @memoize
     def program_stats(self):
-        display_states = ['confirmed', 'accepted']
+        display_states = ('confirmed', 'accepted')
         stats = {}
         talks_speakers = self.talks_speaker().items()
         stats['speakers'] = len([uid for uid, data in talks_speakers
