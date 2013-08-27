@@ -139,6 +139,7 @@ class View(grok.View):
                           'organization': b.organization,
                           'bio': b.Description,
                           'review_state': b.review_state,
+                          'email': b.email,
                           'language': b.language,
                           'country': b.country,
                           'state': b.state,

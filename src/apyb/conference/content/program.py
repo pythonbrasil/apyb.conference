@@ -73,6 +73,14 @@ class View(grok.View):
                    if uid in speaker_uids]
         return ', '.join([b['name'] for b in results])
 
+    def speaker_email(self, speaker_uids):
+        ''' Given a list os uids, we return a string with speakers emails '''
+        helper = self.helper
+        speakers_dict = helper.speakers_dict
+        results = [speaker for uid, speaker in speakers_dict.items()
+                   if uid in speaker_uids]
+        return ', '.join([b['email'] for b in results])
+
     def tracks(self):
         ''' Return a list of tracks in here '''
         helper = self.helper

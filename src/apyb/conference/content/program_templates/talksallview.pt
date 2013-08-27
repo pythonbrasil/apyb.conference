@@ -18,6 +18,7 @@
                     <th i18n:translate="">Track</th>
                     <th i18n:translate="">Talk</th>
                     <th i18n:translate="">Speakers</th>
+                    <th i18n:translate="">E-mails</th>
                     <th i18n:translate="">Submited</th>
                     <th i18n:translate="">Status</th>
                 </tr>
@@ -38,6 +39,9 @@
                     </td>
                     <td>
                         <span class="talk_details_speaker" tal:content="python:view.speaker_name(talk.speakers)">Speakers</span>
+                    </td>
+                    <td>
+                        <span class="talk_details_speaker" tal:content="python:view.speaker_email(talk.speakers)">foo@bar.org</span>
                     </td>
                     <td tal:define="created talk/created;
                                     sortable python:created.strftime('%Y-%m-%d-%H-%M-%S');
