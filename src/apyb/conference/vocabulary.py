@@ -358,6 +358,18 @@ class RoomsVocabulary(object):
             ('cleese', _(u'John Cleese Room')),
             ('idle', _(u'Eric Idle Room')),
             ('gillian', _(u'Terry Gilliam Room')),
+            ('palin', _(u'Michael Palin Room')),
+            ('chapman', _(u'Graham Chapman Room')),
+            ('jones', _(u'Terry Jones Room')),
+            ('esaf-bt-1', _(u'ESAF BT 1')),
+            ('esaf-bt-2', _(u'ESAF BT 2')),
+            ('esaf-bt-3', _(u'ESAF BT 3')),
+            ('esaf-bt-4', _(u'ESAF BT 4')),
+            ('esaf-bt-5', _(u'ESAF BT 5')),
+            ('esaf-bt-6', _(u'ESAF BT 6')),
+            ('esaf-ct-1', _(u'ESAF CT 1')),
+            ('esaf-ct-2', _(u'ESAF CT 2')),
+            ('esaf-ct-3', _(u'ESAF CT 3')),
         ]
         for key, value in rooms:
             term = (key, key, value)
