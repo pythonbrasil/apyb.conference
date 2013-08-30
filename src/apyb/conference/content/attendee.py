@@ -12,7 +12,7 @@ from zope.component import getMultiAdapter
 from zope.component import queryUtility
 from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
-
+from datetime import datetime
 
 class IAttendee(form.Schema):
     """
@@ -265,5 +265,7 @@ class RegisterView(View):
             if uid not in all_trainings:
                 all_trainings.append(uid)
         self.context.trainings = all_trainings
+        # sets the time of this operation for use in liberation of blocked seats
+        self.context.last_time_trainings_were_set = datetime.now()
         self.context.reindexObject(idxs=['trainings', ])
         return self.request.response.redirect(self.context.absolute_url())
