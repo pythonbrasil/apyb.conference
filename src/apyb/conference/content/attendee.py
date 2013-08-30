@@ -169,26 +169,42 @@ class View(grok.View):
         trainings_dict = program_helper.trainings_dict
         return trainings_dict
 
+    @property
+    def confirmed_trainings(self):
+        payments = getattr(self.context, "payments", {})
+        for trainings_uid_list in payments.values():
+            for uid in trainings_uid_list:
+                yield uid
+
+    def has_registered_trainings(self):
+        return getattr(self.context, "payments", {}) or self.context.trainings
+
     def registered_trainings(self):
-        registered = self.context.trainings
         trainings = self.trainings
-        data = []
-        for uid, training in trainings.items():
-            if not (uid in registered):
-                continue
-            data.append(training)
-        return data
+        def training_with_status(uid, registration_status):
+            t = trainings[uid]
+            t.update(registration_status = registration_status)
+            return t
+        remaining = list(self.context.trainings)
+        for uid in self.confirmed_trainings:
+            remaining.remove(uid) # a confirmed trainings must be in the list of trainings
+            yield training_with_status(uid, "confirmed")
+        for uid in remaining:
+            yield training_with_status(uid, "payment pending")
 
     def available_trainings(self):
         trainings = self.trainings
-        data = []
-        for uid, training in trainings.items():
+        confirmed_trainings_set = set(self.confirmed_trainings)
+        selected_set = set(self.context.trainings)
+        sorted_uids_trainings = sorted(trainings.items(), key=lambda (u,t): t['title'])
+        for uid, training in sorted_uids_trainings:
             state = training.get('review_state', '')
             seats = training.get('seats', 0)
             if not (state == 'confirmed' and seats):
                 continue
-            data.append(training)
-        return data
+            training.update(confirmed = uid in confirmed_trainings_set,
+                            selected = uid in selected_set)
+            yield training
 
     def caipirinha_sprint(self):
         context = self.context
@@ -204,6 +220,7 @@ class View(grok.View):
 
     @property
     def confirmed(self):
+        # TODO: remove if not used anymore ################################################################
         state = self.state
         review_state = state.workflow_state()
         return review_state == 'confirmed'
@@ -218,7 +235,11 @@ class View(grok.View):
     def allow_training_registering(self):
         if not 'Manager' in self.roles_context:
             return False
-        return self.confirmed
+        # TODO: remove if not used anymore ################################################################
+        # return self.confirmed
+
+        # everyone can register for a training and pay everything at once
+        return True
 
     @property
     def fmt_registration_type(self):
@@ -239,7 +260,10 @@ class RegisterView(View):
         trainings_uid = self.request.form.get('trainings_uid', [])
         if isinstance(trainings_uid, str):
             trainings_uid = [trainings_uid, ]
-        trainings_uid = [int(uid) for uid in trainings_uid]
-        self.context.trainings = trainings_uid
+        all_trainings = list(self.confirmed_trainings)
+        for uid in trainings_uid:
+            if uid not in all_trainings:
+                all_trainings.append(uid)
+        self.context.trainings = all_trainings
         self.context.reindexObject(idxs=['trainings', ])
         return self.request.response.redirect(self.context.absolute_url())
