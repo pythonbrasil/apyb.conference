@@ -13,10 +13,12 @@ from zope.component import queryUtility
 from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
 from datetime import datetime
+from persistent.dict import PersistentDict
+
 
 class IAttendee(form.Schema):
     """
-    An attenddee at a conference
+    An attendee at a conference
     """
     form.omitted('uid')
     uid = schema.Int(
@@ -197,13 +199,14 @@ class View(grok.View):
         confirmed_trainings_set = set(self.confirmed_trainings)
         selected_set = set(self.context.trainings)
         sorted_uids_trainings = sorted(trainings.items(), key=lambda (u,t): t['title'])
+        seat_table = SeatTable(self.context)
         for uid, training in sorted_uids_trainings:
             state = training.get('review_state', '')
-            seats = training.get('seats', 0)
-            if not (state == 'confirmed' and seats):
+            if not (state == 'confirmed'):
                 continue
             training.update(confirmed = uid in confirmed_trainings_set,
-                            selected = uid in selected_set)
+                            selected = uid in selected_set,
+                            available_seats = seat_table.available_seats(training),)
             yield training
 
     def caipirinha_sprint(self):
@@ -249,6 +252,34 @@ class View(grok.View):
             return term.title
 
 
+class SeatTable(object):
+    # ad-hoc seat table
+    # XXX do this in a more standard way
+
+    def __init__(self, context):
+        register = context.register # via acquisition :P
+        self.table = getattr(register, 'seat_table', PersistentDict())
+        if not self.table:
+            register.seat_table = self.table
+
+    def refresh_attendee_trainings(self, attendee, training_uids):
+        code = '/'.join((attendee.getParentNode().id, attendee.id))
+        # remove attendee from the table
+        for attendee_set in self.table.values():
+            attendee_set.discard(code)
+        # add to where she belongs
+        for uid in training_uids:
+            attendee_set = self.table.get(uid, set())
+            attendee_set.add(code)
+            self.table[uid] = attendee_set
+
+    def available_seats(self, training_dict):
+        total = training_dict.get('seats', 0)
+        taken = len(self.table.get(training_dict['uid'], set()))
+        # the result should be positive, but we can be cautious here
+        return max(total - taken, 0)
+
+
 class RegisterView(View):
     grok.context(IAttendee)
     grok.require('cmf.ReviewPortalContent')
@@ -257,15 +288,27 @@ class RegisterView(View):
     template = None
 
     def render(self):
+        this_attendee = self.context
+
         trainings_uid = self.request.form.get('trainings_uid', [])
         if isinstance(trainings_uid, str):
             trainings_uid = [trainings_uid, ]
+
+        # force that confirmed trainings are always part of the selection
+        # we never know what comes in a request
         all_trainings = list(self.confirmed_trainings)
         for uid in trainings_uid:
             if uid not in all_trainings:
                 all_trainings.append(uid)
-        self.context.trainings = all_trainings
-        # sets the time of this operation for use in liberation of blocked seats
-        self.context.last_time_trainings_were_set = datetime.now()
-        self.context.reindexObject(idxs=['trainings', ])
-        return self.request.response.redirect(self.context.absolute_url())
+        this_attendee.trainings = all_trainings
+
+        # block seats
+        seat_table = SeatTable(this_attendee)
+        seat_table.refresh_attendee_trainings(this_attendee, all_trainings)
+
+        # set the time of this operation for use in liberation of blocked seats
+        this_attendee.last_time_trainings_were_set = datetime.now()
+
+        this_attendee.reindexObject(idxs=['trainings', ])
+        return self.request.response.redirect(this_attendee.absolute_url())
+
