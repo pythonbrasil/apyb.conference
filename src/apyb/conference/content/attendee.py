@@ -14,7 +14,8 @@ from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
 from datetime import datetime
 from persistent.dict import PersistentDict
-
+from plone.app.uuid.utils import uuidToObject
+from Products.statusmessages.interfaces import IStatusMessage
 
 class IAttendee(form.Schema):
     """
@@ -196,17 +197,19 @@ class View(grok.View):
 
     def available_trainings(self):
         trainings = self.trainings
-        confirmed_trainings_set = set(self.confirmed_trainings)
-        selected_set = set(self.context.trainings)
+        confirmed = set(self.confirmed_trainings)
+        selected = set(self.context.trainings)
         sorted_uids_trainings = sorted(trainings.items(), key=lambda (u,t): t['title'])
         seat_table = SeatTable(self.context)
         for uid, training in sorted_uids_trainings:
             state = training.get('review_state', '')
             if not (state == 'confirmed'):
                 continue
-            training.update(confirmed = uid in confirmed_trainings_set,
-                            selected = uid in selected_set,
-                            available_seats = seat_table.available_seats(training),)
+            available_seats = seat_table.available_seats(uid)
+            training.update(selected = uid in selected,
+                            disabled = (uid in confirmed or
+                                        not available_seats),
+                            available_seats = available_seats,)
             yield training
 
     def caipirinha_sprint(self):
@@ -273,9 +276,10 @@ class SeatTable(object):
             attendee_set.add(code)
             self.table[uid] = attendee_set
 
-    def available_seats(self, training_dict):
-        total = training_dict.get('seats', 0)
-        taken = len(self.table.get(training_dict['uid'], set()))
+    def available_seats(self, training_uid):
+        training = uuidToObject(training_uid)
+        total = training.seats or 0
+        taken = len(self.table.get(training_uid, set()))
         # the result should be positive, but we can be cautious here
         return max(total - taken, 0)
 
@@ -289,26 +293,30 @@ class RegisterView(View):
 
     def render(self):
         this_attendee = self.context
-
         trainings_uid = self.request.form.get('trainings_uid', [])
         if isinstance(trainings_uid, str):
             trainings_uid = [trainings_uid, ]
+        seat_table = SeatTable(this_attendee)
 
         # force that confirmed trainings are always part of the selection
         # we never know what comes in a request
         all_trainings = list(self.confirmed_trainings)
         for uid in trainings_uid:
             if uid not in all_trainings:
-                all_trainings.append(uid)
-        this_attendee.trainings = all_trainings
-
-        # block seats
-        seat_table = SeatTable(this_attendee)
+                # do we still have available seats?
+                if seat_table.available_seats(uid):
+                    all_trainings.append(uid)
+                else:
+                    training = uuidToObject(uid)
+                    messages = IStatusMessage(self.request)
+                    warning = _(u'This training is already fully booked') + ': ' + training.title
+                    messages.addStatusMessage(warning, type="warning")
+        # reserve a seat for each training
         seat_table.refresh_attendee_trainings(this_attendee, all_trainings)
-
+        # store the list of trainings of this attendee
+        this_attendee.trainings = all_trainings
+        this_attendee.reindexObject(idxs=['trainings', ])
         # set the time of this operation for use in liberation of blocked seats
         this_attendee.last_time_trainings_were_set = datetime.now()
-
-        this_attendee.reindexObject(idxs=['trainings', ])
         return self.request.response.redirect(this_attendee.absolute_url())
 
