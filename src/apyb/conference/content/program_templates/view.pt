@@ -31,7 +31,7 @@
      <div tal:condition="view/is_anonymous">
          <span i18n:translate="">In order to submit talk proposals to this conference you need to create an account on this site (so you can manage your talk details later on).</span><br/><br/>
          <span>
-             <a href="" 
+             <a href=""
                 tal:attributes="href string:${view/login_url};
                                 id string:login_form;"
                 i18n:translate="">
@@ -39,7 +39,7 @@
              </a>
          </span><br />
          <span>
-             <a href="" 
+             <a href=""
              tal:attributes="href string:${view/register_url};
                              id string:register_form;"
                 i18n:translate="">
@@ -97,11 +97,11 @@
                      tal:replace="structure python:img.tag()"/></a>
                 <a href="" tal:attributes="href string:${track/getURL}"><span class="track_title" tal:content="track/Title">Plone</span></a><br />
                 <span class="discreet" tal:content="track/Description">Plone is a CMS written in Python</span><br />
-                <a href="" tal:condition="python:(track.getId not in ('keynotes', 'training')) and cfp" 
+                <a href="" tal:condition="python:(track.getId not in ('keynotes', 'training')) and cfp"
                    tal:attributes="href string:${track/getURL}/@@new-talk"
                    class="submit-talk-proposal"
                    i18n:translate="">Submit talk proposal here</a>
-                <a href="" tal:condition="python:(track.getId in ('training')) and cfp" 
+                <a href="" tal:condition="python:(track.getId in ('training')) and cfp"
                    tal:attributes="href string:${track/getURL}/@@new-training"
                    class="submit-training-proposal"
                    i18n:translate="">Submit training proposal here</a>
@@ -234,7 +234,7 @@
                 </tbody>
             </table>
         </div>
-    </div> 
+    </div>
     <div class="clear"> </div>
   </metal:content-core>
 </metal:main>

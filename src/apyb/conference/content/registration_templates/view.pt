@@ -12,16 +12,16 @@
     <dl class="portalMessage error" tal:condition="view/show_payments">
         <dt i18n:translate="">Info</dt>
         <dd i18n:translate="">
-           This registration is not paid. Please, click on the image button bellow 
+           This registration is not paid. Please, click on the image button bellow
            to be taken to our payment processor partner.
         </dd>
     </dl>
     <h2 i18n:translate="">Registration Info</h2>
     <div id="registration_details">
-        <h3 i18n:translate="">Details</h3>        
+        <h3 i18n:translate="">Details</h3>
         <span i18n:translate="">Registration Type</span>:&nbsp;<strong><span tal:content="view/fmt_registration_type">Individual</span></strong><br/>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span i18n:translate="">By user</span>:&nbsp;<strong><span tal:content="view/creator">Dorneles Tremea</span></strong><br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span i18n:translate="">When</span>:&nbsp;<strong><span tal:content="view/created">12/09/2011 12:32</span></strong><br/>        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span i18n:translate="">When</span>:&nbsp;<strong><span tal:content="view/created">12/09/2011 12:32</span></strong><br/>
         <span i18n:translate="">Contact e-mail</span>:&nbsp;<strong><span tal:content="context/email">deo@x3ng.com.br</span></strong><br/>
         <span i18n:translate="">Location</span>:&nbsp;<strong><span tal:content="context/city">Garibaldi</span>,<span tal:content="context/state">Rio Grande do Sul</span>, <span tal:content="python:context.country.upper()">BR</span> </strong><br/>
 
@@ -86,9 +86,9 @@
                 cobranca@python.org.br
             </address>
             <br />
-        </div>        
+        </div>
         <div id="pagseguro" tal:condition="view/show_pagseguro">
-            <form 
+            <form
                   action="https://pagseguro.uol.com.br/checkout/checkout.jhtml"
                   method="post" target="_new">
 
@@ -100,9 +100,9 @@
                 <input type="hidden" name="item_quant_1" tal:attributes="value python:len(view.attendees());" value="1" />
                 <input type="hidden" name="item_descr_1" value="Ploneconf 2013 & PythonBrasil[9] Registration" />
 
-                <input type="hidden" 
+                <input type="hidden"
                       tal:attributes="value view/base_price"
-                      name="item_valor_1" 
+                      name="item_valor_1"
                       value="2500"/>
 
                 <input type="hidden" name="ref_transacao" value="id"
@@ -120,12 +120,12 @@
                 <input type="hidden" name="cliente_uf" value="UF"
                        tal:attributes="value context/state" />
 
-                <input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/carrinhoproprio/btnFinalizaBR.jpg" 
+                <input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/carrinhoproprio/btnFinalizaBR.jpg"
                        name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!">
             </form>
         </div>
         <br />
-        <div id="paypal" tal:condition="view/show_paypal"> 
+        <div id="paypal" tal:condition="view/show_paypal">
             <form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
                 <input type="hidden" name="cmd" value="_xclick">
                 <input type="hidden" name="business" value="cobranca@python.org.br">
@@ -139,7 +139,7 @@
             </form>
         </div>
     </div>
-    
+
   </metal:content-core>
 </metal:main>
 

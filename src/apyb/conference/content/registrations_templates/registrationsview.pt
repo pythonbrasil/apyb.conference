@@ -8,20 +8,20 @@
 <body>
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
-    
+
     <div tal:condition="view/listing_enabled">
-        <h2 i18n:translate="">Registrations Management</h2>        
+        <h2 i18n:translate="">Registrations Management</h2>
         <h3 i18n:translate="">PayPal</h3>
-        <a href="" 
+        <a href=""
            tal:attributes="href string:${context/absolute_url}/@@registrations_paypal"
            i18n:translate="">Import PayPal file</a>
         <br />
         <h3 i18n:translate="">PagSeguro</h3>
-        <a href="" 
+        <a href=""
            tal:attributes="href string:${context/absolute_url}/@@registrations_pagseguro"
            i18n:translate="">Import PagSeguro file</a>
-        <br />        
-        
+        <br />
+
         <h2 i18n:translate="">Registrations Stats</h2>
         <h3 i18n:translate="">Confirmed Registrations Stats</h3>
         <div class="stats_list" tal:define="registrations_by_type view/registrations_by_type">
@@ -87,7 +87,7 @@
             </tbody>
         </table>
     </div>
-    
+
   </metal:content-core>
 </metal:main>
 

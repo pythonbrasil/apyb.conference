@@ -4,17 +4,17 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="apyb.conference"
       metal:use-macro="context/main_template/macros/master">
-      
+
     <metal:block fill-slot="main">
-        
+
     <h1 class="documentFirstHeading" tal:content="view/label | nothing" />
         <div id="content-core">
             <metal:block use-macro="context/@@ploneform-macros/titlelessform">
                 <metal:fields-slot fill-slot="fields">
-                    <metal:define use-macro="context/@@ploneform-macros/fields" />                
+                    <metal:define use-macro="context/@@ploneform-macros/fields" />
                 </metal:fields-slot>
             </metal:block>
         </div>
     </metal:block>
-    
+
 </html>

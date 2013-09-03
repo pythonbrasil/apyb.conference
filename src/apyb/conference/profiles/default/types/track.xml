@@ -10,7 +10,7 @@
   <property name="icon_expr">string:${portal_url}/++resource++apyb.conference/track_icon.png</property>
   <property name="factory">track</property>
   <property name="global_allow">False</property>
-  <property name="filter_content_types">True</property>  
+  <property name="filter_content_types">True</property>
   <property name="allowed_content_types">
      <element value="talk"/>
      <element value="training"/>
@@ -18,7 +18,7 @@
   <property name="allow_discussion">False</property>
 
   <!-- schema and class used for content items -->
-  <property name="schema">apyb.conference.content.track.ITrack</property> 
+  <property name="schema">apyb.conference.content.track.ITrack</property>
   <property name="klass">apyb.conference.content.track.Track</property>
 
   <property name="behaviors">

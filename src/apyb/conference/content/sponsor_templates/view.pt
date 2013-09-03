@@ -21,7 +21,7 @@
           <img tal:replace="structure image" />
         </figure>
         <div
-            tal:condition="text" 
+            tal:condition="text"
             tal:content='structure text/output' />
       </metal:content-core>
     </metal:main>

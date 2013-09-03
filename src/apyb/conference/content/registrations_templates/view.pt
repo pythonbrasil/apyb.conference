@@ -8,13 +8,13 @@
 <body>
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
-    
+
     <div tal:condition="view/registrations_enabled">
         <h2 i18n:translate="">Register!</h2>
         <div tal:condition="view/is_anonymous">
             <span i18n:translate="">In order to register to this conference you need to create an account on this site (so you can manage your registration details later on).</span><br/><br/>
             <span>
-                <a href="" 
+                <a href=""
                    tal:attributes="href string:${view/login_url};
                                    id string:login_form;"
                    i18n:translate="">
@@ -22,7 +22,7 @@
                 </a>
             </span><br />
             <span>
-                <a href="" 
+                <a href=""
                 tal:attributes="href string:${view/register_url};
                                 id string:register_form;"
                    i18n:translate="">
@@ -75,29 +75,29 @@
             </li>
         </ul>
     </div>
-    
+
     <div tal:condition="view/listing_enabled">
         <h2 i18n:translate="">Registrations Management</h2>
         <h3 i18n:translate="">Registrations</h3>
-        <a href="" 
+        <a href=""
            tal:attributes="href string:${context/absolute_url}/@@registrations_view"
            i18n:translate="">View registrations</a>
         <br />
-        <a href="" 
+        <a href=""
            tal:attributes="href string:${context/absolute_url}/@@registration-sponsor"
            i18n:translate="">Add Sponsor Registration and Attenddees</a>
         <br />
-        <a href="" 
+        <a href=""
            tal:attributes="href string:${context/absolute_url}/@@registration-organizer"
            i18n:translate="">Add Organization Registration and Attendees</a>
         <br />
         <h3 i18n:translate="">Attendees</h3>
-        <a href="" 
+        <a href=""
            tal:attributes="href string:${context/absolute_url}/@@attendees_view"
            i18n:translate="">View attendees</a>
-        
+
     </div>
-    
+
   </metal:content-core>
 </metal:main>
 

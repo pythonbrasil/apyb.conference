@@ -27,14 +27,14 @@
             <tal:talks tal:repeat="talk talks">
                 <tr>
                     <td>
-                        <a href="" class="track_details_link" 
+                        <a href="" class="track_details_link"
                             tal:define="track python:view.track_info(talk.track);"
                             tal:attributes="href track/url" tal:content="track/title">Title</a><br/>
                     </td>
                     <td>
-                        <a href="" 
+                        <a href=""
                            class="talk_details_link"
-                           tal:attributes="href talk/getURL" 
+                           tal:attributes="href talk/getURL"
                            tal:content="talk/Title">Title</a><br/>
                     </td>
                     <td>
@@ -50,7 +50,7 @@
                         <span tal:content="displayable" />
                     </td>
                     <td>
-                        <span 
+                        <span
                               tal:define="review_state talk/review_state"
                               tal:content="review_state" />
                     </td>

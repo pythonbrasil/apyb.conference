@@ -28,14 +28,14 @@
             <tal:talks tal:repeat="talk talks">
                 <tr>
                     <td class="talk_ordering">
-                        <span class="number" tal:content="repeat/talk/number">1</span> 
+                        <span class="number" tal:content="repeat/talk/number">1</span>
                     </td>
                     <td class="talk_details_">
                         <input type="hidden" value="" name="talk_uid"
                             tal:attributes="value talk/UID">
-                        <a href="" 
+                        <a href=""
                            class="talk_details_link"
-                           tal:attributes="href talk/getURL" 
+                           tal:attributes="href talk/getURL"
                            tal:content="talk/Title">Title</a><br/>
                         <span class="talk_details_speaker" tal:content="python:view.speaker_name(talk.speakers)">Speakers</span><br/>
                     </td>

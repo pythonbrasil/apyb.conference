@@ -26,26 +26,26 @@
             <tal:training tal:repeat="training trainings">
                 <tr>
                     <td>
-                        <a href="" class="track_details_link" 
+                        <a href="" class="track_details_link"
                             tal:define="track python:view.track_info(training.track);"
                             tal:attributes="href track/url" tal:content="track/title">Title</a><br/>
                     </td>
                     <td>
-                        <a href="" 
+                        <a href=""
                            class="training_details_link"
-                           tal:attributes="href training/getURL" 
+                           tal:attributes="href training/getURL"
                            tal:content="training/Title">Title</a><br/>
                     </td>
                     <td>
                         <span class="training_details_speaker" tal:content="python:view.speaker_name(training.speakers)">Speakers</span>
                     </td>
                     <td>
-                        <span 
+                        <span
                               tal:define="created training/created"
                               tal:content="created" />
                     </td>
                     <td>
-                        <span 
+                        <span
                               tal:define="review_state training/review_state"
                               tal:content="review_state" />
                     </td>
@@ -53,7 +53,7 @@
             </tal:training>
             </tbody>
         </table>
-    </div>    
+    </div>
   </metal:content-core>
 </metal:main>
 </body>

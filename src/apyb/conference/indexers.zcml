@@ -1,7 +1,7 @@
 <configure
     xmlns="http://namespaces.zope.org/zope">
 
-  <adapter name="SearchableText" 
+  <adapter name="SearchableText"
            factory=".content.sponsor.SearchableText" />
   <adapter name="getRemoteUrl"
            factory=".content.sponsor.getRemoteUrl" />

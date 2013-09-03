@@ -22,19 +22,19 @@
             <tal:talks tal:repeat="talk talks">
                 <tr>
                     <td class="talk_ordering">
-                        <a href="" class="track_details_link" 
+                        <a href="" class="track_details_link"
                             tal:define="track python:view.track_info(talk.track);"
                             tal:attributes="href track/url" tal:content="track/title">Title</a><br/>
                     </td>
                     <td class="talk_details_">
                         <input type="hidden" value="" name="talk_uid"
                             tal:attributes="value talk/UID">
-                        <a href="" 
+                        <a href=""
                            class="talk_details_link"
-                           tal:attributes="href talk/getURL" 
+                           tal:attributes="href talk/getURL"
                            tal:content="talk/Title">Title</a><br/>
                         <span class="talk_details_speaker" tal:content="python:view.speaker_name(talk.speakers)">Speakers</span><br/>
-                        <div tal:condition="python:view.show_calendar(talk)" 
+                        <div tal:condition="python:view.show_calendar(talk)"
                              class="talk_listing_schedule">
                             <div class="talk_room" tal:content="python:view.location(talk)">Room</div>
                             <div class="talk_date" tal:content="python:view.date(talk)">29/09</div>

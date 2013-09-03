@@ -22,19 +22,19 @@
             <tal:trainings tal:repeat="training trainings">
                 <tr>
                     <td class="training_ordering">
-                        <a href="" class="track_details_link" 
+                        <a href="" class="track_details_link"
                             tal:define="track python:view.track_info(training.track);"
                             tal:attributes="href track/url" tal:content="track/title">Title</a><br/>
                     </td>
                     <td class="training_details_">
                         <input type="hidden" value="" name="training_uid"
                             tal:attributes="value training/UID">
-                        <a href="" 
+                        <a href=""
                            class="training_details_link"
-                           tal:attributes="href training/getURL" 
+                           tal:attributes="href training/getURL"
                            tal:content="training/Title">Title</a><br/>
                         <span class="training_details_speaker" tal:content="python:view.speaker_name(training.speakers)">Speakers</span><br/>
-                        <div tal:condition="python:view.show_calendar(training)" 
+                        <div tal:condition="python:view.show_calendar(training)"
                              class="training_listing_schedule">
                             <div class="training_room" tal:content="python:view.location(training)">Room</div>
                             <div class="training_date" tal:content="python:view.date(training)">29/09</div>

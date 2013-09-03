@@ -31,7 +31,7 @@
             </h3>
 
             <p class="tileBody" tal:condition="sponsor/description">
-                <span class="description" 
+                <span class="description"
                       tal:content="sponsor/description">
                     description
                 </span>

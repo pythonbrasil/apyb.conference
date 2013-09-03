@@ -44,7 +44,7 @@
  </index>
  <index name="talk_type" meta_type="FieldIndex">
   <indexed_attr value="talk_type"/>
- </index> 
+ </index>
  <column value="speakers"/>
  <column value="track"/>
  <column value="level"/>

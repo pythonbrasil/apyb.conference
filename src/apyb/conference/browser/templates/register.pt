@@ -4,7 +4,7 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="apyb.conference"
       metal:use-macro="context/main_template/macros/master">
-    
+
     <metal:block fill-slot="main">
     <h1 class="documentFirstHeading" tal:content="view/label | nothing" />
         <div class="price_container">
@@ -31,32 +31,32 @@
                 }
                 jQuery.getJSON('@@reg-price.json?type=' + registration_type + '&qty='+qtyAttendess + '&caipirinha=' + caipirinha + '&wall=' + wall, function(data) {
                   jQuery('div#price').html(data['fmtPrice']);
-                });                
+                });
             }
-            jQuery(function(){              
+            jQuery(function(){
                   updatePrice();
-                  //We patch datagrid in order to count 
-                  dataGridField2Functions.createNewRow = function(node) { 
-                      /* Creates a new row 
+                  //We patch datagrid in order to count
+                  dataGridField2Functions.createNewRow = function(node) {
+                      /* Creates a new row
                          @param node A row in a table where we'll be adding the new row
                       */
-                      var tbody = this.getParentByClass(node, "datagridwidget-body");   
-                      // hidden template row 
+                      var tbody = this.getParentByClass(node, "datagridwidget-body");
+                      // hidden template row
                       var emptyRow = $(tbody).find('.datagridwidget-empty-row');
                       var markup = $(emptyRow).clone();
                       var newTr = $(markup).attr("class","datagridwidget-row");
                       qtyAttendess = qtyAttendess + 1;
                       updatePrice();
                       return newTr[0]
-                  }    
+                  }
 
                   dataGridField2Functions.removeFieldRow = function(node) {
                       /* Remove the row in which the given node is found */
-                      var tbody = this.getParentByClass(node, "datagridwidget-body"); 
+                      var tbody = this.getParentByClass(node, "datagridwidget-body");
                       var row = this.getParentRow(node);
                       $(row).detach();
                       this.updateOrderIndex(tbody,false);
-                      qtyAttendess = qtyAttendess - 1;	    
+                      qtyAttendess = qtyAttendess - 1;
                       updatePrice();
                   }
                   jQuery('#form-widgets-caipirinha').change(function (){

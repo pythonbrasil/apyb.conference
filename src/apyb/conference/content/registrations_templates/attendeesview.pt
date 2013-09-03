@@ -8,7 +8,7 @@
 <body>
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
-    
+
     <div tal:condition="view/listing_enabled">
         <h2 i18n:translate="">Registrations Management</h2>
         <h3 i18n:translate="">Attendees Stats</h3>
@@ -42,7 +42,7 @@
                 <tr tal:condition="python:att.get('state')=='Confirmado'">
                     <td>
                         <a href="" tal:attributes="href att/url" tal:content="att/id">23dsvfr2</a><br/>
-                        <a href="" tal:attributes="href att/reg_url" 
+                        <a href="" tal:attributes="href att/reg_url"
                             tal:content="python:att.get('reg')[:8]">23dsvfr2</a><br/>
                     </td>
                     <td tal:content="att/type">2011-07-13</td>
@@ -57,7 +57,7 @@
                 </tal:attendees>
             </tbody>
         </table>
-        
+
         <h4 i18n:translate="">Pending Attendees</h4>
         <table class="listing">
             <thead>
@@ -74,7 +74,7 @@
                 <tr tal:condition="python:att.get('state')=='Pendente'">
                     <td>
                         <a href="" tal:attributes="href att/url" tal:content="att/id">23dsvfr2</a><br/>
-                        <a href="" tal:attributes="href att/reg_url" 
+                        <a href="" tal:attributes="href att/reg_url"
                             tal:content="python:att.get('reg')[:8]">23dsvfr2</a><br/>
                     </td>
                     <td tal:content="att/date">2011-07-13</td>
@@ -86,7 +86,7 @@
             </tbody>
         </table>
     </div>
-    
+
   </metal:content-core>
 </metal:main>
 

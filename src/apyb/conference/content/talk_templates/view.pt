@@ -10,7 +10,7 @@
   <metal:title define-macro="content-title">
       <div class="talk-track"
             tal:define="widget view/widgets/track;
-                        token context/track" 
+                        token context/track"
              tal:content="python:widget.terms.getTermByToken(str(token)).title" />
       <h1 metal:use-macro="context/kss_generic_macros/macros/generic_title_view">
           Generic KSS Title. Is rendered with class="documentFirstHeading".
@@ -31,22 +31,22 @@
         <div>
             <strong i18n:translate="">Language:</strong>
             <span tal:define="widget view/widgets/language;
-                              token context/language;" 
+                              token context/language;"
                   tal:content="python:widget.terms.getTermByToken(token).title" />
-        </div> 
+        </div>
         <div>
-            <strong i18n:translate="">Level:</strong> 
+            <strong i18n:translate="">Level:</strong>
             <span tal:define="widget view/widgets/level;
-                              token context/level" 
+                              token context/level"
                   tal:content="python:widget.terms.getTermByToken(token).title" />
-        </div> 
+        </div>
         <div>
             <strong i18n:translate="">Summary:</strong>
             <div tal:replace="structure context/text" />
-        </div> 
-        <div tal:condition="view/show_references">Reference: 
+        </div>
+        <div tal:condition="view/show_references">Reference:
             <div tal:replace="structure view/w/references/render" />
-        </div> 
+        </div>
     </div>
     <div class="speaker_details">
         <h2 i18n:translate="">Speaker details</h2>

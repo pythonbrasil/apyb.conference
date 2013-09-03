@@ -3,7 +3,7 @@
     xmlns:grok="http://namespaces.zope.org/grok"
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="apyb.conference">
-    
+
     <include package="plone.behavior" file="meta.zcml" />
 
     <plone:behavior
@@ -12,7 +12,7 @@
         provides=".paymentinformation.IPaymentInformation"
         for="plone.dexterity.interfaces.IDexterityContent"
         />
-    
+
     <plone:behavior
         title="OptIn Information"
         description="OptIn information"

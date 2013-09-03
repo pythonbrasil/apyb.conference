@@ -9,7 +9,7 @@
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
     <h2>Inscri&ccedil;&atilde;o de membro da APyB</h2>
-    
+
     <div>
         Para realizar a inscri&ccedil;&atilde;o como membro da APyB voc&ecirc; deve:<br/>
         <ul>
@@ -20,7 +20,7 @@
         <br/>
         <a href="www.pythonbrasil.org.br/2011/inscricoes">Voltar para a p&aacute;gina de inscri&ccedil;&otilde;es.</a>
     </div>
-    
+
   </metal:content-core>
 </metal:main>
 </body>

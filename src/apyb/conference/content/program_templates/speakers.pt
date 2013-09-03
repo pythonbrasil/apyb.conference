@@ -10,7 +10,7 @@
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
     <h2 i18n:translate="">Speakers list</h2>
-    <table class="listing" 
+    <table class="listing"
            tal:define="speakers view/speakers;
                        talks_speakers view/talks_speakers;
                        trainings_speakers view/trainings_speakers;">
@@ -37,7 +37,7 @@
                 <td>
                   <span tal:content="repeat/speaker/number">1</span>
                 </td>
-                <td> 
+                <td>
                     <tal:image   tal:define="scale speaker_obj/@@images;
                                        img python:scale.scale('image', width=40, height=40, direction='keep');">
                     <img tal:condition="img"
