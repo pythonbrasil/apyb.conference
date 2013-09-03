@@ -10,6 +10,7 @@ from zope.app.intid.interfaces import IIntIds
 from zope.component import getMultiAdapter, queryUtility
 from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
+from persistent.dict import PersistentDict
 
 
 class IRegistration(form.Schema):
@@ -98,6 +99,42 @@ class Registration(dexterity.Container):
 
     def UID(self):
         return self.uid
+
+    @property
+    def payments(self):
+        if not hasattr(self, '_payments'):
+            self._payments = PersistentDict()
+        return self._payments
+
+    def has_payments(self):
+        return hasattr(self, '_payments') and self._payments
+
+    def get_payments_total(self, field):
+        return sum([p[field] for p in self.payments.values()])
+
+    @property
+    def service(self):
+        if self.has_payments():
+            # the service of the first payment
+            return self.payments[0]['service']
+
+    # paypal properity
+    # XXX maybe this should be removed, but I do not know which parts of the system rely on this
+    @property
+    def amount(self):
+        return self.get_payments_total('amount')
+
+    # paypal properity
+    # XXX maybe this should be removed, but I do not know which parts of the system rely on this
+    @property
+    def net_amount(self):
+        return self.get_payments_total('net_amount')
+
+    # paypal properity
+    # XXX maybe this should be removed, but I do not know which parts of the system rely on this
+    @property
+    def fee(self):
+        return self.get_payments_total('fee')
 
 
 class View(grok.View):
