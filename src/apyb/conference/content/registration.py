@@ -251,11 +251,23 @@ class View(grok.View):
     def payment_details(self):
         view = self.price_view
         fmtPrice = view.fmtPrice
+        for n, p in sorted(self.context.payments.items()):
+            details = {
+                'amount': fmtPrice(p['amount']),
+                'net_amount': fmtPrice(p['net_amount']),
+                'fee': fmtPrice(p['fee']),
+                'service': p['service'],
+            }
+            yield details
+
+    @property
+    def payment_totals(self):
+        view = self.price_view
+        fmtPrice = view.fmtPrice
         details = {
-            'amount': fmtPrice(getattr(self.context, 'amount', 0)),
-            'net_amount': fmtPrice(getattr(self.context, 'net_amount', 0)),
-            'fee': fmtPrice(getattr(self.context, 'fee', 0)),
-            'processor': getattr(self.context, 'service', ''),
+            'amount': fmtPrice(self.context.get_payments_total('amount')),
+            'net_amount': fmtPrice(self.context.get_payments_total('net_amount')),
+            'fee': fmtPrice(self.context.get_payments_total('fee')),
         }
         return details
 

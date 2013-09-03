@@ -26,19 +26,39 @@
         <span i18n:translate="">Location</span>:&nbsp;<strong><span tal:content="context/city">Garibaldi</span>,<span tal:content="context/state">Rio Grande do Sul</span>, <span tal:content="python:context.country.upper()">BR</span> </strong><br/>
 
 
-        <h3 i18n:translate="">Pricing</h3>
-        <div tal:condition="not:view/paid">
-            <span i18n:translate="">Total price</span>:&nbsp;<strong><span tal:content="view/fmtPrice">UsD123.00</span></strong><br/>
+        <h3 i18n:translate="">Received Payments</h3>
+        <div tal:condition="not:context/payments">
+            <span i18n:translate="">No payments received yet.</span><br/>
         </div>
-        <div tal:condition="view/paid"
-             tal:define="details view/payment_details">
-            <span i18n:translate="">Price paid</span>:&nbsp;<strong><span tal:content="details/amount">UsD123.00</span></strong><br/>
-            <tal:review tal:condition="view/show_border">
-            <span i18n:translate="">Service</span>:&nbsp;<strong><span tal:content="details/processor">PayPal</span></strong><br/>
-            <span i18n:translate="">Net amount</span>:&nbsp;<strong><span tal:content="details/net_amount">UsD123.00</span></strong><br/>
-            <span i18n:translate="">Service Fees</span>:&nbsp;<strong><span tal:content="details/fee">UsD123.00</span></strong><br/>
-            </tal:review>
-        </div>
+        <table class="listing" tal:condition="context/payments">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th i18n:translate="">Service</th>
+                    <th i18n:translate="">Price paid</th>
+                    <th i18n:translate="">Net amount</th>
+                    <th i18n:translate="">Service Fees</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr tal:repeat="payment view/payment_details">
+                    <td tal:content="repeat/payment/number">12</td>
+                    <td tal:content="payment/service">Paypalllll</td>
+                    <td tal:content="payment/amount">0000,00</td>
+                    <td tal:content="payment/net_amount">0000,00</td>
+                    <td tal:content="payment/fee">000,00</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr tal:define="totals view/payment_totals">
+                    <td>Total</td>
+                    <td>----------</td>
+                    <td tal:content="totals/amount">0000,00</td>
+                    <td tal:content="totals/net_amount">0000,00</td>
+                    <td tal:content="totals/fee">000,00</td>
+                </tr>
+            </tfoot>
+        </table>
     </div>
     <h2 i18n:translate="">Attendees</h2>
     <p tal:condition="view/paid" i18n:translate="">To register to a training, click on the name of an attendee and then select the desired sessions</p>
