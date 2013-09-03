@@ -237,6 +237,9 @@ class View(grok.View):
         is_paid = getattr(self.context, 'paid', False)
         return is_paid
 
+    def formatPrice(self, value):
+        return self.price_view.fmtPrice(value)
+
     @property
     def price_paid(self):
         view = self.price_view
@@ -330,3 +333,19 @@ class View(grok.View):
         ''' List of available trainings '''
         helper = self.helper
         return helper.trainings()
+
+    @property
+    def pending_payments(self):
+        pending = []
+        # basic conference registration
+        if not self.context.has_payments():
+            # if no payment was made then the conf registration is pending
+            pending.append({'item': 'Conference Registration',
+                            'price': self.price,
+                            'fmtPrice': self.fmtPrice})
+        total = self.formatPrice(sum([p['price'] for p in pending]))
+        # trainings
+        # TODO ...
+        return pending, total
+
+

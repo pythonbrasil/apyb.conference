@@ -59,6 +59,41 @@
                 </tr>
             </tfoot>
         </table>
+
+        <h3 i18n:translate="">Pending Payments</h3>
+
+        <tal:block tal:define="payments_and_total python:view.pending_payments;
+                               payments python:payments_and_total[0];
+                               total python:payments_and_total[1]">
+
+          <div tal:condition="not:payments">
+            <span i18n:translate="">You have no pending payments.</span><br/>
+          </div>
+          <table class="listing" tal:condition="payments">
+            <thead>
+              <tr>
+                <th></th>
+                <th i18n:translate="">Item</th>
+                <th i18n:translate="">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr tal:repeat="payment payments">
+                <td tal:content="repeat/payment/number">12</td>
+                <td tal:content="payment/item">Paypalllll</td>
+                <td tal:content="payment/fmtPrice">0000,00</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Total</td>
+                <td>----------</td>
+                <td tal:content="total">0000,00</td>
+              </tr>
+            </tfoot>
+          </table>
+        </tal:block>
+
     </div>
     <h2 i18n:translate="">Attendees</h2>
     <p tal:condition="view/paid" i18n:translate="">To register to a training, click on the name of an attendee and then select the desired sessions</p>
