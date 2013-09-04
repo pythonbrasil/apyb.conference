@@ -11,7 +11,8 @@ from zope.component import getMultiAdapter, queryUtility
 from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
 from persistent.dict import PersistentDict
-
+from apyb.conference.behavior.allocation import IAllocation
+from apyb.conference.content.attendee import IAttendee
 
 class IRegistration(form.Schema):
     """
@@ -343,9 +344,26 @@ class View(grok.View):
             pending.append({'item': 'Conference Registration',
                             'price': self.price,
                             'fmtPrice': self.fmtPrice})
-        total = self.formatPrice(sum([p['price'] for p in pending]))
         # trainings
-        # TODO ...
+        def training_price(t):
+            allocation = IAllocation(t)
+            duration = int(allocation.duration.split()[0])
+            price = 100*50*duration/4 #100 -> cent adjustment
+            return price
+        attendees = [a for a in self.context.getChildNodes()
+                     if IAttendee.providedBy(a)]
+        for a in attendees:
+            for t in a.pending_trainings:
+                duration = IAllocation(t).duration
+                title = 'Training for [%s]: %s (%s)' % (a.title,
+                                                        t.title,
+                                                        duration)
+                price = training_price(t)
+                pending.append({'item': title,
+                                'price': price,
+                                'fmtPrice': self.formatPrice(price)})
+
+        total = self.formatPrice(sum([p['price'] for p in pending]))
         return pending, total
 
 

@@ -121,6 +121,19 @@ class Attendee(dexterity.Item):
     def UID(self):
         return self.uid
 
+    @property
+    def confirmed_trainings(self):
+        payments = getattr(self, "payments", {})
+        for trainings_uid_list in payments.values():
+            for uid in trainings_uid_list:
+                yield uid
+
+    @property
+    def pending_trainings(self):
+        all_trainings = set(getattr(self, "trainings", []))
+        confirmed = set(self.confirmed_trainings)
+        return [uuidToObject(uid) for uid in all_trainings.difference(confirmed)]
+
 
 @indexer(IAttendee)
 def registration_type(obj):
@@ -172,13 +185,6 @@ class View(grok.View):
         trainings_dict = program_helper.trainings_dict
         return trainings_dict
 
-    @property
-    def confirmed_trainings(self):
-        payments = getattr(self.context, "payments", {})
-        for trainings_uid_list in payments.values():
-            for uid in trainings_uid_list:
-                yield uid
-
     def has_registered_trainings(self):
         return getattr(self.context, "payments", {}) or self.context.trainings
 
@@ -189,7 +195,7 @@ class View(grok.View):
             t.update(registration_status = registration_status)
             return t
         remaining = list(self.context.trainings)
-        for uid in self.confirmed_trainings:
+        for uid in self.context.confirmed_trainings:
             remaining.remove(uid) # a confirmed trainings must be in the list of trainings
             yield training_with_status(uid, "confirmed")
         for uid in remaining:
@@ -197,7 +203,7 @@ class View(grok.View):
 
     def available_trainings(self):
         trainings = self.trainings
-        confirmed = set(self.confirmed_trainings)
+        confirmed = set(self.context.confirmed_trainings)
         selected = set(self.context.trainings)
         sorted_uids_trainings = sorted(trainings.items(), key=lambda (u,t): t['title'])
         seat_table = SeatTable(self.context)
@@ -300,7 +306,7 @@ class RegisterView(View):
 
         # force that confirmed trainings are always part of the selection
         # we never know what comes in a request
-        all_trainings = list(self.confirmed_trainings)
+        all_trainings = list(this_attendee.confirmed_trainings)
         for uid in trainings_uid:
             if uid not in all_trainings:
                 # do we still have available seats?
