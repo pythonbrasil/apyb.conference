@@ -369,6 +369,10 @@ class View(grok.View):
                                 'fmtPrice': self.formatPrice(price)})
 
         total = self.formatPrice(sum([p['price'] for p in pending]))
+
+        # TODO we should move the property to Registration and call it from there (in the ManagePayPalView) (and not store this)
+        self.context.pending_payments_HACK = pending, total
+
         return pending, total
 
     @property

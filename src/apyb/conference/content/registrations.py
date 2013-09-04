@@ -8,6 +8,7 @@ from five import grok
 from plone.directives import dexterity, form
 from zope.component import getMultiAdapter, queryUtility
 from zope.schema.interfaces import IVocabularyFactory
+from persistent.dict import PersistentDict
 
 
 class IRegistrations(form.Schema):
@@ -508,18 +509,33 @@ class ManagePayPalView(grok.View):
         context = self.context
         oIds = context.objectIds()
         for item in items:
-            oId = item.get('ID_item', '')
+            # the first payment has sequential number == 0
+            # it's ID is either in the format '<oid>' (for backward compatibility) or '<oid>::0'
+            oId, seq = item.get('ID_item', ''), 0
+            # extra payments have ID's in the format '<oid>::<seq>', seq = 1,2,...
+            if '::' in oId:
+                oId, seq = oId.split('::')
+                seq = int(seq)
             if (not oId in oIds):
                 continue
             reg = context[oId]
-            if getattr(reg, 'paid', False):
+            if seq in reg.payments:
+                # this payment was already processed
                 continue
-            reg.amount = self.fix_value(item.get('Bruto', '0,00'))
-            reg.fee = self.fix_value(item.get('Taxa', '0,00'))
-            reg.net_amount = self.fix_value(item.get('Liquido', '0,00'))
-            reg.paid = True
-            reg.service = self.payment
-            self._wt.doActionFor(reg, 'confirm')
+            # this is a new payment
+            amount = self.fix_value(item.get('Bruto', '0,00'))
+            fee = self.fix_value(item.get('Taxa', '0,00'))
+            net_amount = self.fix_value(item.get('Liquido', '0,00'))
+            service = self.payment
+            reg.payments[seq] = PersistentDict(items = reg.pending_payments_HACK,
+                                               service = service,
+                                               amount = amount,
+                                               net_amount = net_amount,
+                                               fee = fee,)
+            # TODO clear pending items !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            # TODO .... PUT THIS BACK!!!!!!!
+            # self._wt.doActionFor(reg, 'confirm')
             self.updated.append(reg.id)
 
 
