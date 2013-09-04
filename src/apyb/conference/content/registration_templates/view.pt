@@ -34,6 +34,7 @@
             <thead>
                 <tr>
                     <th></th>
+                    <th i18n:translate="">Items</th>
                     <th i18n:translate="">Service</th>
                     <th i18n:translate="">Price paid</th>
                     <th i18n:translate="">Net amount</th>
@@ -43,6 +44,12 @@
             <tbody>
                 <tr tal:repeat="payment view/payment_details">
                     <td tal:content="repeat/payment/number">12</td>
+                    <td>
+                      <dl tal:repeat="iitem python:payment['items']">
+                        <dt tal:content="iitem/item">Item</dt>
+                        <dd tal:content="iitem/fmtPrice">0000,00</dd>
+                      </dl>
+                    </td>
                     <td tal:content="payment/service">Paypalllll</td>
                     <td tal:content="payment/amount">0000,00</td>
                     <td tal:content="payment/net_amount">0000,00</td>
@@ -52,6 +59,7 @@
             <tfoot>
                 <tr tal:define="totals view/payment_totals">
                     <td>Total</td>
+                    <td>----------</td>
                     <td>----------</td>
                     <td tal:content="totals/amount">0000,00</td>
                     <td tal:content="totals/net_amount">0000,00</td>

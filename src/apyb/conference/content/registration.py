@@ -261,6 +261,7 @@ class View(grok.View):
                 'net_amount': fmtPrice(p['net_amount']),
                 'fee': fmtPrice(p['fee']),
                 'service': p['service'],
+                'items': p['items'][0],
             }
             yield details
 
