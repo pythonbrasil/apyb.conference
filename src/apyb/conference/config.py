@@ -9,7 +9,8 @@ PRICES = {'apyb': 5000,
           'speaker': 10000,
           'sponsor': 0,
           'organizer': 0,
-          'training': 0}
+          'training': 5000, # for 4h training, adjust proportionally!
+          }
 
 CAIPIRINHA = {'no': 0,
               'yes_1': 35000,

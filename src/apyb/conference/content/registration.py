@@ -13,6 +13,7 @@ from zope.schema.interfaces import IVocabularyFactory
 from persistent.dict import PersistentDict
 from apyb.conference.behavior.allocation import IAllocation
 from apyb.conference.content.attendee import IAttendee
+from apyb.conference.config import PRICES
 
 class IRegistration(form.Schema):
     """
@@ -348,7 +349,8 @@ class View(grok.View):
         def training_price(t):
             allocation = IAllocation(t)
             duration = int(allocation.duration.split()[0])
-            price = 100*50*duration/4 #100 -> cent adjustment
+            # base price is for a 4h training, we adjust proportionally
+            price = PRICES['training']*duration/4
             return price
         attendees = [a for a in self.context.getChildNodes()
                      if IAttendee.providedBy(a)]
