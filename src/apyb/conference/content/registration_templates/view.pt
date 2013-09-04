@@ -106,54 +106,52 @@
           <div tal:condition="not:payments">
             <span i18n:translate="">You have no pending payments.</span><br/>
           </div>
-          <table class="listing" tal:condition="payments">
-            <thead>
-              <tr>
-                <th></th>
-                <th i18n:translate="">Item</th>
-                <th i18n:translate="">Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr tal:repeat="payment payments">
-                <td tal:content="repeat/payment/number">12</td>
-                <td tal:content="payment/item">Paypalllll</td>
-                <td tal:content="payment/fmtPrice">0000,00</td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <td>Total</td>
-                <td>----------</td>
-                <td tal:content="total">0000,00</td>
-              </tr>
-            </tfoot>
-          </table>
-        </tal:block>
+          <tal:block tal:condition="payments">
+            <table class="listing">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th i18n:translate="">Item</th>
+                  <th i18n:translate="">Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr tal:repeat="payment payments">
+                  <td tal:content="repeat/payment/number">12</td>
+                  <td tal:content="payment/item">Paypalllll</td>
+                  <td tal:content="payment/fmtPrice">0000,00</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td>Total</td>
+                  <td>----------</td>
+                  <td tal:content="total">0000,00</td>
+                </tr>
+              </tfoot>
+            </table>
 
-        <h3 i18n:translate="">Payment options</h3>
-
-        <div id="payment-details">
-            <span i18n:translate="">Total price</span>:&nbsp;<strong><span tal:content="python:view.formatPrice(view.pending_payments_total)">UsD123.00</span></strong>
-        </div>
-        <div id="empenho" tal:condition="view/show_empenho">
-            <br/><br/>
-            Por favor providencie a emiss&atilde;o do empenho para:
-            <br/><br/>
-            <strong>Associa&ccedil;&atilde;o Python Brasil</strong><br/>
-            <strong>09.344.485/0001-05</strong><br/>
-            <address>
+            <div id="payment-details">
+              <span i18n:translate="">Total price</span>:&nbsp;<strong><span tal:content="python:view.formatPrice(view.pending_payments_total)">UsD123.00</span></strong>
+            </div>
+            <div id="empenho" tal:condition="view/show_empenho">
+              <br/><br/>
+              Por favor providencie a emiss&atilde;o do empenho para:
+              <br/><br/>
+              <strong>Associa&ccedil;&atilde;o Python Brasil</strong><br/>
+              <strong>09.344.485/0001-05</strong><br/>
+              <address>
                 Rua Professora Andrea Viero, 215
                 Marechal Floriano - Caxias do Sul - RS
                 95013-060
                 cobranca@python.org.br
-            </address>
-            <br />
-        </div>
-        <div id="pagseguro" tal:condition="view/show_pagseguro">
-            <form
-                  action="https://pagseguro.uol.com.br/checkout/checkout.jhtml"
-                  method="post" target="_new">
+              </address>
+              <br />
+            </div>
+            <div id="pagseguro" tal:condition="view/show_pagseguro">
+              <form
+                 action="https://pagseguro.uol.com.br/checkout/checkout.jhtml"
+                 method="post" target="_new">
 
                 <input type="hidden" name="email_cobranca" value="cobranca@python.org.br" />
                 <input type="hidden" name="encoding" value="UTF-8" />
@@ -164,9 +162,9 @@
                 <input type="hidden" name="item_descr_1" value="Ploneconf 2013 & PythonBrasil[9] Registration" />
 
                 <input type="hidden"
-                      tal:attributes="value view/base_price"
-                      name="item_valor_1"
-                      value="2500"/>
+                       tal:attributes="value view/base_price"
+                       name="item_valor_1"
+                       value="2500"/>
 
                 <input type="hidden" name="ref_transacao" value="id"
                        tal:attributes="value context/id" />
@@ -185,11 +183,11 @@
 
                 <input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/carrinhoproprio/btnFinalizaBR.jpg"
                        name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!">
-            </form>
-        </div>
-        <br />
-        <div id="paypal" tal:condition="view/show_paypal">
-            <form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+              </form>
+            </div>
+            <br />
+            <div id="paypal" tal:condition="view/show_paypal">
+              <form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
                 <input type="hidden" name="cmd" value="_xclick">
                 <input type="hidden" name="business" value="cobranca@python.org.br">
                 <input type="hidden" name="currency_code" value="BRL" />
@@ -199,8 +197,11 @@
                 <input type="hidden" name="item_number" value="1" tal:attributes="value view/pending_payments_item_number" />
                 <input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - A maneira mais fácil e segura de efetuar pagamentos online!">
                 <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
-            </form>
-        </div>
+              </form>
+            </div>
+          </tal:block>
+        </tal:block>
+
     </div>
 
   </metal:content-core>
