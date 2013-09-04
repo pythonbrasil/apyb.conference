@@ -12,7 +12,7 @@
     <dl class="portalMessage error" tal:condition="view/show_payments">
         <dt i18n:translate="">Info</dt>
         <dd i18n:translate="">
-           This registration is not paid. Please, click on the image button bellow
+           This registration is not fully paid. Please, click on the image button bellow
            to be taken to our payment processor partner.
         </dd>
     </dl>
@@ -134,7 +134,7 @@
         <h3 i18n:translate="">Payment options</h3>
 
         <div id="payment-details">
-            <span i18n:translate="">Total price</span>:&nbsp;<strong><span tal:content="view/fmtPrice">UsD123.00</span></strong>
+            <span i18n:translate="">Total price</span>:&nbsp;<strong><span tal:content="python:view.formatPrice(view.pending_payments_total)">UsD123.00</span></strong>
         </div>
         <div id="empenho" tal:condition="view/show_empenho">
             <br/><br/>
@@ -193,10 +193,10 @@
                 <input type="hidden" name="cmd" value="_xclick">
                 <input type="hidden" name="business" value="cobranca@python.org.br">
                 <input type="hidden" name="currency_code" value="BRL" />
-                <input type="hidden" name="amount" value="1"  tal:attributes="value python:'%.2f' % ((view.base_price)/100.0)">
-                <input type="hidden" name="quantity" value="1"  tal:attributes="value python:len(view.attendees());" />
+                <input type="hidden" name="amount" value="1"  tal:attributes="value python:'%.2f' % ((view.pending_payments_total)/100.0)">
+                <input type="hidden" name="quantity" value="1" />
                 <input type="hidden" name="item_name" value="Ploneconf 2013 & PythonBrasil[9] Registration" />
-                <input type="hidden" name="item_number" value="1" tal:attributes="value context/id" />
+                <input type="hidden" name="item_number" value="1" tal:attributes="value view/pending_payments_item_number" />
                 <input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - A maneira mais fácil e segura de efetuar pagamentos online!">
                 <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
             </form>
