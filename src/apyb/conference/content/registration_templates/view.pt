@@ -135,7 +135,7 @@
               <span i18n:translate="">Total price</span>:&nbsp;<strong><span tal:content="python:view.formatPrice(view.pending_payments_total)">UsD123.00</span></strong>
             </div>
             <div id="empenho" tal:condition="view/show_empenho">
-              <br/><br/>
+              <br/>
               Por favor providencie a emiss&atilde;o do empenho para:
               <br/><br/>
               <strong>Associa&ccedil;&atilde;o Python Brasil</strong><br/>
