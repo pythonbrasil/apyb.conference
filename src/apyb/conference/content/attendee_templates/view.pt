@@ -26,7 +26,7 @@
         </div>
         <div id="training_list" tal:condition="view/has_registered_trainings">
             <br/>
-            <h3 i18n:translate="">Trainings</h3>
+            <h3 i18n:translate="">Selected Trainings</h3>
             <table class="grid" id="trainings_registering">
                 <thead>
                     <tr>
