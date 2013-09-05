@@ -191,6 +191,12 @@
             </div>
             <br />
             <div id="paypal" tal:condition="view/show_paypal">
+
+                <p i18n:translate="">
+                  NOTE: Our feedback from the payment processor is not real-time.
+                  It can take some hours before you see your payment confirmed on this site.
+                </p>
+
               <form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
                 <input type="hidden" name="cmd" value="_xclick">
                 <input type="hidden" name="business" value="cobranca@python.org.br">
