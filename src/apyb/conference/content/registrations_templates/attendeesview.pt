@@ -64,9 +64,12 @@
                 <tr>
                     <th i18n:translate="">Code</th>
                     <th i18n:translate="">Date</th>
+                    <th i18n:translate="">Type</th>
                     <th i18n:translate="">Fullname</th>
                     <th i18n:translate="">Email</th>
                     <th i18n:translate="">Gender</th>
+                    <th i18n:translate="">Caipirinha</th>
+                    <th i18n:translate="">Wall</th>
                 </tr>
             </thead>
             <tbody>
@@ -78,9 +81,12 @@
                             tal:content="python:att.get('reg')[:8]">23dsvfr2</a><br/>
                     </td>
                     <td tal:content="att/date">2011-07-13</td>
+                    <td tal:content="att/type">2011-07-13</td>
                     <td tal:content="att/fullname">Jones</td>
                     <td tal:content="att/email">1</td>
                     <td tal:content="att/gender">Male</td>
+                    <td tal:content="att/caipirinha">XL</td>
+                    <td tal:content="att/wall">XL</td>
                 </tr>
                 </tal:attendees>
             </tbody>
