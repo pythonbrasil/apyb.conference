@@ -305,13 +305,13 @@ class RegisterView(View):
             trainings_uid = [trainings_uid, ]
         seat_table = SeatTable(this_attendee)
 
-        # force that confirmed trainings are always part of the selection
-        # we never know what comes in a request
+        # confirmed trainings are always part of the selection
         all_trainings = list(this_attendee.confirmed_trainings)
         for uid in trainings_uid:
             if uid not in all_trainings:
-                # do we still have available seats?
-                if seat_table.available_seats(uid):
+                # was this training already ours
+                # OR are there still available seats?
+                if uid in this_attendee.trainings or seat_table.available_seats(uid):
                     all_trainings.append(uid)
                 else:
                     training = uuidToObject(uid)
