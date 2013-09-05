@@ -214,7 +214,8 @@ class View(grok.View):
             available_seats = seat_table.available_seats(uid)
             training.update(selected = uid in selected,
                             disabled = (uid in confirmed or
-                                        not available_seats),
+                                        (not available_seats and
+                                         uid not in (selected - confirmed))),
                             available_seats = available_seats,)
             yield training
 
