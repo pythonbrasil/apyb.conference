@@ -191,6 +191,17 @@ class View(grok.View):
             reg_by_type[reg_type][reg_state].append(reg)
         return reg_by_type
 
+    def member_registrations(self):
+        ''' List registrations made by authenticated member'''
+        user = self.context.portal_membership.getAuthenticatedMember().getUserName()
+        ct = self._ct
+        brains = ct.searchResults(portal_type='registration',
+                                  Creator=user)
+        regs = [r.getObject() for r in brains]
+        return [dict(
+            href=reg.absolute_url(),
+            text=_('Registration for [%s] made in [%s]') % (reg.title, reg.created())) for reg in regs]
+
     def attendees(self):
         ''' List attenddees'''
         ct = self._ct
