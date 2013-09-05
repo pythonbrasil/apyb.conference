@@ -351,9 +351,12 @@ class View(grok.View):
             duration = int(allocation.duration.split()[0])
             # base price is for a 4h training, we adjust proportionally
             price = PRICES['training']*duration/4
-            if self.show_empenho:
+            if self.registration_type == 'government':
                 # government pays double for trainings
                 price = price * 2
+            elif self.registration_type in ['apyb', 'student']:
+                # apyb and student pays half
+                price = price / 2
             return price
         attendees = [a for a in self.context.getChildNodes()
                      if IAttendee.providedBy(a)]
