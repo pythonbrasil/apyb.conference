@@ -36,6 +36,7 @@
                     <th i18n:translate="">E-mail</th>
                     <th i18n:translate="">Caipirinha Sprint</th>
                     <th i18n:translate="">Wall</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -48,6 +49,9 @@
                         tal:content="value">Caipirinha Sprint</td>
                     <td tal:define="value python:view.wall.getTerm(attendee.get('wall', '')).title;"
                         tal:content="value">Wall</td>
+                    <td><a href="" tal:attributes="href attendee/url">
+                        <img width="16" height="16" src="/++resource++apyb.conference/talk_icon.png" alt="Training Icon">
+                        <b i18n:translate="">Select trainings</b></a></td>
                 </tr>
             </tbody>
         </table>
