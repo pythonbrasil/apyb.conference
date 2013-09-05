@@ -16,6 +16,9 @@ from datetime import datetime
 from persistent.dict import PersistentDict
 from plone.app.uuid.utils import uuidToObject
 from Products.statusmessages.interfaces import IStatusMessage
+from AccessControl import getSecurityManager
+from Products.CMFCore.permissions import ModifyPortalContent
+
 
 class IAttendee(form.Schema):
     """
@@ -246,13 +249,8 @@ class View(grok.View):
 
     @property
     def allow_training_registering(self):
-        if not 'Manager' in self.roles_context:
-            return False
-        # TODO: remove if not used anymore ################################################################
-        # return self.confirmed
-
-        # everyone can register for a training and pay everything at once
-        return True
+        sm = getSecurityManager()
+        return sm.checkPermission(ModifyPortalContent, self.context)
 
     @property
     def fmt_registration_type(self):
@@ -293,7 +291,7 @@ class SeatTable(object):
 
 class RegisterView(View):
     grok.context(IAttendee)
-    grok.require('cmf.ReviewPortalContent')
+    grok.require('cmf.ModifyPortalContent')
     grok.name('register_trainings')
 
     template = None
