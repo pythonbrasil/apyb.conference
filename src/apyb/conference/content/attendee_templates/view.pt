@@ -99,6 +99,7 @@
                     </table>
                         <input type="hidden" name="submitted" value="1" />
                         <input type="submit" name="confirm_button" value="Register" id="confirm_button" />
+                        <input type="submit" name="finish_button" value="Finish and Pay" id="finish_button" />
                     <br/>
             </form>
             <script type="text/javascript">

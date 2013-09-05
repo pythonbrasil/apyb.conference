@@ -325,5 +325,9 @@ class RegisterView(View):
         this_attendee.reindexObject(idxs=['trainings', ])
         # set the time of this operation for use in liberation of blocked seats
         this_attendee.last_time_trainings_were_set = datetime.now()
-        return self.request.response.redirect(this_attendee.absolute_url())
+        if self.request.get('finish_button'):
+            # back to the registration
+            return self.request.response.redirect(this_attendee.getParentNode().absolute_url())
+        else:
+            return self.request.response.redirect(this_attendee.absolute_url())
 
