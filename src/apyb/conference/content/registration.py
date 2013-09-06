@@ -14,6 +14,8 @@ from persistent.dict import PersistentDict
 from apyb.conference.behavior.allocation import IAllocation
 from apyb.conference.content.attendee import IAttendee
 from apyb.conference.config import PRICES
+from plone.uuid.interfaces import IUUID
+
 
 class IRegistration(form.Schema):
     """
@@ -137,6 +139,19 @@ class Registration(dexterity.Container):
     @property
     def fee(self):
         return self.get_payments_total('fee')
+
+    def confirm_payment(self, seq, service, amount, net_amount, fee):
+        pending, _ = self.pending_payments_HACK
+        total = sum([p['price'] for p in pending])
+        if total != amount:
+            return False
+        else:
+            self.payments[seq] = PersistentDict(items = self.pending_payments_HACK,
+                                                service = service,
+                                                amount = amount,
+                                                net_amount = net_amount,
+                                                fee = fee,)
+            return True
 
 
 class View(grok.View):
@@ -367,7 +382,9 @@ class View(grok.View):
                 price = training_price(t)
                 pending.append({'item': title,
                                 'price': price,
-                                'fmtPrice': self.formatPrice(price)})
+                                'fmtPrice': self.formatPrice(price),
+                                'attendee': a.id,
+                                'training_uid': IUUID(t)})
 
         total = self.formatPrice(sum([p['price'] for p in pending]))
 

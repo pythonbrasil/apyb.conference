@@ -17,6 +17,14 @@
             </li>
         </ul>
     </div>
+    <div tal:condition="view/not_updated_problems">
+        <h2 i18n:translate="">REGISTRATIONS WITH ***PROBLEMS*** AND NOT UPDATED !!!!!!!!!!!!!!!!</h2>
+        <ul>
+            <li tal:repeat="item view/not_updated_problems">
+                <a href="" tal:attributes="href string:${context/absolute_url}/${item}"><span tal:content="item"></span></a>
+            </li>
+        </ul>
+    </div>
     <div>
         <form action="#" enctype="multipart/form-data"  method="post" accept-charset="utf-8"
             tal:attributes="action string:${context/absolute_url}/@@registrations_paypal">

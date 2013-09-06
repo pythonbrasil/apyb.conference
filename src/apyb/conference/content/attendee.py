@@ -125,10 +125,14 @@ class Attendee(dexterity.Item):
         return self.uid
 
     def confirmed_trainings(self):
-        payments = getattr(self, "payments", {})
-        for trainings_uid_list in payments.values():
-            for uid in trainings_uid_list:
-                yield uid
+        confirmed = []
+        registration = self.__parent__
+        for payment in registration.payments.values():
+            pending, total = payment['items']
+            for pend in pending:
+                if pend.get('attendee', None) == self.id:
+                    confirmed.append(pend['training_uid'])
+        return confirmed
 
     def pending_trainings(self):
         all_trainings = set(getattr(self, "trainings", []))

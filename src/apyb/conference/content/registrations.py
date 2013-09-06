@@ -480,6 +480,7 @@ class ManagePayPalView(grok.View):
         self._wt = self.tools.workflow()
         self.mt = self.tools.membership()
         self.updated = []
+        self.not_updated_problems = []
         pfile = self.request.get('pfile', '')
         if pfile:
             items = self.process_file(pfile)
@@ -534,20 +535,17 @@ class ManagePayPalView(grok.View):
                 # this payment was already processed
                 continue
             # this is a new payment
-            amount = self.fix_value(item.get('Bruto', '0,00'))
-            fee = self.fix_value(item.get('Taxa', '0,00'))
-            net_amount = self.fix_value(item.get('Liquido', '0,00'))
             service = self.payment
-            reg.payments[seq] = PersistentDict(items = reg.pending_payments_HACK,
-                                               service = service,
-                                               amount = amount,
-                                               net_amount = net_amount,
-                                               fee = fee,)
-            # TODO clear pending items !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-            # TODO .... PUT THIS BACK!!!!!!!
+            amount = self.fix_value(item.get('Bruto', '0,00'))
+            net_amount = self.fix_value(item.get('Liquido', '0,00'))
+            fee = self.fix_value(item.get('Taxa', '0,00'))
+            success = reg.confirm_payment(seq, service, amount, net_amount, fee)
+            # TODO .... PUT THIS BACK ????????????????
             # self._wt.doActionFor(reg, 'confirm')
-            self.updated.append(reg.id)
+            if success:
+                self.updated.append(reg.id)
+            else:
+                self.not_updated_problems.append(reg.id)
 
 
 class APyBView(grok.View):
