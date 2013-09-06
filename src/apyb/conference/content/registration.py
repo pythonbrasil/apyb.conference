@@ -229,9 +229,8 @@ class View(grok.View):
         term = self.voc.getTerm(registration_type)
         return term.title
 
-    @property
     def show_payments(self):
-        return self.pending_payments_total
+        return self.pending_payments_total()
 
     @property
     def paid(self):
@@ -295,7 +294,7 @@ class View(grok.View):
     def show_paypal(self):
         ''' show only if registration not paid
         '''
-        return self.pending_payments_total and not self.show_empenho
+        return self.pending_payments_total() and not self.show_empenho
 
     def _price(self):
         view = self.price_view
@@ -335,7 +334,6 @@ class View(grok.View):
         helper = self.helper
         return helper.trainings()
 
-    @property
     # TODO memoize???
     def pending_payments(self):
         pending = []
@@ -361,7 +359,7 @@ class View(grok.View):
         attendees = [a for a in self.context.getChildNodes()
                      if IAttendee.providedBy(a)]
         for a in attendees:
-            for t in a.pending_trainings:
+            for t in a.pending_trainings():
                 duration = IAllocation(t).duration
                 title = 'Training for [%s]: %s (%s)' % (a.title,
                                                         t.title,
@@ -378,9 +376,8 @@ class View(grok.View):
 
         return pending, total
 
-    @property
     def pending_payments_total(self):
-        pending, _ = self.pending_payments
+        pending, _ = self.pending_payments()
         return sum([p['price'] for p in pending])
 
     @property
