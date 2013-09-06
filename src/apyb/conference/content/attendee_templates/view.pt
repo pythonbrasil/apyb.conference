@@ -98,8 +98,8 @@
                     </tbody>
                     </table>
                         <input type="hidden" name="submitted" value="1" />
-                        <input type="submit" name="confirm_button" value="Register" id="confirm_button" />
-                        <input type="submit" name="finish_button" value="Finish and Pay" id="finish_button" />
+                        <input type="submit" name="confirm_button" value="Select" id="confirm_button" i18n:attributes="value Select" />
+                        <input type="submit" name="finish_button" value="Finish and Pay" id="finish_button" i18n:attributes="value Finish-and-Pay" />
                     <br/>
             </form>
             <script type="text/javascript">
