@@ -9,6 +9,7 @@ from plone.directives import dexterity, form
 from zope.component import getMultiAdapter, queryUtility
 from zope.schema.interfaces import IVocabularyFactory
 from persistent.dict import PersistentDict
+from plone.app.uuid.utils import uuidToObject
 
 
 class IRegistrations(form.Schema):
@@ -552,3 +553,35 @@ class APyBView(grok.View):
     grok.context(IRegistrations)
     grok.name('apyb-member')
     grok.require('zope2.View')
+
+
+class SeatTableView(View):
+    "Makes a registration FREE. Use with caution"
+    # TODO: improve the output of this, with a template or turn this into a csv view
+
+    grok.name('seat-table')
+    grok.context(IRegistrations)
+    grok.require('cmf.ManagePortal')
+
+    template = None
+
+    def render(self):
+        out = "TRAINING NAME\tTRAINING TITLE\tPERSON\tPAID?\n"
+        register = self.context
+        for training_uid, people in register.seat_table.iteritems():
+            training = uuidToObject(training_uid)
+            for p in people:
+                reg_uid, attendee_id = p.split('/')
+                reg = register[reg_uid]
+                paid = False
+                for payment in reg.payments.values():
+                    items, _ = payment['items']
+                    for item in items:
+                        if 'training_uid' in item:
+                            if (attendee_id, training_uid) == (item['attendee'], item['training_uid']):
+                                paid = True
+                out += "%s\t%s\t%s\t%s\n" % (training.absolute_url(),
+                                             training.title,
+                                             register.absolute_url() + '/' +p,
+                                             paid)
+        return out
