@@ -141,7 +141,15 @@ class Registration(dexterity.Container):
         return self.get_payments_total('fee')
 
     def confirm_payment(self, seq, service, amount, net_amount, fee):
-        pending, _ = self.pending_payments_HACK
+        try:
+            pending, _ = self.pending_payments_HACK
+        except AttributeError:
+            # TODO: remove this shameful hack and this bizarre POG exception handling
+            raise Exception("""
+        ################
+        UMA **POG** FALHOU, PARA CORRIGIR ESSE PROBLEMA APENAS VISITE A PAGINA
+        -- %s -- E DEPOIS IMPORTE O ARQUIVO NOVAMENTE. ################""" % self.absolute_url())
+
         total = sum([p['price'] for p in pending])
         if total != amount:
             return False
