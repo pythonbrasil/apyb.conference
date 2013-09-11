@@ -412,3 +412,29 @@ class View(grok.View):
         assert seq not in self.context.payments
         return "%s::%s" % (self.context.id, seq)
 
+class FreeRegistrationView(View):
+    "Makes a registration FREE. Use with caution"
+
+    grok.name('make-free')
+    grok.context(IRegistration)
+    grok.require('cmf.ManagePortal')
+
+    template = None
+
+    def update(self):
+        super(FreeRegistrationView, self).update()
+        reg = self.context
+        assert not reg.has_payments()
+        free_payment = ([{'fmtPrice': 'R$0,00',
+                          'item': 'Conference Registration',
+                          'price': 0}],
+                          'R$0,00')
+        reg.payments[0] = PersistentDict(items = free_payment,
+                                          service = 'paypal',
+                                          amount = 0,
+                                          net_amount = 0,
+                                          fee = 0,)
+
+    def render(self):
+        return 'The registration of <a href="%s">[%s]</a> was made FREE!' % (self.context.absolute_url(),
+                                                                        self.context.title)
