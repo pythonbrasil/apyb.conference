@@ -585,3 +585,32 @@ class SeatTableView(View):
                                              register.absolute_url() + '/' +p,
                                              paid)
         return out
+
+
+class HackConfirmPayedView(View):
+    # XXX HACK: REMOVE ME SOMEDAY
+
+    grok.name('hack-confirm')
+    grok.context(IRegistrations)
+    grok.require('cmf.ManagePortal')
+
+    template = None
+
+    def update(self):
+        from zope.component import getMultiAdapter
+
+        tools = getMultiAdapter((self.context, self.request), name=u'plone_tools')
+        _wt = tools.workflow()
+
+        self.out = ''
+        register = self.context
+        for reg in register.getChildNodes():
+            state = getMultiAdapter((reg, self.request), name=u'plone_context_state').workflow_state()
+            if reg.has_payments() and state != 'confirmed':
+                import ipdb; ipdb.set_trace() ######## BREAKPOINT #### TODO: REMOVE ################################################################
+                _wt.doActionFor(reg, 'confirm')
+                self.out += '%s >>>> inscricao confirmada\n' % reg
+
+    def render(self):
+        return '################################################################\n' + self.out
+
