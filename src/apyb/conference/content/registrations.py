@@ -541,9 +541,10 @@ class ManagePayPalView(grok.View):
             net_amount = self.fix_value(item.get('Liquido', '0,00'))
             fee = self.fix_value(item.get('Taxa', '0,00'))
             success = reg.confirm_payment(seq, service, amount, net_amount, fee)
-            # TODO .... PUT THIS BACK ????????????????
-            # self._wt.doActionFor(reg, 'confirm')
             if success:
+                workflow_state = getMultiAdapter((reg, self.request), name=u'plone_context_state').workflow_state()
+                if workflow_state != 'confirmed':
+                    self._wt.doActionFor(reg, 'confirm')
                 self.updated.append(reg.id)
             else:
                 self.not_updated_problems.append(reg.id)
@@ -607,7 +608,6 @@ class HackConfirmPayedView(View):
         for reg in register.getChildNodes():
             state = getMultiAdapter((reg, self.request), name=u'plone_context_state').workflow_state()
             if reg.has_payments() and state != 'confirmed':
-                import ipdb; ipdb.set_trace() ######## BREAKPOINT #### TODO: REMOVE ################################################################
                 _wt.doActionFor(reg, 'confirm')
                 self.out += '%s >>>> inscricao confirmada\n' % reg
 
