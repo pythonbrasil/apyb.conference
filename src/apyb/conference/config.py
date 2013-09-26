@@ -1,12 +1,14 @@
 # -*- coding:utf-8 -*-
 from apyb.conference import MessageFactory as _
 
-PRICES = {'apyb': 5000,
-          'student': 5000,
-          'individual': 10000,
+BASE_PRICE = 15000
+
+PRICES = {'apyb': BASE_PRICE / 2,
+          'student': BASE_PRICE / 2,
+          'individual': BASE_PRICE,
           'government': 40000,
-          'group': 10000,
-          'speaker': 10000,
+          'group': BASE_PRICE,
+          'speaker': BASE_PRICE,
           'sponsor': 0,
           'organizer': 0,
           'training': 5000, # for 4h training, adjust proportionally!
