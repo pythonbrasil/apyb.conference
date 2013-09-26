@@ -567,6 +567,8 @@ class SeatTableView(View):
     template = None
 
     def render(self):
+        self.request.response.setHeader('Content-Type',
+                                        'text/plain;charset=utf-8')
         out = "TRAINING NAME\tTRAINING TITLE\tPERSON\tPAID?\n"
         register = self.context
         for training_uid, people in register.seat_table.iteritems():
@@ -613,4 +615,40 @@ class HackConfirmPayedView(View):
 
     def render(self):
         return '################################################################\n' + self.out
+
+
+class PaymentsView(View):
+    "Show all payments made"
+
+    grok.name('payments')
+    grok.context(IRegistrations)
+    grok.require('cmf.ManagePortal')
+
+    template = None
+
+    def render(self):
+        self.request.response.setHeader('Content-Type', 'text/csv;charset=utf-8')
+        self.request.response.setHeader('Content-disposition', 'attachment; filename=payments.csv')
+
+        self.out = ''
+        def printline(*args):
+            self.out += '\t'.join(map(str, args)) + '\n'
+
+        printline('NAME', 'EMAIL', 'LINK', 'ITEM', 'VALUE')
+
+        register = self.context
+        for reg in register.getChildNodes():
+            if reg.payments:
+                name = reg.title
+                email = reg.email
+                # atts = ', '.join(['%s <%s>' % (a.title, a.email) for a in reg.getChildNodes()])
+                link = reg.absolute_url()
+                for n, pay in reg.payments.iteritems():
+                    items, total = pay['items']
+                    for item in items:
+                        # note that we remove "R$" from the start of fmtPrice
+                        item_name, fmt_frice = item['item'], item['fmtPrice'][2:]
+                        printline(name, email, link, item_name, fmt_frice)
+
+        return self.out
 
