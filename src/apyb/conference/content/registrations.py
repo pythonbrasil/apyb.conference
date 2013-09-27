@@ -11,6 +11,7 @@ from zope.schema.interfaces import IVocabularyFactory
 from persistent.dict import PersistentDict
 from plone.app.uuid.utils import uuidToObject
 
+from apyb.conference.content.attendee import SeatTable
 
 class IRegistrations(form.Schema):
     """
@@ -566,6 +567,10 @@ class SeatTableView(View):
     template = None
 
     def render(self):
+        # we rebuild because there were some minor discrepancies from time to time... don't know why
+        st = SeatTable(self.context)
+        st.rebuild()
+
         self.request.response.setHeader('Content-Type',
                                         'text/plain;charset=utf-8')
         out = "TRAINING NAME\tTRAINING TITLE\tPERSON\tPAID?\n"

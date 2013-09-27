@@ -14,6 +14,7 @@ from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
 from datetime import datetime
 from persistent.dict import PersistentDict
+from persistent.list import PersistentList
 from plone.app.uuid.utils import uuidToObject
 from Products.statusmessages.interfaces import IStatusMessage
 from AccessControl import getSecurityManager
@@ -267,6 +268,7 @@ class SeatTable(object):
     # XXX do this in a more standard way
 
     def __init__(self, context):
+        self.context = context
         register = context.register # via acquisition :P
         self.table = getattr(register, 'seat_table', PersistentDict())
         if not self.table:
@@ -281,7 +283,7 @@ class SeatTable(object):
         for uid in training_uids:
             attendee_set = self.table.get(uid, set())
             attendee_set.add(code)
-            self.table[uid] = attendee_set
+            self.table[uid] = set(attendee_set) # a new set to ensure persistence
 
     def available_seats(self, training_uid):
         training = uuidToObject(training_uid)
@@ -289,6 +291,14 @@ class SeatTable(object):
         taken = len(self.table.get(training_uid, set()))
         # the result should be positive, but we can be cautious here
         return max(total - taken, 0)
+
+    def rebuild(self):
+        register = self.context.register # via acquisition :P
+        register.seat_table.clear()
+        # scan all attendees for trainings
+        for reg in register.getChildNodes():
+            for att in reg.getChildNodes():
+                self.refresh_attendee_trainings(att, att.trainings)
 
 
 class RegisterView(View):
