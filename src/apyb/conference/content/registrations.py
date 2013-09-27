@@ -571,15 +571,26 @@ class SeatTableView(View):
         st = SeatTable(self.context)
         st.rebuild()
 
-        self.request.response.setHeader('Content-Type',
-                                        'text/plain;charset=utf-8')
-        out = "TRAINING NAME\tTRAINING TITLE\tPERSON\tPAID?\n"
+        self.request.response.setHeader('Content-Type', 'text/csv;charset=utf-8')
+        self.request.response.setHeader('Content-disposition', 'attachment; filename=seat_table.csv')
+
+        filter_paid = False
+        if 'paid' in self.request:
+            filter_paid = True
+            filter_paid_value = self.request['paid'].lower() != 'false'
+
+        self.out = ''
+        def printline(*args):
+            self.out += '\t'.join(map(str, args)) + '\n'
+
+        printline("TRAINING URL", "TRAINING NAME", "ATTENDEE URL", "ATTENDEE EMAIL", "PAID?")
         register = self.context
         for training_uid, people in register.seat_table.iteritems():
             training = uuidToObject(training_uid)
             for p in people:
                 reg_uid, attendee_id = p.split('/')
                 reg = register[reg_uid]
+                att = reg[attendee_id]
                 paid = False
                 for payment in reg.payments.values():
                     items, _ = payment['items']
@@ -587,11 +598,10 @@ class SeatTableView(View):
                         if 'training_uid' in item:
                             if (attendee_id, training_uid) == (item['attendee'], item['training_uid']):
                                 paid = True
-                out += "%s\t%s\t%s\t%s\n" % (training.absolute_url(),
-                                             training.title,
-                                             register.absolute_url() + '/' +p,
-                                             paid)
-        return out
+                if not filter_paid or filter_paid_value == paid:
+                    printline(training.absolute_url(), training.title,
+                              register.absolute_url() + '/' +p, att.email, paid)
+        return self.out
 
 
 class HackConfirmPayedView(View):
