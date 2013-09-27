@@ -557,7 +557,6 @@ class APyBView(grok.View):
 
 
 class SeatTableView(View):
-    "Makes a registration FREE. Use with caution"
     # TODO: improve the output of this, with a template or turn this into a csv view
 
     grok.name('seat-table')
