@@ -7,6 +7,7 @@ from zope.component import getMultiAdapter
 from zope.component import queryUtility
 from zope.schema.interfaces import IVocabularyFactory
 
+import Missing
 import json
 
 
@@ -259,6 +260,13 @@ class TrainingsAllView(TalksView):
     grok.require('cmf.ReviewPortalContent')
 
 
+class MissingValueEncoder(json.JSONEncoder):
+
+    def default(self, obj):
+        if obj == Missing.Value:
+            return None
+        return json.JSONEncoder.default(self, obj)
+
 class JSONView(View):
     grok.name('json')
 
@@ -275,12 +283,14 @@ class JSONView(View):
 
     def location(self, value):
         rooms = self.rooms
-        location = value
-        try:
-            term = rooms.getTerm(location)
-        except LookupError, TypeError:
-            return 'PythonBrasil[9]'
-        return term.title
+        if not value:
+            return None
+        else:
+            try:
+                term = rooms.getTerm(value)
+            except LookupError, TypeError:
+                return 'PythonBrasil[9]'
+            return term.title
 
     def speakers_info(self, speakers):
         ''' Return a list of speakers in here '''
@@ -354,7 +364,8 @@ class JSONView(View):
                                         'application/json;charset=utf-8')
         return json.dumps(data,
                           encoding='utf-8',
-                          ensure_ascii=False)
+                          ensure_ascii=False,
+                          cls=MissingValueEncoder)
 
 
 class Speakers(grok.View):
