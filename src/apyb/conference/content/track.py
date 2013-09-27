@@ -196,7 +196,7 @@ class JSONView(View):
             talk['id'] = brain.UID
             talk['creation_date'] = brain.CreationDate
             talk['title'] = brain.Title
-            talk['description'] = brain.Description
+            talk['summary'] = brain.getObject().text
             talk['track'] = self.context.title
             talk['speakers'] = self.speakers(brain.speakers)
             talk['language'] = brain.language
