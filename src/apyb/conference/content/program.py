@@ -278,8 +278,8 @@ class JSONView(View):
         location = value
         try:
             term = rooms.getTerm(location)
-        except LookupError:
-            return 'PythonBrasil[7]'
+        except LookupError, TypeError:
+            return 'PythonBrasil[9]'
         return term.title
 
     def speakers_info(self, speakers):
