@@ -9,7 +9,9 @@ from plone.directives import dexterity, form
 from zope.component import getMultiAdapter, queryUtility
 from zope.schema.interfaces import IVocabularyFactory
 from persistent.dict import PersistentDict
+from plone.app.uuid.utils import uuidToObject
 
+from apyb.conference.content.attendee import SeatTable
 
 class IRegistrations(form.Schema):
     """
@@ -540,9 +542,10 @@ class ManagePayPalView(grok.View):
             net_amount = self.fix_value(item.get('Liquido', '0,00'))
             fee = self.fix_value(item.get('Taxa', '0,00'))
             success = reg.confirm_payment(seq, service, amount, net_amount, fee)
-            # TODO .... PUT THIS BACK ????????????????
-            # self._wt.doActionFor(reg, 'confirm')
             if success:
+                workflow_state = getMultiAdapter((reg, self.request), name=u'plone_context_state').workflow_state()
+                if workflow_state != 'confirmed':
+                    self._wt.doActionFor(reg, 'confirm')
                 self.updated.append(reg.id)
             else:
                 self.not_updated_problems.append(reg.id)
@@ -552,3 +555,114 @@ class APyBView(grok.View):
     grok.context(IRegistrations)
     grok.name('apyb-member')
     grok.require('zope2.View')
+
+
+class SeatTableView(View):
+    # TODO: improve the output of this, with a template or turn this into a csv view
+
+    grok.name('seat-table')
+    grok.context(IRegistrations)
+    grok.require('cmf.ManagePortal')
+
+    template = None
+
+    def render(self):
+        # we rebuild because there were some minor discrepancies from time to time... don't know why
+        st = SeatTable(self.context)
+        st.rebuild()
+
+        self.request.response.setHeader('Content-Type', 'text/csv;charset=utf-8')
+        self.request.response.setHeader('Content-disposition', 'attachment; filename=seat_table.csv')
+
+        filter_paid = False
+        if 'paid' in self.request:
+            filter_paid = True
+            filter_paid_value = self.request['paid'].lower() != 'false'
+
+        self.out = ''
+        def printline(*args):
+            self.out += '\t'.join(map(str, args)) + '\n'
+
+        printline("TRAINING URL", "TRAINING NAME", "ATTENDEE URL", "ATTENDEE EMAIL", "PAID?")
+        register = self.context
+        for training_uid, people in register.seat_table.iteritems():
+            training = uuidToObject(training_uid)
+            for p in people:
+                reg_uid, attendee_id = p.split('/')
+                reg = register[reg_uid]
+                att = reg[attendee_id]
+                paid = False
+                for payment in reg.payments.values():
+                    items, _ = payment['items']
+                    for item in items:
+                        if 'training_uid' in item:
+                            if (attendee_id, training_uid) == (item['attendee'], item['training_uid']):
+                                paid = True
+                if not filter_paid or filter_paid_value == paid:
+                    printline(training.absolute_url(), training.title,
+                              register.absolute_url() + '/' +p, att.email, paid)
+        return self.out
+
+
+class HackConfirmPayedView(View):
+    # XXX HACK: REMOVE ME SOMEDAY
+
+    grok.name('hack-confirm')
+    grok.context(IRegistrations)
+    grok.require('cmf.ManagePortal')
+
+    template = None
+
+    def update(self):
+        from zope.component import getMultiAdapter
+
+        tools = getMultiAdapter((self.context, self.request), name=u'plone_tools')
+        _wt = tools.workflow()
+
+        self.out = ''
+        register = self.context
+        for reg in register.getChildNodes():
+            state = getMultiAdapter((reg, self.request), name=u'plone_context_state').workflow_state()
+            if reg.has_payments() and state != 'confirmed':
+                _wt.doActionFor(reg, 'confirm')
+                self.out += '%s >>>> inscricao confirmada\n' % reg
+
+    def render(self):
+        return '################################################################\n' + self.out
+
+
+class PaymentsView(View):
+    "Show all payments made"
+
+    grok.name('payments')
+    grok.context(IRegistrations)
+    grok.require('cmf.ManagePortal')
+
+    template = None
+
+    def render(self):
+        self.request.response.setHeader('Content-Type', 'text/csv;charset=utf-8')
+        self.request.response.setHeader('Content-disposition', 'attachment; filename=payments.csv')
+
+        self.out = ''
+        def printline(*args):
+            self.out += '\t'.join(map(str, args)) + '\n'
+
+        printline('NAME', 'EMAIL', 'LINK', 'ITEM', 'VALUE')
+
+        register = self.context
+        for reg in register.getChildNodes():
+            if reg.payments:
+                name = reg.title
+                email = reg.email
+                # atts = ', '.join(['%s <%s>' % (a.title, a.email) for a in reg.getChildNodes()])
+                link = reg.absolute_url()
+                for n, pay in reg.payments.iteritems():
+                    items, total = pay['items']
+                    for item in items:
+                        # note that we remove "R$" from the start of fmtPrice
+                        item_name, fmt_frice = item['item'], item['fmtPrice'][2:]
+                        printline(name, email, link, item_name, fmt_frice)
+
+        return self.out
+

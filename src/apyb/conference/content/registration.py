@@ -141,7 +141,15 @@ class Registration(dexterity.Container):
         return self.get_payments_total('fee')
 
     def confirm_payment(self, seq, service, amount, net_amount, fee):
-        pending, _ = self.pending_payments_HACK
+        try:
+            pending, _ = self.pending_payments_HACK
+        except AttributeError:
+            # TODO: remove this shameful hack and this bizarre POG exception handling
+            raise Exception("""
+        ################
+        UMA **POG** FALHOU, PARA CORRIGIR ESSE PROBLEMA APENAS VISITE A PAGINA
+        -- %s -- E DEPOIS IMPORTE O ARQUIVO NOVAMENTE. ################""" % self.absolute_url())
+
         total = sum([p['price'] for p in pending])
         if total != amount:
             return False
@@ -404,3 +412,29 @@ class View(grok.View):
         assert seq not in self.context.payments
         return "%s::%s" % (self.context.id, seq)
 
+class FreeRegistrationView(View):
+    "Makes a registration FREE. Use with caution"
+
+    grok.name('make-free')
+    grok.context(IRegistration)
+    grok.require('cmf.ManagePortal')
+
+    template = None
+
+    def update(self):
+        super(FreeRegistrationView, self).update()
+        reg = self.context
+        assert not reg.has_payments()
+        free_payment = ([{'fmtPrice': 'R$0,00',
+                          'item': 'Conference Registration',
+                          'price': 0}],
+                          'R$0,00')
+        reg.payments[0] = PersistentDict(items = free_payment,
+                                          service = 'paypal',
+                                          amount = 0,
+                                          net_amount = 0,
+                                          fee = 0,)
+
+    def render(self):
+        return 'The registration of <a href="%s">[%s]</a> was made FREE!' % (self.context.absolute_url(),
+                                                                        self.context.title)

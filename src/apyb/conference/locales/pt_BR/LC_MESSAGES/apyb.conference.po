@@ -995,7 +995,7 @@ msgstr "Ordem"
 #: ../config.py:49
 #: ../content/attendee.py:55
 msgid "Organization"
-msgstr "Entidade (Empresa, Instituição)"
+msgstr "Organização"
 
 #: ../browser/register.py:125
 msgid "Organization info"
