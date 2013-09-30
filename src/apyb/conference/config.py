@@ -1,6 +1,8 @@
 # -*- coding:utf-8 -*-
 from apyb.conference import MessageFactory as _
 
+PROJECTNAME = 'apyb.conference'
+
 PRICES = {'apyb': 5000,
           'student': 5000,
           'individual': 10000,
@@ -9,7 +11,7 @@ PRICES = {'apyb': 5000,
           'speaker': 10000,
           'sponsor': 0,
           'organizer': 0,
-          'training': 5000, # for 4h training, adjust proportionally!
+          'training': 5000,  # for 4h training, adjust proportionally!
           }
 
 CAIPIRINHA = {'no': 0,
