@@ -45,6 +45,9 @@
  <index name="talk_type" meta_type="FieldIndex">
   <indexed_attr value="talk_type"/>
  </index>
+ <index name="location" meta_type="FieldIndex">
+  <indexed_attr value="location"/>
+ </index>
  <column value="speakers"/>
  <column value="track"/>
  <column value="level"/>
@@ -67,4 +70,5 @@
  <column value="t_shirt_size"/>
  <column value="badge_name"/>
  <column value="trainings"/>
+ <column value="location"/>
 </object>
