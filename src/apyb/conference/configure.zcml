@@ -50,6 +50,13 @@
       name="program_url"
       />
 
+  <adapter
+      for="Products.CMFCore.interfaces.IContentish"
+      provides="plone.stringinterp.interfaces.IStringSubstitution"
+      factory=".adapters.UIDSubstitution"
+      name="uid"
+      />
+
   <grok:grok package="." />
 
 </configure>

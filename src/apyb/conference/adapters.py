@@ -1,6 +1,8 @@
 # -*- coding:utf-8 -*-
 from apyb.conference import MessageFactory as _
+from plone.dexterity.interfaces import IDexterityContent
 from plone.stringinterp.adapters import BaseSubstitution
+from plone.uuid.interfaces import IUUID
 from Products.CMFCore.interfaces import IContentish
 from zope.component import adapts
 
@@ -78,3 +80,18 @@ class ProgramURLSubstitution(BaseSubstitution):
         if hasattr(portal, 'program'):
             url = portal.program.absolute_url()
         return url
+
+
+class UIDSubstitution(BaseSubstitution):
+    adapts(IContentish)
+
+    category = _(u'All Content')
+    description = _(u'Content UID')
+
+    def safe_call(self):
+        content = self.context
+        if IDexterityContent.providedBy(content):
+            uid = IUUID(content)
+        else:
+            uid = content.UID()
+        return uid
