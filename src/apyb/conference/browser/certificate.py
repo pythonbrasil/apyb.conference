@@ -57,17 +57,17 @@ class Generate(grok.View):
     def generate(self, name, role, year=2011, url=None):
         img = Image.open(CERT_FILE)
         draw = ImageDraw.Draw(img)
-        font = ImageFont.truetype(FONT_FILE, 128)
-        pos = 680, 1670
+        font = ImageFont.truetype(FONT_FILE, 96)
+        pos = 750, 1637
         name = name.encode('latin-1')
         draw.text(pos, name, font=font, fill='black')
 
-        pos = 2700, 2190
+        pos = 2700, 2045
         draw.text(pos, role, font=font, fill='black')
 
         if url:
             text = u'Certificado gerado em %s'
-            pos = 1800, 3420
+            pos = 1235, 3420
             font = ImageFont.truetype(FONT_FILE, 45)
             draw.text(pos, text % url, font=font, fill='white')
 
