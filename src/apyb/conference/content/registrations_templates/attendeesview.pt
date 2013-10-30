@@ -35,11 +35,12 @@
                     <th i18n:translate="">T-Shirt</th>
                     <th i18n:translate="">Caipirinha</th>
                     <th i18n:translate="">Wall</th>
+                    <th i18n:translate="">State</th>
                 </tr>
             </thead>
             <tbody>
                 <tal:attendees tal:repeat="att view/attendees">
-                <tr tal:condition="python:att.get('state')=='Confirmado'">
+                <tr tal:condition="python:att.get('state')=='Confirmado' or att.get('state')=='attended'">
                     <td>
                         <a href="" tal:attributes="href att/url" tal:content="att/id">23dsvfr2</a><br/>
                         <a href="" tal:attributes="href att/reg_url"
@@ -53,6 +54,7 @@
                     <td tal:content="att/t_shirt_size">XL</td>
                     <td tal:content="att/caipirinha">XL</td>
                     <td tal:content="att/wall">XL</td>
+                    <td tal:content="att/state">XL</td>
                 </tr>
                 </tal:attendees>
             </tbody>
