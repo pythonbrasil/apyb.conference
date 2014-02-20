@@ -47,6 +47,12 @@
         <div tal:condition="view/show_references">Reference:
             <div tal:replace="structure view/w/references/render" />
         </div>
+        <div tal:condition="context/presentation">
+            <strong i18n:translate="">Presentation:</strong>
+            <div>
+              <a tal:attributes="href context/presentation">Download</a>
+            </div>
+        </div>
     </div>
     <div class="speaker_details">
         <h2 i18n:translate="">Speaker details</h2>
